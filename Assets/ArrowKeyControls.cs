@@ -17,10 +17,10 @@ public class ArrowKeyControls : MonoBehaviour
          Vector3 pos = transform.position;
  
          if (Input.GetKey ("w")) {
-             pos.z += panSpeed * Time.deltaTime;
+             pos.y += panSpeed * Time.deltaTime;
          }
          if (Input.GetKey ("s")) {
-             pos.z -= panSpeed * Time.deltaTime;
+             pos.y -= panSpeed * Time.deltaTime;
          }
          if (Input.GetKey ("d")) {
              pos.x += panSpeed * Time.deltaTime;
