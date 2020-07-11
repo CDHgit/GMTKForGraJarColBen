@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 10
   rb: {fileID: 0}
-  maxSpeed: 3
+  maxSpeed: 2
 --- !u!212 &1066194990
 SpriteRenderer:
   m_ObjectHideFlags: 0
