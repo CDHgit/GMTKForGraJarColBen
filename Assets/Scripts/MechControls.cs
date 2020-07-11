@@ -25,7 +25,6 @@ public class MechControls : MonoBehaviour {
     int mechNum;
     Vector2 dashDestination;
     float dashTimer = 0;
-
     float virusWalkTimer = 0;
     Vector2 force;
     private int targetNum;
@@ -41,7 +40,7 @@ public class MechControls : MonoBehaviour {
             GameObject target = context.mechList[targetNum];
             float angle;
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
-            angle +=90;
+            angle += 90;
             angle = angle * Mathf.PI / 180f;
             dashDestination = new Vector2 (-Mathf.Sin (angle), Mathf.Cos (angle));
             dashTimer = dashLength;
@@ -80,13 +79,16 @@ public class MechControls : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
+        
         GameObject curMech = context.getCurMech ();
-
         GameObject target = context.mechList[targetNum];
         topSprite.transform.rotation = Quaternion.Euler (0, 0, HelperFunctions.getAngleBetween (this.gameObject, target));
         //Force applied is used to detect if any of the directions are input
         forceApplied = false;
         //Detect if this is the active mech to be controlled else velocity zero (for now)
+
+        //dottedLine.DrawDottedLine(GetComponent<Transform> ().position, target.GetComponent<Transform> ().position);
+
         if (active && mechEnabled) {
             maxSpeed = maxSpeedConstant;
 
