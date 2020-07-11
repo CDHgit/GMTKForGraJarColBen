@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketControl : MonoBehaviour {
+public class BulletControl : MonoBehaviour {
     public float thrust = 1;
     public float lifeSpanSecs = 5;
     public float initialSpeed = 10;
+
+    public float maxSpeed = 20;
     Rigidbody2D rigidBody;
     Transform mTransform;
     float travelAngle;
@@ -14,11 +16,11 @@ public class RocketControl : MonoBehaviour {
     // Start is called before the first frame update
     void Start () {
         mTransform = GetComponent<Transform> ();
-        rigidBody = GetComponent<Rigidbody2D> ();
         startTime = Time.time;
     }
-    void initRocket (float fl) {
+    void initBullet (float fl) {
         travelAngle = fl;
+        rigidBody = GetComponent<Rigidbody2D> ();
         rigidBody.velocity = initialSpeed * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f));
 
     }

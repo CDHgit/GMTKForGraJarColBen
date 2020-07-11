@@ -47,7 +47,7 @@ public class MechControls : MonoBehaviour {
             angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
         }
         GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f* new  Vector2(-Mathf.Sin(angle/180f*Mathf.PI), Mathf.Cos(angle/180f*Mathf.PI)), Quaternion.Euler(0, 0, angle));
-        rocket.SendMessage("initRocket",angle);
+        rocket.SendMessage("initBullet",angle);
         rocket.SendMessage("setParent", this.gameObject);
 
     }

@@ -24,11 +24,9 @@ public class TrackController : MonoBehaviour {
     void Start () {
         secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
         initTrackPos = trackImageBase.GetComponent<RectTransform>().localPosition;
-        Debug.Log("size" + context.mech1);
         tracks[0] = new Track(trackSize, new Action[]{new RocketFireAction()});
-        for (int i = 1; i < size; i++) {
-            tracks[i] = new Track (trackSize, new Action[]{new TestAction()});
-        }
+        tracks[1] = new Track(trackSize, new Action[]{new DashAction()});
+        tracks[2] = new Track(trackSize, new Action[]{new LaserAction ()});
         setTrack(context.mech1, 0);
         setTrack(context.mech2, 1);
         setTrack(context.mech3, 2);
@@ -60,7 +58,6 @@ public class TrackController : MonoBehaviour {
 
     }
     void updateTrackUI () {
-        Debug.Log("Track base image update");
         trackImageBase.GetComponent<RectTransform>().localPosition = initTrackPos;
     }
 
