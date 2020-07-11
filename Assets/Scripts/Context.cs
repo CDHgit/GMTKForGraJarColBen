@@ -4,44 +4,47 @@ using UnityEngine;
 
 public class Context : MonoBehaviour {
     public GameObject mech1, mech2, mech3;
-    public KeyCode mech1Key = KeyCode.A, mech2Key = KeyCode.S, mech3Key = KeyCode.D;
-
-    private GameObject curMech;
-    
+    KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L; //Private key codes JKL
+    List<GameObject> mechList; // Mech list used to update the active
+    ArrowKeyControls mechKeyControlsScript;
     // Start is called before the first frame update
     void Start () {
-        curMech = mech1;
+        // Create a list of mechs to iterate through later for easier updating
+        mechList = new List<GameObject>();
+        mechList.Add(mech1);
+        mechList.Add(mech2);
+        mechList.Add(mech3);
+        // This doesn't work right now might need to trigger it or have a 3 state maybe
+        // switchMech(0);
     }
 
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(mech1Key)){
-            switchContext(1);
+            switchMech(0);
         } else if (Input.GetKeyDown(mech2Key)){
-            switchContext(2);
+            switchMech(1);
         } else if (Input.GetKeyDown(mech3Key)){
-            switchContext(3);
+            switchMech(2);
         }
     }
 
     /**
      * Switch which mech is being controlled
      */
-    private void switchContext (int mechNum) {
-        Debug.Assert(mechNum > 0 && mechNum < 4, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        
-        switch (mechNum) {
-            case 1:
-                curMech = mech1;
-                break;
-            case 2:
-                curMech = mech2;
-                break;
-            case 3:
-                curMech = mech3;
-                break;
-            default:
-                break;
+    private void switchMech (int mechNum) {
+        Debug.Assert(mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
+        // Debug.Log("Switching mech to " + mechNum);
+        //Set the active mech to true and the others to false
+        for (int mechIdx = 0; mechIdx < 3; mechIdx ++)
+        {
+            mechKeyControlsScript = mechList[mechIdx].GetComponent<ArrowKeyControls>();
+            if(mechNum == mechIdx){
+                mechKeyControlsScript.active = true;
+            }
+            else{
+                mechKeyControlsScript.active = false;
+            }
         }
     }
 }
