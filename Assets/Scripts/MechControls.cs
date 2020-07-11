@@ -27,13 +27,25 @@ public class MechControls : MonoBehaviour {
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
     }
-    public void startDash (float angle) {
+    public void startDash () {
+        float angle;
+        if (context.getCurMech()==this.gameObject){
+            angle = HelperFunctions.getAngleToMouse(this.gameObject);
+        } else {
+            angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+        }
         angle = angle * Mathf.PI / 180f;
         dashDestination = new Vector2 ( - Mathf.Sin (angle), Mathf.Cos (angle));
         dashTimer=dashLength;
     }
 
-    public void fireRocket(float angle) { 
+    public void fireRocket() {
+        float angle;
+        if (context.getCurMech()==this.gameObject){
+            angle = HelperFunctions.getAngleToMouse(this.gameObject);
+        } else {
+            angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+        }
         GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f* new  Vector2(-Mathf.Sin(angle/180f*Mathf.PI), Mathf.Cos(angle/180f*Mathf.PI)), Quaternion.Euler(0, 0, angle));
         rocket.SendMessage("initRocket",angle);
         rocket.SendMessage("setParent", this.gameObject);

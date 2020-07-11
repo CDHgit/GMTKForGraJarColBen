@@ -22,7 +22,7 @@ public class ShootAtActive : MonoBehaviour
             topSprite.transform.rotation = Quaternion.Euler(0,0,HelperFunctions.getAngleToMouse(this.gameObject));
         } else {
             topSprite.transform.rotation = Quaternion. Euler(0,0,HelperFunctions.getAngleBetween(this.gameObject, curMech));
-        }  
+        }
     }
     public void shootAt()
     {   

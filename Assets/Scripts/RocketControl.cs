@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RocketControl : MonoBehaviour {
     public float thrust = 1;
-    public float lifeSpanSecs= 5;
+    public float lifeSpanSecs = 5;
+    public float initialSpeed = 10;
     Rigidbody2D rigidBody;
     Transform mTransform;
     float travelAngle;
@@ -13,30 +14,32 @@ public class RocketControl : MonoBehaviour {
     // Start is called before the first frame update
     void Start () {
         mTransform = GetComponent<Transform> ();
-        rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D> ();
         startTime = Time.time;
     }
-    void initRocket(float fl){
+    void initRocket (float fl) {
         travelAngle = fl;
+        rigidBody.velocity = initialSpeed * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f));
+
     }
 
-    void setParent(GameObject o){
-        parent=o;
+    void setParent (GameObject o) {
+        parent = o;
     }
     // Update is called once per frame
     void Update () {
-        rigidBody.AddForce (thrust * new Vector2(-Mathf.Sin(travelAngle*Mathf.PI/180f), Mathf.Cos(travelAngle*Mathf.PI/180f)));
-        mTransform.rotation = Quaternion.Euler(0,0, travelAngle);
-        if (Time.time - startTime > lifeSpanSecs){
-            explode();
+        rigidBody.AddForce (thrust * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f)));
+        mTransform.rotation = Quaternion.Euler (0, 0, travelAngle);
+        if (Time.time - startTime > lifeSpanSecs) {
+            explode ();
         }
     }
-    void OnTriggerEnter2D(Collider2D collision)    {
-        if (collision.gameObject!=parent){
-            explode();
+    void OnTriggerEnter2D (Collider2D collision) {
+        if (collision.gameObject != parent) {
+            explode ();
         }
     }
-    void explode() {
-        Destroy(this.gameObject);  
+    void explode () {
+        Destroy (this.gameObject);
     }
 }
