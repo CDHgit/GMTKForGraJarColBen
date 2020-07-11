@@ -4,7 +4,8 @@ using UnityEngine;
 public class SongTimer : MonoBehaviour
 {
     public AudioSource song;
-    public float bpm = 130; //bpm of the song
+    public float bpm = 130f; //bpm of the song
+    public float beatsPerAction = 2;
     public float startOffset = 0; //number of seconds that pass before the first beat
     public GameObject[] observers; //list of all objects that want to be notified when the beat falls
 
@@ -15,7 +16,7 @@ public class SongTimer : MonoBehaviour
     int lastBeat=0; //the last beat number
     void Start()
     {
-        secPerBeat = 60f/bpm;
+        secPerBeat = 60f/bpm*beatsPerAction;
         songStart = (float)AudioSettings.dspTime;
         song.Play();
 	}

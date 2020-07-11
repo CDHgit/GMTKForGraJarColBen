@@ -128,37 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9b3519b900cd8484a92482a6912ea253,
-        type: 3}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -218,27 +187,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7de024358d62b8d4582bc04a9247adba,
-        type: 3}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
@@ -332,37 +280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fc43784e008794d41b82b46fb8619746,
-        type: 3}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -422,27 +339,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f072c551774f8324293e4de5d86cbd23,
-        type: 3}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
@@ -506,35 +402,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e1d4d3b0fa8f58f4cb437803f91c54bb,
-        type: 3}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752579544578810524, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
+      propertyPath: active
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
@@ -597,27 +467,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f119f97061d9d7a40800721659e2be15,
-        type: 3}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &1274300032
@@ -668,7 +517,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: edc977fca3cadf247bd2140b8dfede47, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.069
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -797,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackSize: 16
   bpm: 128
-  context: {fileID: 0}
+  context: {fileID: 920621891}
 --- !u!4 &1633110696
 Transform:
   m_ObjectHideFlags: 0
