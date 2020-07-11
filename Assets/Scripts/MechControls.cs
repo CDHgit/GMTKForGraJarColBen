@@ -23,7 +23,7 @@ public class MechControls : MonoBehaviour {
     public GameObject topSprite;
     // Start is called before the first frame update
     public float offsetAmount;
-
+    public DottedLineDemo dottedLine;
     int mechNum;
     Vector2 dashDestination;
     float dashTimer = 0;
@@ -121,7 +121,8 @@ public class MechControls : MonoBehaviour {
         forceApplied = false;
         //Detect if this is the active mech to be controlled else velocity zero (for now)
 
-        //dottedLine.DrawDottedLine(GetComponent<Transform> ().position, target.GetComponent<Transform> ().position);
+        dottedLine.pointAs[mechNum]= GetComponent<Transform> ().position;
+        dottedLine.pointBs[mechNum]= target.GetComponent<Transform> ().position;
 
         if (active && mechEnabled) {
             maxSpeed = maxSpeedConstant;

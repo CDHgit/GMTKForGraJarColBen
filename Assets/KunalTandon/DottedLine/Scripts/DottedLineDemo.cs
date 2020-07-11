@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class DottedLineDemo : MonoBehaviour
 {
-    [Header("Points for line 1")]
-    public Vector2 pointA;
-    public Vector2 pointB;
-    [Header("Points for line 2")]
-    public Vector2 pointX;
-    public Vector2 pointY;
-    // Update is called once per frame
+
+    public Vector2[] pointAs;
+    public Vector2[] pointBs;
+
+
+    void Start() {
+        pointAs=new Vector2[3];
+        pointBs=new Vector2[3];
+    }
     void Update()
     {
         //Creating a dotted line
-        DottedLine.DottedLine.Instance.DrawDottedLine(pointA, pointB, 0);
+        DottedLine.DottedLine.Instance.DrawDottedLine(pointAs[0], pointBs[0], 0);
 
         //Creating another dotted line
-        DottedLine.DottedLine.Instance.DrawDottedLine(pointX, pointY, 1);
+        DottedLine.DottedLine.Instance.DrawDottedLine(pointAs[1], pointBs[1], 1);
+
+        DottedLine.DottedLine.Instance.DrawDottedLine(pointAs[2], pointBs[2], 2);
     }
 }
