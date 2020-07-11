@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrackController : MonoBehaviour {
 
@@ -9,12 +10,21 @@ public class TrackController : MonoBehaviour {
     KeyCode track1Key= KeyCode.U, track2Key= KeyCode.I, track3Key= KeyCode.O;
 
     public Context context; 
+    public Image trackImageBase;
+    static int trackTextureSize = 128;
+    Vector3 initTrackPos;
+    private float pixelsPerFrame;
+    static float heightOfBelt = 154f;
     static int size = 3;
     private Track[] tracks = new Track[size];
 
 
     // Start is called before the first frame update
     void Start () {
+        initTrackPos = trackImageBase.GetComponent<RectTransform>().localPosition;
+        float secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
+        // Maybe get frame times and do it the right way idiot
+        pixelsPerFrame = 57f/secPerBeat/heightOfBelt; //Adjusted FPS /secperbeat/heightofbeltpx 
         for (int i = 0; i < size; i++) {
             tracks[i] = new Track (trackSize);
         }
@@ -39,10 +49,18 @@ public class TrackController : MonoBehaviour {
         } else if (Input.GetKey(track3Key)){
             setTrack(context.getCurMech(), 2);
         }
+        trackImageBase.GetComponent<RectTransform>().localPosition += new Vector3(0,(float)pixelsPerFrame,0); 
     }
     void onBeat(){
         foreach (Track t in tracks){
             t.runBeat();
         }
+        updateTrackUI();
+
     }
+    void updateTrackUI () {
+        Debug.Log("Track base image update");
+        trackImageBase.GetComponent<RectTransform>().localPosition = initTrackPos;
+    }
+
 }
