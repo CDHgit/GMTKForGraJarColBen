@@ -33,8 +33,7 @@ public class MechControls : MonoBehaviour {
         rb = gameObject.GetComponent<Rigidbody2D> ();
         context = GameObject.Find("ContextManager").GetComponent<Context>();
         trackController = GameObject.Find("TrackController").GetComponent<TrackController>();
-        target = context.mechList[(Random.Range(1,3)+mechNum)%3]; //choose a random mech that isn't this one
-
+        
     }
     public void startDash () {
         if (this.mechEnabled)
@@ -173,18 +172,15 @@ public class MechControls : MonoBehaviour {
                 trackController.setTrack(this.gameObject, track);
             }
         }
+
         if (beatNum % 2 == 0){
             target = context.mechList[(Random.Range(1,3)+mechNum)%3]; //choose a random mech that isn't this one
         }
     }
-<<<<<<< HEAD
-=======
-
     public bool getMechEnabledStatus()
     {
         return this.mechEnabled;
     }
->>>>>>> d7f6f45e676daf9a695f7cff822024879ed864a9
 
     public void setMechEnabledStatus (bool setMechEnabled)
     {
