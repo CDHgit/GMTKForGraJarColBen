@@ -14,13 +14,13 @@ public class TestAction : Action {
 }
 public class DashAction : Action {
     public override void performAction (GameObject o) {
-        o.SendMessage("startDash", HelperFunctions.getAngleToMouse(o));
+        o.SendMessage("startDash");
     }
 
 }
 public class RocketFireAction : Action { 
     public override void performAction (GameObject o) {
-        o.SendMessage("fireRocket", HelperFunctions.getAngleToMouse(o));
+        o.SendMessage("fireRocket");
     }
 }
 public class LaserAction : Action {

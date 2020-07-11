@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b275a14ae639c84e90257fbd30664cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 3
+  thrust: 1
   lifeSpanSecs: 5
+  initialSpeed: 100
 --- !u!50 &2288891945790753746
 Rigidbody2D:
   serializedVersion: 4

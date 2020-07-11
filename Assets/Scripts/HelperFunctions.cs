@@ -13,7 +13,7 @@ public class HelperFunctions {
 
     public static float getAngleBetween(GameObject from, GameObject to) {
         Vector3 pos = from.GetComponent<Transform> ().position;
-        Vector2 pos2 =  to.GetComponent<Transform>().position;
+        Vector2 pos2 = to.GetComponent<Transform>().position;
         Vector2 vecBetween = new Vector2 (pos2.x - pos.x, pos2.y - pos.y);
         float angleBetween = Vector2.SignedAngle (new Vector2 (0, 1), vecBetween);
         return angleBetween;
