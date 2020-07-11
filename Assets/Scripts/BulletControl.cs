@@ -22,7 +22,6 @@ public class BulletControl : MonoBehaviour {
     void initBullet (float fl) {
         travelAngle = fl;
         rigidBody = GetComponent<Rigidbody2D> ();
-        Debug.Log("hello");
         rigidBody.velocity = initialSpeed * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f));
 
     }

@@ -25,17 +25,15 @@ public class ShootAtActive : MonoBehaviour {
     }
     public void shootAt () {
         float angle;
-        curMech = contextObject.getCurMech ();
-        if (gameObject != curMech) {
+        if (curMech.GetComponent<MechControls> ().mechEnabled) {
+            curMech = contextObject.getCurMech ();
             angle = HelperFunctions.getAngleBetween (this.gameObject, contextObject.getCurMech ());
-        } else {
-            angle = HelperFunctions.getAngleToMouse (this.gameObject);
-        }
-        float angRad = angle / 180f * Mathf.PI;
-        GameObject laser = Instantiate (BulletPrefab,
-            this.transform.position + offsetAmount * new Vector3 (-Mathf.Sin (angRad), Mathf.Cos (angRad),0),
+            float angRad = angle / 180f * Mathf.PI;
+            GameObject laser = Instantiate (BulletPrefab,
+            this.transform.position + offsetAmount * new Vector3 (-Mathf.Sin (angRad), Mathf.Cos (angRad), 0),
             Quaternion.Euler (0, 0, angle));
-        laser.SendMessage ("initBullet", angle);
-        laser.SendMessage ("setParent", this.gameObject);
+            laser.SendMessage ("initBullet", angle);
+            laser.SendMessage ("setParent", this.gameObject);
+        }
     }
 }

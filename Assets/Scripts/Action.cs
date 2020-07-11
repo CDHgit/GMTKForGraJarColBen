@@ -25,12 +25,8 @@ public class RocketFireAction : Action {
 }
 public class LaserAction : Action {
     public override void performAction (GameObject o) {
-        Debug.Log("Laser");
         o.SendMessage("shootAt");
-
     }
-
-
 }
 
 public class HealAction : Action
@@ -39,8 +35,6 @@ public class HealAction : Action
     {
         o.SendMessage("changeHealth");
     }
-
-
 }
 
 public class AntivirusAction : Action
@@ -49,7 +43,5 @@ public class AntivirusAction : Action
     {
         o.SendMessage("changeAntivirus");
     }
-
-
 }
 

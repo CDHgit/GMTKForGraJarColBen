@@ -11,7 +11,7 @@ public class Context : MonoBehaviour {
     KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L; //Private key codes JKL
     List<GameObject> mechList; // Mech list used to update the active
     MechControls mechKeyControlsScript;
-    bool[] mechsEnabled = new bool[3] {true, true, true};
+    public bool[] mechsEnabled = new bool[3] {true, true, true};
     // Start is called before the first frame update
     void Start () {
         // Create a list of mechs to iterate through later for easier updating
@@ -33,6 +33,20 @@ public class Context : MonoBehaviour {
         } else if (Input.GetKeyDown (mech3Key)) {
             switchMech (2);
         }
+        /*else if (Input.GetKeyDown(KeyCode.U)) {
+            mechList[0].SendMessage("setMechEnabledStatus", false);
+            mechsEnabled[0] = false;
+        } else if (Input.GetKeyDown(KeyCode.I)) {
+            mechList[1].SendMessage("setMechEnabledStatus", false);
+            mechsEnabled[1] = false;
+        } else if (Input.GetKeyDown(KeyCode.O)) {
+            mechList[2].SendMessage("setMechEnabledStatus", false);
+            mechsEnabled[2] = false;
+        }else if (Input.GetKeyDown(KeyCode.R)) {
+            mechList[curMechIdx].SendMessage("setMechEnabledStatus", false);
+            mechsEnabled[curMechIdx] = false;
+        }*/
+
     }
 
     public GameObject getCurMech(){
@@ -44,8 +58,9 @@ public class Context : MonoBehaviour {
     private void switchMech (int mechNum) {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
         // Debug.Log("Switching mech to " + mechNum);
+
         //Set the active mech to true and the others to false
-        if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum-1]) {
+        if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum]) {
             beatsToReady = switchCooldownBeats;
             mechList[curMechIdx].SendMessage("setActive", false);
             curMechIdx = mechNum;
@@ -61,5 +76,9 @@ public class Context : MonoBehaviour {
         if (beatsToReady > 0) {
             beatsToReady--;
         }
+    }
+    public bool mechIsEnabled(int mechNum)
+    {
+        return mechsEnabled[mechNum];
     }
 }

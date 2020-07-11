@@ -34,6 +34,7 @@ public class TrackController : MonoBehaviour {
     }
     public void setTrack(GameObject mech, int trackNum){
         foreach (Track t in tracks){
+            if (t==null){Debug.Log("awefaeiwfjoaiwjfeoiawjfoiawjoijaewfojiawoifjawjefoioji");}
             t.removeMech(mech);
         }
         tracks[trackNum].addMech(mech);

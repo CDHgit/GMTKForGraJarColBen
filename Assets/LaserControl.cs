@@ -37,7 +37,7 @@ public class LaserControl : MonoBehaviour
     }
     void OnTriggerEnter2D (Collider2D collision) {
         if (collision.gameObject != parent) {
-            explode ();
+            // explode ();
         }
     }
     void explode () {

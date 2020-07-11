@@ -11,6 +11,7 @@ public class MechInfo : MonoBehaviour
     public Slider antivirusSlider;
     public Context context;
     public float antivirusGoal;
+    public int mechNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,4 +42,8 @@ public class MechInfo : MonoBehaviour
         antivirusProgress = antivirusProgress + antivirusDelta;
     }
 
+    void setMechNumber(int mechNumberValue)
+    {
+        mechNumber = mechNumberValue;
+    }
 }
