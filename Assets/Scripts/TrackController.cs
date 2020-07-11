@@ -15,7 +15,7 @@ public class TrackController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
-        Debug.Log("size" + size);
+        Debug.Log("size" + context.mech1);
         tracks[0] = new Track(trackSize, new Action[]{new RocketFireAction()});
         for (int i = 1; i < size; i++) {
             tracks[i] = new Track (trackSize, new Action[]{new TestAction()});

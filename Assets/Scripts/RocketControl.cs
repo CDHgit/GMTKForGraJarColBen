@@ -26,6 +26,10 @@ public class RocketControl : MonoBehaviour {
             explode();
         }
     }
+    void OnTriggerEnter2D(Collider2D collision)    {
+        Debug.Log("Trigger enter");
+        explode();
+    }
     void explode() {
         Destroy(this.rigidBody.gameObject);  
     }
