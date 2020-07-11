@@ -16,7 +16,7 @@ public class ShootAtActive : MonoBehaviour
     {
         contextObject = GameObject.Find("ContextManager").GetComponent<Context>();
     }
-    public void Update()
+    public void shootAt()
     {   
         curMech = contextObject.getCurMech();
         if(gameObject != curMech){

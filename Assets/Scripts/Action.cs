@@ -24,3 +24,10 @@ public class DashAction : Action {
     }
 
 }
+
+public class LaserAction : Action {
+    public override void performAction (GameObject o) {
+        o.SendMessage("shootAt");
+    }
+
+}
