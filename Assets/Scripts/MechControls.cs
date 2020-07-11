@@ -28,42 +28,46 @@ public class MechControls : MonoBehaviour {
 
     float virusWalkTimer = 0;
     Vector2 force;
-    private GameObject target;
+    private int targetNum;
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
-        context = GameObject.Find("ContextManager").GetComponent<Context>();
-        trackController = GameObject.Find("TrackController").GetComponent<TrackController>();
-        target = context.mechList[(Random.Range(1,3)+mechNum)%3]; //choose a random mech that isn't this one
-
+        context = GameObject.Find ("ContextManager").GetComponent<Context> ();
+        trackController = GameObject.Find ("TrackController").GetComponent<TrackController> ();
+        targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
     }
     public void startDash () {
-        if (this.mechEnabled)
-        {
+        if (this.mechEnabled) {
+
+            GameObject target = context.mechList[targetNum];
             float angle;
-            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            angle +=90;
             angle = angle * Mathf.PI / 180f;
-            dashDestination = new Vector2(-Mathf.Sin(angle), Mathf.Cos(angle));
+            dashDestination = new Vector2 (-Mathf.Sin (angle), Mathf.Cos (angle));
             dashTimer = dashLength;
         }
     }
 
-    public void fireRocket() {
-        if (this.mechEnabled)
-        {
-            float angle;
-            
-            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
-            GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle));
-            rocket.SendMessage("initBullet", angle);
-            rocket.SendMessage("setParent", this.gameObject);
-        }
+    public void fireRocket () {
+        if (this.mechEnabled) {
 
+            GameObject target = context.mechList[targetNum];
+
+            float angle;
+
+            angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            GameObject rocket = Instantiate (rocketPrefab, rb.position + .5f * new Vector2 (-Mathf.Sin (angle / 180f * Mathf.PI), Mathf.Cos (angle / 180f * Mathf.PI)), Quaternion.Euler (0, 0, angle));
+            rocket.SendMessage ("initBullet", angle);
+            rocket.SendMessage ("setParent", this.gameObject);
+        }
 
     }
     public void fireLaser () {
         float angle;
         if (mechEnabled) {
             GameObject curMech = context.getCurMech ();
+
+            GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
             float angRad = angle / 180f * Mathf.PI;
             GameObject laser = Instantiate (laserPrefab,
@@ -77,6 +81,8 @@ public class MechControls : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
         GameObject curMech = context.getCurMech ();
+
+        GameObject target = context.mechList[targetNum];
         topSprite.transform.rotation = Quaternion.Euler (0, 0, HelperFunctions.getAngleBetween (this.gameObject, target));
         //Force applied is used to detect if any of the directions are input
         forceApplied = false;
@@ -88,7 +94,7 @@ public class MechControls : MonoBehaviour {
                 rb.AddForce (dashDestination * dashStrength);
                 dashTimer -= Time.deltaTime;
 
-            } else if (mechEnabled){
+            } else if (mechEnabled) {
                 //W up
                 if (Input.GetKey ("w")) {
                     //transofrm.* is a RELATIVE direction AFAIK, might need to be changed to a vector later
@@ -119,9 +125,9 @@ public class MechControls : MonoBehaviour {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
-            if (virusWalkTimer > 0) { 
+            if (virusWalkTimer > 0) {
                 // we are dashing/ dash is on cooldown
-                rb.AddForce(force);
+                rb.AddForce (force);
                 virusWalkTimer -= Time.deltaTime;
                 forceApplied = true;
             } else {
@@ -132,7 +138,6 @@ public class MechControls : MonoBehaviour {
 
                 virusWalkTimer = Random.Range (0, 3);
             }
-            
 
         }
         // If none of the directions are input then set the speed to 0
@@ -157,37 +162,27 @@ public class MechControls : MonoBehaviour {
             this.gameObject.transform.GetChild (1).gameObject.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
         }
     }
-    void setMechNum1(int mechNum){
-        this.mechNum=mechNum;
+    void setMechNum1 (int mechNum) {
+        this.mechNum = mechNum;
     }
     public void setActive (bool active) {
         this.active = active;
     }
-    void onBeat(int beatNum)
-    {
+    void onBeat (int beatNum) {
         if (!this.active) {
             //possibly change ai track
-            int randnum = Random.Range(0, 100);
+            int randnum = Random.Range (0, 100);
             if (randnum <= 25) {
-                int track = Random.Range(0, 3);
-                trackController.setTrack(this.gameObject, track);
+                int track = Random.Range (0, 3);
+                trackController.setTrack (this.gameObject, track);
             }
         }
-        if (beatNum % 2 == 0){
-            target = context.mechList[(Random.Range(1,3)+mechNum)%3]; //choose a random mech that isn't this one
+        if (beatNum % 2 == 0) {
+            targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
         }
     }
-<<<<<<< HEAD
-=======
 
-    public bool getMechEnabledStatus()
-    {
-        return this.mechEnabled;
-    }
->>>>>>> d7f6f45e676daf9a695f7cff822024879ed864a9
-
-    public void setMechEnabledStatus (bool setMechEnabled)
-    {
+    public void setMechEnabledStatus (bool setMechEnabled) {
         this.mechEnabled = setMechEnabled;
     }
 }
