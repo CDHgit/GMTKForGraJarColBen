@@ -213,7 +213,7 @@ public class MechControls : MonoBehaviour {
         }
 
         if (beatNum % 2 == 0){
-            target = context.mechList[(Random.Range(1,3)+mechNum)%3]; //choose a random mech that isn't this one
+            targetNum = (Random.Range(1,3)+mechNum) % 3; //choose a random mech that isn't this one
         }
     }
     public bool getMechEnabledStatus()

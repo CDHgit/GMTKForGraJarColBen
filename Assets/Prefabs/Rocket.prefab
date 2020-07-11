@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728ca505bdcac34da9a52fdc69dec86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1
+  damage: 10
+  thrust: 0.5
   lifeSpanSecs: 5
-  initialSpeed: 10
-  maxSpeed: 20
+  initialSpeed: 1
+  maxSpeed: 3
 --- !u!50 &5981598900657558537
 Rigidbody2D:
   serializedVersion: 4
