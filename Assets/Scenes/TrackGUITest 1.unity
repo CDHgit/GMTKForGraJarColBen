@@ -195,6 +195,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69692051}
   m_CullTransparentMesh: 0
+--- !u!1 &95505608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2182539972995612511, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 352913523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &111008938
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +657,11 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 95505608}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &357578199
@@ -1065,7 +1076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9df63f6e6c3c1694db1c5f46b55b1efe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bea9328db9aa8624a8feaee1ce05094c, type: 3}
   m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1254,6 +1265,11 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 1430728604}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &836757754 stripped
@@ -1404,6 +1420,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &941179956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2182539972995612511, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1017067923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1017067923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1549,6 +1571,11 @@ PrefabInstance:
       propertyPath: antivirusSlider
       value: 
       objectReference: {fileID: 111008940}
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 941179956}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &1106342450
@@ -2109,6 +2136,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1430728604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2182539972995612511, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 831372856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529201890
 GameObject:
   m_ObjectHideFlags: 0

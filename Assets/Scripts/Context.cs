@@ -11,6 +11,7 @@ public class Context : MonoBehaviour {
     KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L; //Private key codes JKL
     List<GameObject> mechList; // Mech list used to update the active
     MechControls mechKeyControlsScript;
+    bool[] mechsEnabled = new bool[3] {true, true, true};
     // Start is called before the first frame update
     void Start () {
         // Create a list of mechs to iterate through later for easier updating
@@ -44,7 +45,7 @@ public class Context : MonoBehaviour {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
         // Debug.Log("Switching mech to " + mechNum);
         //Set the active mech to true and the others to false
-        if (beatsToReady <= 0 && curMechIdx != mechNum) {
+        if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum-1]) {
             beatsToReady = switchCooldownBeats;
             mechList[curMechIdx].SendMessage("setActive", false);
             curMechIdx = mechNum;

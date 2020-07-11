@@ -35,7 +35,7 @@ public class HealAction : Action
 {
     public override void performAction(GameObject o)
     {
-        o.SendMessage("Heal");
+        o.SendMessage("changeHealth");
     }
 
 
@@ -45,7 +45,7 @@ public class AntivirusAction : Action
 {
     public override void performAction(GameObject o)
     {
-        o.SendMessage("Antivirus");
+        o.SendMessage("changeAntivirus");
     }
 
 

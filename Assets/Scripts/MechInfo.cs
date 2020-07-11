@@ -7,9 +7,10 @@ public class MechInfo : MonoBehaviour
 {
     public int health;
     public Slider healthSlider;
-    public int antivirusProgress;
+    public float antivirusProgress;
     public Slider antivirusSlider;
     public Context context;
+    public float antivirusGoal;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,21 +24,22 @@ public class MechInfo : MonoBehaviour
         GameObject curMech = context.getCurMech();
         if (curMech == this.gameObject)
         {
-            antivirusProgress = antivirusProgress++;
+            antivirusProgress = antivirusProgress+Time.deltaTime;
         }
         antivirusSlider.value = antivirusProgress;
         //print(Time.timeSinceLevelLoad);
-        print(health);
+        print(antivirusProgress);
+
     }
 
-    void Heal(int healValue)
+    void changeHealth(int deltaHealth)
     {
-        health = health + healValue;
+        health = health + deltaHealth;
     }
 
-    void AntivirusHeal(int antivirusHealValue)
+    void changeAntivirus(int antivirusDelta)
     {
-        antivirusProgress = antivirusProgress + antivirusHealValue;
+        antivirusProgress = antivirusProgress + antivirusDelta;
     }
 
 }
