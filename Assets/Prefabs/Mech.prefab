@@ -480,8 +480,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
+  dashStrength: 0
+  dashLength: 0
+  context: {fileID: 0}
   active: 0
-  maxSpeed: 3
+  maxSpeedConstant: 3
 --- !u!61 &5677660185704884800
 BoxCollider2D:
   m_ObjectHideFlags: 0
