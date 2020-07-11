@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &265346507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2182539972995612511, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 352913523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &352913523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,6 +170,17 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: trackController
+      value: 
+      objectReference: {fileID: 1633110695}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -224,6 +241,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Sprite
@@ -245,6 +272,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 265346507}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &519420028
@@ -431,6 +463,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &749774517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2182539972995612511, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 831372856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &831372856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,6 +512,17 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: trackController
+      value: 
+      objectReference: {fileID: 1633110695}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -482,7 +531,7 @@ PrefabInstance:
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33049762
+      value: 2.44
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -534,6 +583,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Sprite
@@ -555,11 +614,22 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 749774517}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &836757754 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1017067923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &866426270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2182539972995612511, guid: 8415bcb4c0e90e444b77f9c892815da7,
     type: 3}
   m_PrefabInstance: {fileID: 1017067923}
   m_PrefabAsset: {fileID: 0}
@@ -653,6 +723,22 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: trackController
+      value: 
+      objectReference: {fileID: 1633110695}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -661,7 +747,7 @@ PrefabInstance:
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33049762
+      value: -1.64
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -696,7 +782,7 @@ PrefabInstance:
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -712,6 +798,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -734,6 +830,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 866426270}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &1274300032
@@ -786,7 +887,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: edc977fca3cadf247bd2140b8dfede47, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.067
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -882,7 +983,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1307157694
 GameObject:
