@@ -10,7 +10,7 @@ public class SongTimer : MonoBehaviour
     public GameObject[] observers; //list of all objects that want to be notified when the beat falls
 
 
-    float secPerBeat; //number of seconds that pass between beats
+    public float secPerBeat; //number of seconds that pass between beats
     float songPos; //number of seconds since the first beat
     float songStart; //time when the song start was recorded
     int lastBeat=0; //the last beat number
