@@ -28,34 +28,34 @@ public class MechControls : MonoBehaviour {
         rb = gameObject.GetComponent<Rigidbody2D> ();
     }
     public void startDash () {
-        Debug.Log("dash");
+        Debug.Log ("dash");
         float angle;
-        if (context.getCurMech()==this.gameObject){
-            angle = HelperFunctions.getAngleToMouse(this.gameObject);
+        if (context.getCurMech () == this.gameObject) {
+            angle = HelperFunctions.getAngleToMouse (this.gameObject);
         } else {
-            angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+            angle = HelperFunctions.getAngleBetween (this.gameObject, context.getCurMech ());
         }
         angle = angle * Mathf.PI / 180f;
-        dashDestination = new Vector2 ( - Mathf.Sin (angle), Mathf.Cos (angle));
-        dashTimer=dashLength;
-        Debug.Log("starting Dash");
+        dashDestination = new Vector2 (-Mathf.Sin (angle), Mathf.Cos (angle));
+        dashTimer = dashLength;
+        Debug.Log ("starting Dash");
     }
 
-    public void fireRocket() {
+    public void fireRocket () {
         float angle;
-        if (context.getCurMech()==this.gameObject){
-            angle = HelperFunctions.getAngleToMouse(this.gameObject);
+        if (context.getCurMech () == this.gameObject) {
+            angle = HelperFunctions.getAngleToMouse (this.gameObject);
         } else {
-            angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+            angle = HelperFunctions.getAngleBetween (this.gameObject, context.getCurMech ());
         }
-        GameObject rocket = Instantiate(rocketPrefab, rb.position, Quaternion.Euler(0, 0, angle));
-        rocket.SendMessage("initBullet",angle);
-        rocket.SendMessage("setParent", this.gameObject);
+        GameObject rocket = Instantiate (rocketPrefab, rb.position, Quaternion.Euler (0, 0, angle));
+        rocket.SendMessage ("initBullet", angle);
+        rocket.SendMessage ("setParent", this.gameObject);
 
     }
     // Update is called once per frame
     void FixedUpdate () {
-        
+
         //Force applied is used to detect if any of the directions are input
         forceApplied = false;
         //Detect if this is the active mech to be controlled else velocity zero (for now)
@@ -63,32 +63,32 @@ public class MechControls : MonoBehaviour {
             maxSpeed = maxSpeedConstant;
 
             if (dashTimer > 0) { // we are dashing/ dash is on cooldown
-                rb.AddForce(dashDestination * dashStrength);
+                rb.AddForce (dashDestination * dashStrength);
                 dashTimer -= Time.deltaTime;
 
             } else {
                 //W up
-                if (Input.GetKey("w")) {
+                if (Input.GetKey ("w")) {
                     //transofrm.* is a RELATIVE direction AFAIK, might need to be changed to a vector later
-                    rb.AddForce(transform.up * thrust);
+                    rb.AddForce (transform.up * thrust);
                     forceApplied = true;
                     // Debug.Log("pressed w");
                 }
                 //S down
-                if (Input.GetKey("s")) {
-                    rb.AddForce(-transform.up * thrust);
+                if (Input.GetKey ("s")) {
+                    rb.AddForce (-transform.up * thrust);
                     forceApplied = true;
                     // Debug.Log("pressed s");
                 }
                 //D right
-                if (Input.GetKey("d")) {
-                    rb.AddForce(transform.right * thrust);
+                if (Input.GetKey ("d")) {
+                    rb.AddForce (transform.right * thrust);
                     forceApplied = true;
                     // Debug.Log("pressed d");
                 }
                 //A left
-                if (Input.GetKey("a")) {
-                    rb.AddForce(-transform.right * thrust);
+                if (Input.GetKey ("a")) {
+                    rb.AddForce (-transform.right * thrust);
                     forceApplied = true;
                     // Debug.Log("pressed a");
                 }
@@ -97,30 +97,28 @@ public class MechControls : MonoBehaviour {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
-            if (virusWalkTimer > 0)
-            { // we are dashing/ dash is on cooldown
-                rb.AddForce(force);
+            if (virusWalkTimer > 0) { // we are dashing/ dash is on cooldown
+                rb.AddForce (force);
                 virusWalkTimer -= Time.deltaTime;
                 forceApplied = true;
             } else {
-                GameObject targetMech = context.getCurMech();
+                GameObject targetMech = context.getCurMech ();
                 Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
                 Vector2 randomAngle = Random.insideUnitCircle * distance.magnitude * 1.5f;
                 force = (distance + randomAngle) * thrust;
 
-                virusWalkTimer = Random.Range(0, 3);
+                virusWalkTimer = Random.Range (0, 3);
             }
 
             //possibly change ai track
-            int randnum = Random.Range(0, 1000);
+            int randnum = Random.Range (0, 1000);
             if (randnum <= 1) {
-                int track = Random.Range(0, 3);
-                trackController.setTrack(this.gameObject, track);
+                int track = Random.Range (0, 3);
+                trackController.setTrack (this.gameObject, track);
             }
-            
 
         }
-            // If none of the directions are input then set the speed to 0
+        // If none of the directions are input then set the speed to 0
         if (!forceApplied) {
             // set to zero
             rb.velocity = Vector2.zero;
@@ -137,10 +135,9 @@ public class MechControls : MonoBehaviour {
         }
 
         // Set bottom to direction of velocity
-        if (rb.velocity != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg - 90;
-            this.gameObject.transform.GetChild(1).gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (rb.velocity != Vector2.zero) {
+            float angle = Mathf.Atan2 (rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg - 90;
+            this.gameObject.transform.GetChild (1).gameObject.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
         }
     }
 
