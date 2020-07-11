@@ -15,9 +15,9 @@ public class MechInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.gameObject.SendMessage("setMechNum1", mechNumber);
         context = GameObject.Find("ContextManager").GetComponent<Context>();
     }
-   
     // Update is called once per frame
     void Update()
     {

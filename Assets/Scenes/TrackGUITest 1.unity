@@ -559,13 +559,44 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: trackController
       value: 
       objectReference: {fileID: 1633110695}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashStrength
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashLength
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: mechEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 95505608}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: laserPrefab
+      value: 
+      objectReference: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: offsetAmount
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -657,12 +688,23 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: mechNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: topSprite
       value: 
       objectReference: {fileID: 95505608}
-    m_RemovedComponents: []
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: offsetAmount
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &357578199
 GameObject:
@@ -1167,13 +1209,44 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: trackController
       value: 
       objectReference: {fileID: 1633110695}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashStrength
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashLength
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: maxSpeedConstant
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: laserPrefab
+      value: 
+      objectReference: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 1430728604}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: offsetAmount
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -1182,7 +1255,7 @@ PrefabInstance:
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33049762
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -1270,14 +1343,14 @@ PrefabInstance:
       propertyPath: topSprite
       value: 
       objectReference: {fileID: 1430728604}
-    m_RemovedComponents: []
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: offsetAmount
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
---- !u!1 &836757754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1017067923}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &836757760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
@@ -1402,10 +1475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4f1831747940d42b27f01446fcd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mech1: {fileID: 836757754}
-  mech2: {fileID: 1855088137}
-  mech3: {fileID: 2033980904}
   switchCooldownBeats: 4
+  mechList: []
+  mechsEnabled: 010101
 --- !u!4 &920621892
 Transform:
   m_ObjectHideFlags: 0
@@ -1473,13 +1545,49 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: trackController
       value: 
       objectReference: {fileID: 1633110695}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashStrength
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashLength
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: mechEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: topSprite
+      value: 
+      objectReference: {fileID: 941179956}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: laserPrefab
+      value: 
+      objectReference: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: offsetAmount
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -1488,7 +1596,7 @@ PrefabInstance:
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33049762
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -1576,7 +1684,13 @@ PrefabInstance:
       propertyPath: topSprite
       value: 
       objectReference: {fileID: 941179956}
-    m_RemovedComponents: []
+    - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: offsetAmount
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &1106342450
 GameObject:
@@ -1830,13 +1944,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4c23e56a2b9fa48a98f81b5636388f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  song: {fileID: 1274300034}
   bpm: 130
   beatsPerAction: 2
   startOffset: 0
-  observers:
-  - {fileID: 920621890}
-  - {fileID: 1633110694}
   secPerBeat: 0
 --- !u!82 &1274300034
 AudioSource:
@@ -1850,7 +1960,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: edc977fca3cadf247bd2140b8dfede47, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2247,7 +2357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackSize: 16
   bpm: 128
-  context: {fileID: 920621891}
   trackImageBase: {fileID: 601060186}
 --- !u!4 &1633110696
 Transform:
@@ -2362,23 +2471,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1855088137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
-    type: 3}
-  m_PrefabInstance: {fileID: 352913523}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1855088143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
     type: 3}
   m_PrefabInstance: {fileID: 352913523}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2033980904 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
-    type: 3}
-  m_PrefabInstance: {fileID: 831372856}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2033980910 stripped
 Transform:

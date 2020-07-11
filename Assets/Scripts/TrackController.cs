@@ -14,6 +14,7 @@ public class TrackController : MonoBehaviour {
     static int trackTextureSize = 128;
     Vector3 initTrackPos;
     private float pixelsPerFrame;
+    private GameObject target;
     static float heightOfBelt = 154f;
     static int size = 3;
     static float secPerBeat;
@@ -33,8 +34,6 @@ public class TrackController : MonoBehaviour {
         for (int i = 0; i < 3; i++) {
             setTrack(context.mechList[i], i);
         }
-        
-        
        
     }
     public void setTrack(GameObject mech, int trackNum){
