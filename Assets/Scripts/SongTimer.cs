@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SongTimer : MonoBehaviour
 {
-    public AudioSource song;
+    private AudioSource song;
     public float bpm = 130f; //bpm of the song
     public float beatsPerAction = 2;
     public float startOffset = 0; //number of seconds that pass before the first beat
-    public GameObject[] observers; //list of all objects that want to be notified when the beat falls
-
+    List<GameObject> observers = new List<GameObject>(); //list of all objects that want to be notified when the beat falls
+    static string[] observedObjects = { "ContextManager", "TrackController", "Mech1", "Mech2", "Mech3" };
 
     public float secPerBeat; //number of seconds that pass between beats
     float songPos; //number of seconds since the first beat
@@ -18,8 +18,15 @@ public class SongTimer : MonoBehaviour
     {
         secPerBeat = 60f/bpm*beatsPerAction;
         songStart = (float)AudioSettings.dspTime;
+
+        song = gameObject.GetComponent<AudioSource>();
         song.Play();
-	}
+
+        foreach(string s in observedObjects) {
+            observers.Add(GameObject.Find(s));
+        }
+
+    }
 
 	void Update ()
 	{
