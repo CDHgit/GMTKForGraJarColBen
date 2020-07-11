@@ -5,7 +5,8 @@ using UnityEngine;
 public class ArrowKeyControls : MonoBehaviour
 {
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
-    public Rigidbody2D rb; // the rigidbody coomponent on this mech 
+    internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
+    
 
     public bool active;
     public float maxSpeed; // max speed is used to cap the speed of the mech
