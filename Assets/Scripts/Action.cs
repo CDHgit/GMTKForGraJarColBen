@@ -34,4 +34,26 @@ public class LaserAction : Action {
         o.SendMessage("shootAt");
     }
 
+
 }
+
+public class HealAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("Heal");
+    }
+
+
+}
+
+public class AntivirusAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("Antivirus");
+    }
+
+
+}
+
