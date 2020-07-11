@@ -5,6 +5,8 @@ using UnityEngine;
 public class MechControls : MonoBehaviour {
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
     public GameObject rocketPrefab;
+    public GameObject laserPrefab;
+    public GameObject bulletPrefab;
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
     public float dashLength;
@@ -21,7 +23,7 @@ public class MechControls : MonoBehaviour {
     public GameObject topSprite;
     // Start is called before the first frame update
     public float offsetAmount;
-    public GameObject laserPrefab;
+
     int mechNum;
     Vector2 dashDestination;
     float dashTimer = 0;
@@ -74,6 +76,38 @@ public class MechControls : MonoBehaviour {
                 Quaternion.Euler (0, 0, angle));
             laser.SendMessage ("initBullet", angle);
             laser.SendMessage ("setParent", this.gameObject);
+        }
+    }
+
+    public void fireBullet()
+    {
+        
+        if (mechEnabled)
+        {
+            StartCoroutine(bulletCoruoutine());   
+        }
+    }
+
+    IEnumerator bulletCoruoutine()
+    {
+        float angle;
+        // Shoot random burst
+        int burst = Random.Range(2, 5);
+        for (int i = 0; i < burst; i++)
+        {
+            GameObject curMech = context.getCurMech();
+            GameObject target = context.mechList[targetNum];
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            float angRad = angle / 180f * Mathf.PI;
+
+            GameObject bullet = Instantiate(bulletPrefab,
+                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
+                Quaternion.Euler(0, 0, angle));
+            bullet.SendMessage("initBullet", angle);
+            bullet.SendMessage("setParent", this.gameObject);
+
+            yield return new WaitForSeconds(0.25f);
+
         }
     }
 
