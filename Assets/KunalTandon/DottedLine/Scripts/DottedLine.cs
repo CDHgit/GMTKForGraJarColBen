@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//HERE LIES MONKEY CODE
 
 namespace DottedLine
 {
     public class DottedLine : MonoBehaviour
     {
         // Inspector fields
-        public Sprite Dot;
+        public Sprite[] sprites;
         [Range(0.01f, 1f)]
         public float Size;
         [Range(0.1f, 2f)]
@@ -50,21 +51,21 @@ namespace DottedLine
             dots.Clear();
         }
 
-        GameObject GetOneDot()
+        GameObject GetOneDot(int mechNum)
         {
             var gameObject = new GameObject();
             gameObject.transform.localScale = Vector3.one * Size;
             gameObject.transform.parent = transform;
 
             var sr = gameObject.AddComponent<SpriteRenderer>();
-            sr.sprite = Dot;
+            sr.sprite = sprites[mechNum];
             return gameObject;
         }
 
-        public void DrawDottedLine(Vector2 start, Vector2 end)
+        public void DrawDottedLine(Vector2 start, Vector2 end, int mechNum)
         {
             
-             List<Vector2> positionsTemp = new List<Vector2>();
+            List<Vector2> positionsTemp = new List<Vector2>();
             Vector2 point = start;
             Vector2 direction = (end - start).normalized;
 
@@ -74,16 +75,16 @@ namespace DottedLine
                 point += (direction * Delta);
             }
 
-            Render(positionsTemp);
+            Render(positionsTemp, mechNum);
             
         }
 
-        private void Render(List<Vector2> positionsTemp)
+        private void Render(List<Vector2> positionsTemp, int mechNum)
         {
             foreach (var position in positionsTemp)
             {
                 positions.Add(position);
-                var g = GetOneDot();
+                var g = GetOneDot(mechNum);
                 g.transform.position = position;
                 dots.Add(g);
             }

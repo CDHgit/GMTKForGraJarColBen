@@ -14,9 +14,9 @@ public class DottedLineDemo : MonoBehaviour
     void Update()
     {
         //Creating a dotted line
-        DottedLine.DottedLine.Instance.DrawDottedLine(pointA, pointB);
+        DottedLine.DottedLine.Instance.DrawDottedLine(pointA, pointB, 0);
 
         //Creating another dotted line
-        DottedLine.DottedLine.Instance.DrawDottedLine(pointX, pointY);
+        DottedLine.DottedLine.Instance.DrawDottedLine(pointX, pointY, 1);
     }
 }
