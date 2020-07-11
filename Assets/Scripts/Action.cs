@@ -13,11 +13,11 @@ public abstract class Action : MonoBehaviour {
     public abstract void performAction (GameObject o);
     //Constructor
     public Action(int actionIdx, int trackIdx){
-        GameObject actionPrefab = new GameObject("Action");
+        GameObject actionPrefab = Resources.Load("Assets/Prefabs/Action") as GameObject;
         actionIcon = Resources.Load<Sprite>(spriteName);
-        actionPrefab.GetComponent<SpriteRenderer>().sprite = actionIcon;
         Vector3 actionPosition = new Vector3(-12f, -12f, -99f);
         GameObject newAction = Instantiate(actionPrefab, actionPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("ActionTrackCanvas").transform);
+        newAction.GetComponent<SpriteRenderer>().sprite = actionIcon;
         newAction.GetComponent<RectTransform>().localPosition = startActionOrigin + (actionIdx * actionIndexTransition) + (trackIdx * trackIndexTransition);
         }
 }
@@ -46,7 +46,7 @@ public class DashAction : Action
 }
 public class RocketFireAction : Action 
 { 
-    public RocketFireAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+     public RocketFireAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
         o.SendMessage("fireRocket");
     }

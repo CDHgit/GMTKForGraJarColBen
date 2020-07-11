@@ -44,7 +44,8 @@ public class Track {
      */
     private void addAction (int actionIdx, int trackIdx) {
         Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
-        actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
+        Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
+        actions.Enqueue(toEnqueue);
     }
     /**
      * Runs the next action in the queue
