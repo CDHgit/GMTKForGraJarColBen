@@ -4,44 +4,38 @@ using UnityEngine;
 
 public class Context : MonoBehaviour {
     public GameObject mech1, mech2, mech3;
-    public KeyCode mech1Key = KeyCode.A, mech2Key = KeyCode.S, mech3Key = KeyCode.D;
-
-    private GameObject curMech;
-    
+    KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L;
+    GameObject[] mechList;
+    ArrowKeyControls mechKeyControlsScript;
+    private int curMechIdx, prevMechIdx;
     // Start is called before the first frame update
     void Start () {
-        curMech = mech1;
+        mechList[0] = mech1;
+        mechList[1] = mech2;
+        mechList[2] = mech3;
+        prevMechIdx= 0;
+        curMechIdx = 0;
     }
 
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(mech1Key)){
-            switchContext(1);
+            switchMech(0);
         } else if (Input.GetKeyDown(mech2Key)){
-            switchContext(2);
+            switchMech(1);
         } else if (Input.GetKeyDown(mech3Key)){
-            switchContext(3);
+            switchMech(2);
         }
     }
 
     /**
      * Switch which mech is being controlled
      */
-    private void switchContext (int mechNum) {
-        Debug.Assert(mechNum > 0 && mechNum < 4, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        
-        switch (mechNum) {
-            case 1:
-                curMech = mech1;
-                break;
-            case 2:
-                curMech = mech2;
-                break;
-            case 3:
-                curMech = mech3;
-                break;
-            default:
-                break;
-        }
+    private void switchMech (int mechNum) {
+        Debug.Assert(mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
+        for (int mechIdx = 0; mechIdx < 3; mechIdx ++)
+        prevMechControls = mechList[prevMechIdx].GetComponent<ArrowKeyControls>();
+        prevMechControls.active = false;
+        curMechControls = mechList[curMechIdx].GetComponent<ArrowKeyControls>();
     }
 }

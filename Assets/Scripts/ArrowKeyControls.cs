@@ -7,6 +7,7 @@ public class ArrowKeyControls : MonoBehaviour
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
     public Rigidbody2D rb; // the rigidbody coomponent on this mech 
 
+    public bool active;
     public float maxSpeed; // max speed is used to cap the speed of the mech
 
     bool forceApplied = false; // force applied is used to check if input is applied to this mech
@@ -14,6 +15,7 @@ public class ArrowKeyControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        active = true;
         rb = gameObject.GetComponent<Rigidbody2D>();;
     }
 
