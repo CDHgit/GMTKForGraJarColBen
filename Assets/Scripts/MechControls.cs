@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MechControls : MonoBehaviour {
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
+    public GameObject rocketPrefab;
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
     public float dashLength;
@@ -25,6 +26,12 @@ public class MechControls : MonoBehaviour {
         angle = angle * Mathf.PI / 180f;
         dashDestination = new Vector2 ( - Mathf.Sin (angle), Mathf.Cos (angle));
         dashTimer=dashLength;
+    }
+
+    public void fireRocket(float angle) { 
+        GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f* new  Vector2(-Mathf.Sin(angle/180f*Mathf.PI), Mathf.Cos(angle/180f*Mathf.PI)), Quaternion.Euler(0, 0, angle));
+        rocket.SendMessage("setDirection", angle);
+        //wwwwGetComponent<Transform>().angle = Quaternion.Euler(0,0,angle);
     }
     // Update is called once per frame
     void FixedUpdate () {

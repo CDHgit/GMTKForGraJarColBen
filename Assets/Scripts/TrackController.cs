@@ -24,14 +24,15 @@ public class TrackController : MonoBehaviour {
     void Start () {
         secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
         initTrackPos = trackImageBase.GetComponent<RectTransform>().localPosition;
-        for (int i = 0; i < size; i++) {
-            tracks[i] = new Track (trackSize);
+        Debug.Log("size" + context.mech1);
+        tracks[0] = new Track(trackSize, new Action[]{new RocketFireAction()});
+        for (int i = 1; i < size; i++) {
+            tracks[i] = new Track (trackSize, new Action[]{new TestAction()});
         }
         setTrack(context.mech1, 0);
-        setTrack(context.mech2, 0);
-        setTrack(context.mech3, 0);
-        tracks[1].setPossibleActions(new Action[]{new TestAction()});
-        tracks[2].setPossibleActions(new Action[]{new TestAction()});
+        setTrack(context.mech2, 1);
+        setTrack(context.mech3, 2);
+       
     }
     void setTrack(GameObject mech, int trackNum){
         foreach (Track t in tracks){

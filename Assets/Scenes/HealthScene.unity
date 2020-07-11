@@ -644,7 +644,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
-  rb: {fileID: 0}
+  rocketPrefab: {fileID: 0}
+  dashStrength: 0
+  dashLength: 0
   active: 0
   maxSpeed: 3
 --- !u!50 &772849795
@@ -901,7 +903,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
-  rb: {fileID: 0}
+  rocketPrefab: {fileID: 0}
+  dashStrength: 0
+  dashLength: 0
   active: 1
   maxSpeed: 3
 --- !u!212 &1066194990
@@ -1209,6 +1213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   song: {fileID: 1274300034}
   bpm: 130
+  beatsPerAction: 2
   startOffset: 0
   observers:
   - {fileID: 920621890}
@@ -1225,7 +1230,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: edc977fca3cadf247bd2140b8dfede47, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.085
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1576,6 +1581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackSize: 16
   bpm: 128
+  context: {fileID: 0}
 --- !u!4 &1633110696
 Transform:
   m_ObjectHideFlags: 0
@@ -1870,7 +1876,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
-  rb: {fileID: 0}
+  rocketPrefab: {fileID: 0}
+  dashStrength: 0
+  dashLength: 0
   active: 0
   maxSpeed: 3
 --- !u!50 &1872102643
