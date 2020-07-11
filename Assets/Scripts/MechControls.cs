@@ -8,8 +8,8 @@ public class MechControls : MonoBehaviour {
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
     public float dashLength;
-    public Context context;
-    public TrackController trackController;
+    private Context context;
+    private TrackController trackController;
 
     public bool active;
     public float maxSpeedConstant; // max speed is used to cap the speed of the mech
@@ -26,6 +26,8 @@ public class MechControls : MonoBehaviour {
 
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
+        context = GameObject.Find("ContextManager").GetComponent<Context>();
+        trackController = GameObject.Find("TrackController").GetComponent<TrackController>();
     }
     public void startDash () {
         float angle;
@@ -95,8 +97,8 @@ public class MechControls : MonoBehaviour {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
-            if (virusWalkTimer > 0)
-            { // we are dashing/ dash is on cooldown
+            if (virusWalkTimer > 0) { 
+                // we are dashing/ dash is on cooldown
                 rb.AddForce(force);
                 virusWalkTimer -= Time.deltaTime;
                 forceApplied = true;
@@ -107,13 +109,6 @@ public class MechControls : MonoBehaviour {
                 force = (distance + randomAngle) * thrust;
 
                 virusWalkTimer = Random.Range(0, 3);
-            }
-
-            //possibly change ai track
-            int randnum = Random.Range(0, 1000);
-            if (randnum <= 1) {
-                int track = Random.Range(0, 3);
-                trackController.setTrack(this.gameObject, track);
             }
             
 
@@ -145,4 +140,17 @@ public class MechControls : MonoBehaviour {
     public void setActive (bool active) {
         this.active = active;
     }
+    void onBeat()
+    {
+        if (!this.active) {
+            //possibly change ai track
+            int randnum = Random.Range(0, 100);
+            if (randnum <= 25) {
+                int track = Random.Range(0, 3);
+                trackController.setTrack(this.gameObject, track);
+            }
+        }
+    }
+    
+
 }
