@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowKeyControls : MonoBehaviour
+public class MechControls : MonoBehaviour
 {
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
-    
+    //public GameObject bottom;
 
     public bool active;
     public float maxSpeed; // max speed is used to cap the speed of the mech
@@ -66,11 +66,15 @@ public class ArrowKeyControls : MonoBehaviour
             // Debug.Log("maxed speed on mech");
             scaleFactor = maxSpeed/rb.velocity.magnitude;
             rb.velocity = rb.velocity * new Vector2(scaleFactor,scaleFactor);
+        } else {
+            // mech ai when uncontrolled
         }
 
-        // Set bottom sprite to velocity direction
-
-
+        // Set bottom to direction of velocity
+        if (rb.velocity != Vector2.zero) {
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg - 90;
+            this.gameObject.transform.GetChild(1).gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
      }
      public void setActive(bool active){
          this.active = active;
