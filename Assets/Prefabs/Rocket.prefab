@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3326525086901716146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.8445473, y: 0.6824279, z: -2.5887575}
-  m_LocalScale: {x: 1, y: 1, z: 5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b275a14ae639c84e90257fbd30664cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1
+  thrust: 3
   lifeSpanSecs: 5
 --- !u!50 &2288891945790753746
 Rigidbody2D:

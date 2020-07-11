@@ -6,7 +6,7 @@ public class ShootAtActive : MonoBehaviour
 {
     private Context contextObject;
     private GameObject curMech;
-
+    public GameObject topSprite; 
     private GameObject bullet;
     // Start is called before the first frame update
     public float DegRange;
@@ -15,6 +15,14 @@ public class ShootAtActive : MonoBehaviour
     void Start()
     {
         contextObject = GameObject.Find("ContextManager").GetComponent<Context>();
+    }
+    void Update() { 
+        curMech = contextObject.getCurMech();
+        if (this.gameObject == curMech){
+            topSprite.transform.rotation = Quaternion.Euler(0,0,HelperFunctions.getAngleToMouse(this.gameObject));
+        } else {
+            topSprite.transform.rotation = Quaternion. Euler(0,0,HelperFunctions.getAngleBetween(this.gameObject, curMech));
+        }  
     }
     public void shootAt()
     {   

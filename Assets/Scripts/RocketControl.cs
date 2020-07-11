@@ -9,14 +9,19 @@ public class RocketControl : MonoBehaviour {
     Transform mTransform;
     float travelAngle;
     float startTime;
+    GameObject parent;
     // Start is called before the first frame update
     void Start () {
         mTransform = GetComponent<Transform> ();
         rigidBody = GetComponent<Rigidbody2D>();
         startTime = Time.time;
     }
-    void setDirection(float angle){
-        travelAngle = angle;
+    void initRocket(float fl){
+        travelAngle = fl;
+    }
+
+    void setParent(GameObject o){
+        parent=o;
     }
     // Update is called once per frame
     void Update () {
@@ -27,10 +32,11 @@ public class RocketControl : MonoBehaviour {
         }
     }
     void OnTriggerEnter2D(Collider2D collision)    {
-        Debug.Log("Trigger enter");
-        explode();
+        if (collision.gameObject!=parent){
+            explode();
+        }
     }
     void explode() {
-        Destroy(this.rigidBody.gameObject);  
+        Destroy(this.gameObject);  
     }
 }

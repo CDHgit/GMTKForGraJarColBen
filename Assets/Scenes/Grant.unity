@@ -144,6 +144,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
         type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: context
+      value: 
+      objectReference: {fileID: 920621891}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -327,12 +332,27 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884800, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: rocketPrefab
       value: 
       objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
         type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: context
+      value: 
+      objectReference: {fileID: 920621891}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: active
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -507,6 +527,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
         type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: context
+      value: 
+      objectReference: {fileID: 920621891}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -627,6 +652,7 @@ MonoBehaviour:
   observers:
   - {fileID: 920621890}
   - {fileID: 1633110694}
+  secPerBeat: 0
 --- !u!82 &1274300034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -769,6 +795,7 @@ MonoBehaviour:
   trackSize: 16
   bpm: 130
   context: {fileID: 920621891}
+  trackImageBase: {fileID: 0}
 --- !u!4 &1633110696
 Transform:
   m_ObjectHideFlags: 0
