@@ -4,44 +4,57 @@ using UnityEngine;
 
 public class Context : MonoBehaviour {
     public GameObject mech1, mech2, mech3;
-    public KeyCode mech1Key = KeyCode.A, mech2Key = KeyCode.S, mech3Key = KeyCode.D;
 
-    private GameObject curMech;
-    
+    public int switchCooldownBeats = 8;
+    int beatsToReady = 0; //beats left in cooldown
+    int curMechIdx = 0;
+    KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L; //Private key codes JKL
+    List<GameObject> mechList; // Mech list used to update the active
+    MechControls mechKeyControlsScript;
     // Start is called before the first frame update
     void Start () {
-        curMech = mech1;
+        // Create a list of mechs to iterate through later for easier updating
+        mechList = new List<GameObject> ();
+        mechList.Add (mech1);
+        mechList.Add (mech2);
+        mechList.Add (mech3);
+        // This doesn't work right now might need to trigger it or have a 3 state maybe
+        // switchMech(0);
     }
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(mech1Key)){
-            switchContext(1);
-        } else if (Input.GetKeyDown(mech2Key)){
-            switchContext(2);
-        } else if (Input.GetKeyDown(mech3Key)){
-            switchContext(3);
+
+        if (Input.GetKeyDown (mech1Key)) {
+            switchMech (0);
+        } else if (Input.GetKeyDown (mech2Key)) {
+            switchMech (1);
+        } else if (Input.GetKeyDown (mech3Key)) {
+            switchMech (2);
         }
     }
 
+    public GameObject getCurMech(){
+        return mechList[curMechIdx];
+    }
     /**
      * Switch which mech is being controlled
      */
-    private void switchContext (int mechNum) {
-        Debug.Assert(mechNum > 0 && mechNum < 4, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        
-        switch (mechNum) {
-            case 1:
-                curMech = mech1;
-                break;
-            case 2:
-                curMech = mech2;
-                break;
-            case 3:
-                curMech = mech3;
-                break;
-            default:
-                break;
+    private void switchMech (int mechNum) {
+        Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
+        // Debug.Log("Switching mech to " + mechNum);
+        //Set the active mech to true and the others to false
+        if (beatsToReady <= 0 && curMechIdx != mechNum) {
+            beatsToReady = switchCooldownBeats;
+            mechList[curMechIdx].SendMessage("setActive", false);
+            curMechIdx = mechNum;
+            mechList[curMechIdx].SendMessage("setActive", true);
+        }
+
+    }
+    public void onBeat (int beatNum) {
+        if (beatsToReady > 0) {
+            beatsToReady--;
         }
     }
 }
