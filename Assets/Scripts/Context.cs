@@ -39,7 +39,7 @@ public class Context : MonoBehaviour {
         return mechList[curMechIdx];
     }
     /**
-     * Switch which mech is being controlled
+     * Switch which mech is being controlled, checks if mech is enabled
      */
     private void switchMech (int mechNum) {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
@@ -50,6 +50,10 @@ public class Context : MonoBehaviour {
             mechList[curMechIdx].SendMessage("setActive", false);
             curMechIdx = mechNum;
             mechList[curMechIdx].SendMessage("setActive", true);
+        }
+        else
+        {
+            print("Mech Switch Failed");
         }
 
     }
