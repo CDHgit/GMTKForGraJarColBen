@@ -39,10 +39,9 @@ public class Context : MonoBehaviour {
      */
     private void switchMech (int mechNum) {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        Debug.Log("Switching mech to " + mechNum);
+        // Debug.Log("Switching mech to " + mechNum);
         //Set the active mech to true and the others to false
         if (beatsToReady <= 0 && curMechIdx != mechNum) {
-            Debug.Log("switching");
             beatsToReady = switchCooldownBeats;
 
             for (int mechIdx = 0; mechIdx < 3; mechIdx++) {
