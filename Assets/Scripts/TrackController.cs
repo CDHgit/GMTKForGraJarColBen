@@ -16,15 +16,14 @@ public class TrackController : MonoBehaviour {
     private float pixelsPerFrame;
     static float heightOfBelt = 154f;
     static int size = 3;
+    static float secPerBeat;
     private Track[] tracks = new Track[size];
 
 
     // Start is called before the first frame update
     void Start () {
+        secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
         initTrackPos = trackImageBase.GetComponent<RectTransform>().localPosition;
-        float secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
-        // Maybe get frame times and do it the right way idiot
-        pixelsPerFrame = 57f/secPerBeat/heightOfBelt; //Adjusted FPS /secperbeat/heightofbeltpx 
         for (int i = 0; i < size; i++) {
             tracks[i] = new Track (trackSize);
         }
@@ -41,7 +40,7 @@ public class TrackController : MonoBehaviour {
         tracks[trackNum].addMech(mech);
     }
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         if (Input.GetKey(track1Key)){
             setTrack(context.getCurMech(), 0);
         } else if (Input.GetKey(track2Key)){
@@ -49,7 +48,8 @@ public class TrackController : MonoBehaviour {
         } else if (Input.GetKey(track3Key)){
             setTrack(context.getCurMech(), 2);
         }
-        trackImageBase.GetComponent<RectTransform>().localPosition += new Vector3(0,(float)pixelsPerFrame,0); 
+        float pixToMove = Time.deltaTime / secPerBeat * heightOfBelt;
+        trackImageBase.GetComponent<RectTransform>().localPosition += new Vector3(0,(float)pixToMove,0); 
     }
     void onBeat(){
         foreach (Track t in tracks){
