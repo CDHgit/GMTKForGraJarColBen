@@ -67,4 +67,7 @@ public class ArrowKeyControls : MonoBehaviour
             rb.velocity = rb.velocity * new Vector2(scaleFactor,scaleFactor);
         }
      }
+     public void setActive(bool active){
+         this.active = active;
+     }
 }

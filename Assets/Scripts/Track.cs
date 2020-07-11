@@ -21,7 +21,6 @@ public class Track {
         consumeAction ();
         addAction ();
     }
-
     /**
      * Sets the possible actions this Track can pull from
      */

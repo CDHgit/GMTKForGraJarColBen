@@ -34,6 +34,9 @@ public class Context : MonoBehaviour {
         }
     }
 
+    public GameObject getCurMech(){
+        return mechList[curMechIdx];
+    }
     /**
      * Switch which mech is being controlled
      */
@@ -43,17 +46,9 @@ public class Context : MonoBehaviour {
         //Set the active mech to true and the others to false
         if (beatsToReady <= 0 && curMechIdx != mechNum) {
             beatsToReady = switchCooldownBeats;
-
-            for (int mechIdx = 0; mechIdx < 3; mechIdx++) {
-                mechKeyControlsScript = mechList[mechIdx].GetComponent<ArrowKeyControls> ();
-                if (mechNum == mechIdx) {
-                    mechKeyControlsScript.active = true;
-                    curMechIdx = mechNum;
-                } else {
-                    mechKeyControlsScript.active = false;
-                }
-            }
-
+            mechList[curMechIdx].SendMessage("setActive", false);
+            curMechIdx = mechNum;
+            mechList[curMechIdx].SendMessage("setActive", true);
         }
 
     }
