@@ -27,7 +27,7 @@ public class ShootAtActive : MonoBehaviour
     public void shootAt()
     {
         curMech = contextObject.getCurMech();
-        if (curMech.GetComponent<MechControls>().mechEnabled)
+        if (curMech.GetComponent<MechControls>().getMechEnabledStatus())
         {
             if (gameObject != curMech)
             {
