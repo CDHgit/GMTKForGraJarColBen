@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 10
   rb: {fileID: 0}
+  active: 0
   maxSpeed: 3
 --- !u!50 &772849795
 Rigidbody2D:
@@ -317,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772849793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33049762, y: -0.0036409693, z: -0.71992326}
+  m_LocalPosition: {x: 0.33049762, y: 1.276, z: -0.71992326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -355,7 +356,6 @@ MonoBehaviour:
   mech1: {fileID: 1066194988}
   mech2: {fileID: 772849793}
   mech3: {fileID: 1872102641}
-  curMech: {fileID: 0}
 --- !u!4 &920621892
 Transform:
   m_ObjectHideFlags: 0
@@ -403,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 10
   rb: {fileID: 0}
+  active: 1
   maxSpeed: 3
 --- !u!212 &1066194990
 SpriteRenderer:
@@ -522,6 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 10
   rb: {fileID: 0}
+  active: 0
   maxSpeed: 3
 --- !u!50 &1872102643
 Rigidbody2D:
@@ -602,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872102641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33049762, y: -0.0036409693, z: -0.71992326}
+  m_LocalPosition: {x: 2.153, y: -0.0036409693, z: -0.71992326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Context : MonoBehaviour {
     public GameObject mech1, mech2, mech3;
-    KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L;
-    GameObject[] mechList;
+    KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L; //Private key codes JKL
+    List<GameObject> mechList; // Mech list used to update the active
     ArrowKeyControls mechKeyControlsScript;
-    private int curMechIdx, prevMechIdx;
     // Start is called before the first frame update
     void Start () {
-        mechList[0] = mech1;
-        mechList[1] = mech2;
-        mechList[2] = mech3;
-        prevMechIdx= 0;
-        curMechIdx = 0;
+        // Create a list of mechs to iterate through later for easier updating
+        mechList = new List<GameObject>();
+        mechList.Add(mech1);
+        mechList.Add(mech2);
+        mechList.Add(mech3);
+        // This doesn't work right now might need to trigger it or have a 3 state maybe
+        // switchMech(0);
     }
 
     // Update is called once per frame
@@ -33,9 +34,17 @@ public class Context : MonoBehaviour {
      */
     private void switchMech (int mechNum) {
         Debug.Assert(mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
+        // Debug.Log("Switching mech to " + mechNum);
+        //Set the active mech to true and the others to false
         for (int mechIdx = 0; mechIdx < 3; mechIdx ++)
-        prevMechControls = mechList[prevMechIdx].GetComponent<ArrowKeyControls>();
-        prevMechControls.active = false;
-        curMechControls = mechList[curMechIdx].GetComponent<ArrowKeyControls>();
+        {
+            mechKeyControlsScript = mechList[mechIdx].GetComponent<ArrowKeyControls>();
+            if(mechNum == mechIdx){
+                mechKeyControlsScript.active = true;
+            }
+            else{
+                mechKeyControlsScript.active = false;
+            }
+        }
     }
 }
