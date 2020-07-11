@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 8060297928746148900}
   m_Layer: 0
   m_Name: Mech
-  m_TagString: Untagged
+  m_TagString: Destructable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -481,12 +481,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
-  rocketPrefab: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+  rocketPrefab: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
     type: 3}
   dashStrength: 0
   dashLength: 0
   active: 0
   maxSpeedConstant: 3
+  topSprite: {fileID: 2182539972995612511}
+  offsetAmount: 0
+  laserPrefab: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
+    type: 3}
 --- !u!61 &5677660185704884800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -528,8 +532,8 @@ MonoBehaviour:
   health: 100
   healthSlider: {fileID: 5690747064549996308}
   antivirusProgress: 0
-  antivirusSlider: {fileID: 0}
   antivirusGoal: 0
+  mechNumber: 0
 --- !u!114 &8060297928746148900
 MonoBehaviour:
   m_ObjectHideFlags: 0
