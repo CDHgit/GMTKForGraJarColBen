@@ -50,5 +50,9 @@ public class Track {
             a.performAction (m);
         }
     }
-
+    public void UpdateActionsUI (float pixToMove) {
+        foreach(Action actionItem in actions){
+            //Move the actions down on each fixedUpdate
+        }
+    }
 }
