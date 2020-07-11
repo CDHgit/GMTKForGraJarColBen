@@ -23,12 +23,19 @@ public class RocketFireAction : Action {
         o.SendMessage("fireRocket");
     }
 }
-public class LaserAction : Action {
-    public override void performAction (GameObject o) {
-        o.SendMessage("shootAt");
+public class LaserAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("fireLaser");
     }
-
-
+}
+public class BulletAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("fireBullet");
+    }
 }
 
 public class HealAction : Action
@@ -37,8 +44,6 @@ public class HealAction : Action
     {
         o.SendMessage("changeHealth");
     }
-
-
 }
 
 public class AntivirusAction : Action
@@ -47,7 +52,5 @@ public class AntivirusAction : Action
     {
         o.SendMessage("changeAntivirus");
     }
-
-
 }
 

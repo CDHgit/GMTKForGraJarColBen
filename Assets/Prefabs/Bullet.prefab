@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4341891468203355023}
   - component: {fileID: 1920641422661983926}
   m_Layer: 0
-  m_Name: Rocket
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7127825383921032041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9685273, y: -1.5027483, z: -2.5887575}
-  m_LocalScale: {x: 1, y: 1, z: 5}
+  m_LocalPosition: {x: -4.138, y: -1.6893, z: -2.5887575}
+  m_LocalScale: {x: 0.47031808, y: 0.4169707, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 1
-  lifeSpanSecs: 5
+  lifeSpanSecs: 10
   initialSpeed: 10
-  maxSpeed: 20
+  maxSpeed: 10
 --- !u!50 &5981598900657558537
 Rigidbody2D:
   serializedVersion: 4
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: abd36dceedcba6b469fecab54cf7545d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bba4c4b535e0fcb41b98e96ca9ebc409, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,19 +146,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.09141803, y: -0.025563478}
-      - {x: 0.09141827, y: 0.047781587}
-      - {x: 0.064979315, y: 0.110138655}
-      - {x: 0.06861806, y: 0.29083622}
-      - {x: 0.07, y: 0.32}
-      - {x: -0.06556368, y: 0.31999993}
-      - {x: -0.076144695, y: 0.09916365}
-      - {x: -0.08574915, y: 0.0054608583}
-      - {x: -0.060433865, y: -0.054422855}
-      - {x: -0.07711506, y: -0.15432203}
-      - {x: -0.07309055, y: -0.25501788}
-      - {x: -0.07225418, y: -0.28945434}
-      - {x: 0.093636036, y: -0.3138907}
-      - {x: 0.07919979, y: -0.2580725}
-      - {x: 0.063926935, y: -0.16363609}
-      - {x: 0.07112694, y: -0.07974517}
+    - - {x: -0.038037777, y: 0.31938374}
+      - {x: -0.147511, y: 0.1669563}
+      - {x: -0.1437869, y: -0.30362153}
+      - {x: 0.18044734, y: -0.3096968}
+      - {x: 0.17702365, y: 0.020395279}
+      - {x: 0.17112994, y: 0.17518115}
+      - {x: 0.05492139, y: 0.32506907}

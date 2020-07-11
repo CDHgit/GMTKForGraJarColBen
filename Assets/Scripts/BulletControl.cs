@@ -16,6 +16,7 @@ public class BulletControl : MonoBehaviour {
     // Start is called before the first frame update
     void Start () {
         mTransform = GetComponent<Transform> ();
+        
         startTime = Time.time;
     }
     void initBullet (float fl) {
