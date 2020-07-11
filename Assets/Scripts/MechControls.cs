@@ -9,6 +9,7 @@ public class MechControls : MonoBehaviour {
     public float dashStrength;
     public float dashLength;
     public Context context;
+    public TrackController trackController;
 
     public bool active;
     public float maxSpeedConstant; // max speed is used to cap the speed of the mech
@@ -19,6 +20,10 @@ public class MechControls : MonoBehaviour {
 
     Vector2 dashDestination;
     float dashTimer = 0;
+
+    float virusWalkTimer = 0;
+    Vector2 force;
+
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
     }
@@ -29,7 +34,7 @@ public class MechControls : MonoBehaviour {
     }
 
     public void fireRocket(float angle) { 
-        GameObject rocket = Instantiate(rocketPrefab, rb.position, Quaternion.Euler(0, 0, angle));
+        GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f* new  Vector2(-Mathf.Sin(angle/180f*Mathf.PI), Mathf.Cos(angle/180f*Mathf.PI)), Quaternion.Euler(0, 0, angle));
         rocket.SendMessage("setDirection", angle);
         //wwwwGetComponent<Transform>().angle = Quaternion.Euler(0,0,angle);
     }
@@ -77,14 +82,27 @@ public class MechControls : MonoBehaviour {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
-            GameObject targetMech = context.getCurMech();
-            Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
-            float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg - 90;
-            this.gameObject.transform.GetChild(1).gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (virusWalkTimer > 0)
+            { // we are dashing/ dash is on cooldown
+                rb.AddForce(force);
+                virusWalkTimer -= Time.deltaTime;
+                forceApplied = true;
+            } else {
+                GameObject targetMech = context.getCurMech();
+                Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
+                Vector2 randomAngle = Random.insideUnitCircle * distance.magnitude * 1.5f;
+                force = (distance + randomAngle) * thrust;
 
-            Vector2 angleVector = new Vector2(distance.x, distance.y);
-            rb.AddForce(angleVector * thrust * 0.25f);
-            forceApplied = true;
+                virusWalkTimer = Random.Range(0, 3);
+            }
+
+            //possibly change ai track
+            int randnum = Random.Range(0, 1000);
+            if (randnum <= 1) {
+                int track = Random.Range(0, 3);
+                trackController.setTrack(this.gameObject, track);
+            }
+            
 
         }
             // If none of the directions are input then set the speed to 0
@@ -100,7 +118,7 @@ public class MechControls : MonoBehaviour {
         if (rb.velocity.magnitude > maxSpeed) {
             // Debug.Log("maxed speed on mech");
             scaleFactor = maxSpeed / rb.velocity.magnitude;
-            rb.velocity = rb.velocity * new Vector2 (scaleFactor, scaleFactor);
+            rb.velocity *= new Vector2 (scaleFactor, scaleFactor);
         }
 
         // Set bottom to direction of velocity
