@@ -173,7 +173,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -404,7 +404,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}

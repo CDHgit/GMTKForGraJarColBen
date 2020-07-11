@@ -5,6 +5,8 @@ using UnityEngine;
 public class MechControls : MonoBehaviour {
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
     public GameObject rocketPrefab;
+    public GameObject laserPrefab;
+    public GameObject bulletPrefab;
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
     public float dashLength;
@@ -21,48 +23,53 @@ public class MechControls : MonoBehaviour {
     public GameObject topSprite;
     // Start is called before the first frame update
     public float offsetAmount;
-    public GameObject laserPrefab;
+
     int mechNum;
     Vector2 dashDestination;
     float dashTimer = 0;
 
     float virusWalkTimer = 0;
     Vector2 force;
-    private GameObject target;
+    private int targetNum;
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
-        context = GameObject.Find("ContextManager").GetComponent<Context>();
-        trackController = GameObject.Find("TrackController").GetComponent<TrackController>();
-        
+        context = GameObject.Find ("ContextManager").GetComponent<Context> ();
+        trackController = GameObject.Find ("TrackController").GetComponent<TrackController> ();
+        targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
     }
     public void startDash () {
-        if (this.mechEnabled)
-        {
+        if (this.mechEnabled) {
+
+            GameObject target = context.mechList[targetNum];
             float angle;
-            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            angle +=90;
             angle = angle * Mathf.PI / 180f;
-            dashDestination = new Vector2(-Mathf.Sin(angle), Mathf.Cos(angle));
+            dashDestination = new Vector2 (-Mathf.Sin (angle), Mathf.Cos (angle));
             dashTimer = dashLength;
         }
     }
 
-    public void fireRocket() {
-        if (this.mechEnabled)
-        {
-            float angle;
-            
-            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
-            GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle));
-            rocket.SendMessage("initBullet", angle);
-            rocket.SendMessage("setParent", this.gameObject);
-        }
+    public void fireRocket () {
+        if (this.mechEnabled) {
 
+            GameObject target = context.mechList[targetNum];
+
+            float angle;
+
+            angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            GameObject rocket = Instantiate (rocketPrefab, rb.position + .5f * new Vector2 (-Mathf.Sin (angle / 180f * Mathf.PI), Mathf.Cos (angle / 180f * Mathf.PI)), Quaternion.Euler (0, 0, angle));
+            rocket.SendMessage ("initBullet", angle);
+            rocket.SendMessage ("setParent", this.gameObject);
+        }
 
     }
     public void fireLaser () {
         float angle;
         if (mechEnabled) {
             GameObject curMech = context.getCurMech ();
+
+            GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
             float angRad = angle / 180f * Mathf.PI;
             GameObject laser = Instantiate (laserPrefab,
@@ -73,9 +80,43 @@ public class MechControls : MonoBehaviour {
         }
     }
 
+    public void fireBullet()
+    {
+        
+        if (mechEnabled)
+        {
+            StartCoroutine(bulletCoruoutine());   
+        }
+    }
+
+    IEnumerator bulletCoruoutine()
+    {
+        float angle;
+        // Shoot random burst
+        int burst = Random.Range(2, 5);
+        for (int i = 0; i < burst; i++)
+        {
+            GameObject curMech = context.getCurMech();
+            GameObject target = context.mechList[targetNum];
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            float angRad = angle / 180f * Mathf.PI;
+
+            GameObject bullet = Instantiate(bulletPrefab,
+                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
+                Quaternion.Euler(0, 0, angle));
+            bullet.SendMessage("initBullet", angle);
+            bullet.SendMessage("setParent", this.gameObject);
+
+            yield return new WaitForSeconds(0.25f);
+
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate () {
         GameObject curMech = context.getCurMech ();
+
+        GameObject target = context.mechList[targetNum];
         topSprite.transform.rotation = Quaternion.Euler (0, 0, HelperFunctions.getAngleBetween (this.gameObject, target));
         //Force applied is used to detect if any of the directions are input
         forceApplied = false;
@@ -87,7 +128,7 @@ public class MechControls : MonoBehaviour {
                 rb.AddForce (dashDestination * dashStrength);
                 dashTimer -= Time.deltaTime;
 
-            } else if (mechEnabled){
+            } else if (mechEnabled) {
                 //W up
                 if (Input.GetKey ("w")) {
                     //transofrm.* is a RELATIVE direction AFAIK, might need to be changed to a vector later
@@ -118,9 +159,9 @@ public class MechControls : MonoBehaviour {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
-            if (virusWalkTimer > 0) { 
+            if (virusWalkTimer > 0) {
                 // we are dashing/ dash is on cooldown
-                rb.AddForce(force);
+                rb.AddForce (force);
                 virusWalkTimer -= Time.deltaTime;
                 forceApplied = true;
             } else {
@@ -131,7 +172,6 @@ public class MechControls : MonoBehaviour {
 
                 virusWalkTimer = Random.Range (0, 3);
             }
-            
 
         }
         // If none of the directions are input then set the speed to 0
@@ -156,17 +196,16 @@ public class MechControls : MonoBehaviour {
             this.gameObject.transform.GetChild (1).gameObject.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
         }
     }
-    void setMechNum1(int mechNum){
-        this.mechNum=mechNum;
+    void setMechNum1 (int mechNum) {
+        this.mechNum = mechNum;
     }
     public void setActive (bool active) {
         this.active = active;
     }
-    void onBeat(int beatNum)
-    {
+    void onBeat (int beatNum) {
         if (!this.active) {
             //possibly change ai track
-            int randnum = Random.Range(0, 100);
+            int randnum = Random.Range (0, 100);
             if (randnum <= 25) {
                 int track = Random.Range(0, 3);
                 trackController.setTrack(this.gameObject, track);
@@ -182,8 +221,7 @@ public class MechControls : MonoBehaviour {
         return this.mechEnabled;
     }
 
-    public void setMechEnabledStatus (bool setMechEnabled)
-    {
+    public void setMechEnabledStatus (bool setMechEnabled) {
         this.mechEnabled = setMechEnabled;
     }
 }
