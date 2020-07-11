@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Reflection;
 
 public class Track {
     public int size; // Beats in the queue
-    public Action[] possibleActions; //potential actions to pull from
+    public System.Type[] possibleActions; //potential actions to pull from
     private Queue actions = new Queue (); //action queue
     private List<GameObject> mechs = new List<GameObject>();
-    public Track (int size, Action[] possibleActions) {
+    private int trackIdx;
+    public Track (int size, int tIdx, System.Type[] possibleActions) {
+        this.trackIdx = tIdx;
         this.possibleActions=possibleActions;
         this.size = size;
         for (int i = 0; i < size; i++) {
-            addAction ();
+            addAction (i, trackIdx);
         }
     }
     public void addMech(GameObject mech){
@@ -25,21 +29,22 @@ public class Track {
      */
     public void runBeat () {
         consumeAction ();
-        addAction ();
+        addAction(this.size-1, this.trackIdx);
     }
     
     /**
      * Sets the possible actions this Track can pull from
      */
-    public void setPossibleActions (Action[] actions) {
+    public void setPossibleActions (System.Type[] actions) {
         this.possibleActions = actions;
     }
 
     /**
      * Adds a random action to the end of our loaded actions
      */
-    private void addAction () {
-        actions.Enqueue (possibleActions[Random.Range (0, possibleActions.Length)]);
+    private void addAction (int actionIdx, int trackIdx) {
+        Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
+        actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
     }
     /**
      * Runs the next action in the queue

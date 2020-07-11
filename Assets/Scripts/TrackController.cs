@@ -26,9 +26,9 @@ public class TrackController : MonoBehaviour {
         secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
         pxPerBeatIncrement = secPerBeat / heightOfBelt;
         initTrackPos = conveyorImageBase.GetComponent<RectTransform>().localPosition;
-        tracks[0] = new Track(trackSize, new Action[]{new RocketFireAction()});
-        tracks[1] = new Track(trackSize, new Action[]{new DashAction()});
-        tracks[2] = new Track(trackSize, new Action[]{new LaserAction ()});
+        tracks[0] = new Track(trackSize, 0, new System.Type[]{typeof(RocketFireAction)});
+        tracks[1] = new Track(trackSize, 1, new System.Type[]{typeof(RocketFireAction)});
+        tracks[2] = new Track(trackSize, 2, new System.Type[]{typeof(RocketFireAction)});
         setTrack(context.mech1, 0);
         setTrack(context.mech2, 1);
         setTrack(context.mech3, 2);
