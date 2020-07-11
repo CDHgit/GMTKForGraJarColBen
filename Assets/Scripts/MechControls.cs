@@ -5,6 +5,7 @@ using UnityEngine;
 public class MechControls : MonoBehaviour {
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
     public GameObject rocketPrefab;
+    public GameObject laserPrefab;
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
     public float dashLength;
@@ -67,6 +68,28 @@ public class MechControls : MonoBehaviour {
 
 
     }
+
+    public void fireLaser()
+    {
+        print("firing laser");
+        if (this.mechEnabled)
+        {
+            float angle;
+            if (context.getCurMech() == this.gameObject)
+            {
+                angle = HelperFunctions.getAngleToMouse(this.gameObject);
+            }
+            else
+            {
+                angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+            }
+            GameObject rocket = Instantiate(laserPrefab, rb.position + .5f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle));
+            rocket.SendMessage("initBullet", angle);
+            rocket.SendMessage("setParent", this.gameObject);
+        }
+
+
+    }
     // Update is called once per frame
     void FixedUpdate () {
         
@@ -105,6 +128,10 @@ public class MechControls : MonoBehaviour {
                     rb.AddForce(-transform.right * thrust);
                     forceApplied = true;
                     // Debug.Log("pressed a");
+                }
+                if (Input.GetKey("r"))
+                {
+                    this.SendMessage("fireLaser");
                 }
             }
         } else if (mechEnabled) {
