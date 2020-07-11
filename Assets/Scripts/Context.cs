@@ -12,7 +12,7 @@ public class Context : MonoBehaviour {
     List<GameObject> mechList; // Mech list used to update the active
     ArrowKeyControls mechKeyControlsScript;
     // Start is called before the first frame update
-    void Start () {
+    void Start() {
         // Create a list of mechs to iterate through later for easier updating
         mechList = new List<GameObject> ();
         mechList.Add (mech1);
