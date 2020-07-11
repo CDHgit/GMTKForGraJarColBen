@@ -18,9 +18,9 @@ public class TrackController : MonoBehaviour {
         for (int i = 0; i < size; i++) {
             tracks[i] = new Track (trackSize);
         }
-        context.mech1.SendMessage("setTrack", tracks[0]);
-        context.mech2.SendMessage("setTrack", tracks[0]);
-        context.mech3.SendMessage("setTrack", tracks[0]);
+        // context.mech1.SendMessage("setTrack", tracks[0]);
+        // context.mech2.SendMessage("setTrack", tracks[0]);
+        // context.mech3.SendMessage("setTrack", tracks[0]);
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class TrackController : MonoBehaviour {
     }
     void onBeat(){
         foreach (Track t in tracks){
-            t.runBeat();
+            // t.runBeat();
         }
     }
 }
