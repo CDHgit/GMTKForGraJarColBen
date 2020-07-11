@@ -25,7 +25,9 @@ public class RocketFireAction : Action {
 }
 public class LaserAction : Action {
     public override void performAction (GameObject o) {
+        Debug.Log("Laser");
         o.SendMessage("shootAt");
+
     }
 
 

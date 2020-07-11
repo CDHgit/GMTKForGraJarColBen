@@ -28,7 +28,6 @@ public class MechInfo : MonoBehaviour
         }
         antivirusSlider.value = antivirusProgress;
         //print(Time.timeSinceLevelLoad);
-        print(antivirusProgress);
 
     }
 
