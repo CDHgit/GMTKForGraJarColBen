@@ -128,6 +128,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+        type: 3}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -187,6 +203,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 64daa6d287fcf9744a6864bd20e9375a,
+        type: 3}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
@@ -280,6 +317,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+        type: 3}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -288,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33049762
+      value: 0.876
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -339,6 +392,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f072c551774f8324293e4de5d86cbd23,
+        type: 3}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
@@ -402,11 +476,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432869090201431669, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: active
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashLength
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dashStrength
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+        type: 3}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -415,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33049762
+      value: -0.282
       objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
@@ -467,6 +567,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7a5fbfeb2e3c70148806fb0eb91794a6,
+        type: 3}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986875072010474010, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &1274300032
@@ -501,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   song: {fileID: 1274300034}
   bpm: 130
+  beatsPerAction: 2
   startOffset: 0
   observers:
   - {fileID: 920621890}
@@ -645,7 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackSize: 16
-  bpm: 128
+  bpm: 130
   context: {fileID: 920621891}
 --- !u!4 &1633110696
 Transform:

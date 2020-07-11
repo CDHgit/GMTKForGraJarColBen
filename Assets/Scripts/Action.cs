@@ -24,3 +24,8 @@ public class DashAction : Action {
     }
 
 }
+public class RocketFireAction : Action { 
+    public override void performAction (GameObject o) {
+        o.SendMessage("fireRocket", Action.getAngleToMouse(o));
+    }
+}

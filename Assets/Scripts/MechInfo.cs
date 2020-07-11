@@ -16,6 +16,7 @@ public class MechInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         healthSlider.value = health;
     }
 
