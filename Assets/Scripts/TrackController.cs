@@ -35,7 +35,7 @@ public class TrackController : MonoBehaviour {
     }
     void onBeat(){
         foreach (Track t in tracks){
-            t.runBeat();
+            // t.runBeat();
         }
     }
 }
