@@ -20,8 +20,7 @@ public class TestAction : Action {
 }
 public class DashAction : Action {
     public override void performAction (GameObject o) {
-        
-        o.sendMessage("startDash", Action.getAngleToMouse(o));
+        o.SendMessage("startDash", Action.getAngleToMouse(o));
     }
 
 }

@@ -10,7 +10,7 @@ public class Context : MonoBehaviour {
     int curMechIdx = 0;
     KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L; //Private key codes JKL
     List<GameObject> mechList; // Mech list used to update the active
-    ArrowKeyControls mechKeyControlsScript;
+    MechControls mechKeyControlsScript;
     // Start is called before the first frame update
     void Start () {
         // Create a list of mechs to iterate through later for easier updating
