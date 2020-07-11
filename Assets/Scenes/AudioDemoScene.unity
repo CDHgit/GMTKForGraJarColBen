@@ -236,9 +236,7 @@ MonoBehaviour:
   mech1: {fileID: 0}
   mech2: {fileID: 0}
   mech3: {fileID: 0}
-  mech1Key: 97
-  mech2Key: 115
-  mech3Key: 100
+  switchCooldownBeats: 8
 --- !u!4 &558646000
 Transform:
   m_ObjectHideFlags: 0
