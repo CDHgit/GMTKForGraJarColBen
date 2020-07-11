@@ -342,6 +342,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
+--- !u!1 &836757754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1017067923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &920621890
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,9 +377,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4f1831747940d42b27f01446fcd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mech1: {fileID: 0}
-  mech2: {fileID: 0}
-  mech3: {fileID: 0}
+  mech1: {fileID: 836757754}
+  mech2: {fileID: 1855088137}
+  mech3: {fileID: 2033980904}
   switchCooldownBeats: 4
 --- !u!4 &920621892
 Transform:
@@ -649,3 +655,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1855088137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 352913523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2033980904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
+    type: 3}
+  m_PrefabInstance: {fileID: 831372856}
+  m_PrefabAsset: {fileID: 0}
