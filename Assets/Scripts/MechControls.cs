@@ -20,6 +20,10 @@ public class MechControls : MonoBehaviour {
 
     Vector2 dashDestination;
     float dashTimer = 0;
+
+    float virusWalkTimer = 0;
+    Vector2 force;
+
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
     }
@@ -78,14 +82,19 @@ public class MechControls : MonoBehaviour {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
-            GameObject targetMech = context.getCurMech();
-            Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
-            float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg - 90;
-            this.gameObject.transform.GetChild(1).gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (virusWalkTimer > 0)
+            { // we are dashing/ dash is on cooldown
+                rb.AddForce(force);
+                virusWalkTimer -= Time.deltaTime;
+                forceApplied = true;
+            } else {
+                GameObject targetMech = context.getCurMech();
+                Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
+                Vector2 randomAngle = Random.insideUnitCircle * distance.magnitude * 1.5f;
+                force = (distance + randomAngle) * thrust;
 
-            Vector2 angleVector = new Vector2(distance.x, distance.y);
-            rb.AddForce(angleVector * thrust * 0.25f);
-            forceApplied = true;
+                virusWalkTimer = Random.Range(0, 3);
+            }
 
             //possibly change ai track
             int randnum = Random.Range(0, 1000);
@@ -109,7 +118,7 @@ public class MechControls : MonoBehaviour {
         if (rb.velocity.magnitude > maxSpeed) {
             // Debug.Log("maxed speed on mech");
             scaleFactor = maxSpeed / rb.velocity.magnitude;
-            rb.velocity = rb.velocity * new Vector2 (scaleFactor, scaleFactor);
+            rb.velocity *= new Vector2 (scaleFactor, scaleFactor);
         }
 
         // Set bottom to direction of velocity
