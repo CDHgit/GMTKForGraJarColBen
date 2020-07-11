@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 5677660185704884828}
   - component: {fileID: 5677660185704884800}
   - component: {fileID: 7260344078895797111}
+  - component: {fileID: 8060297928746148900}
   m_Layer: 0
   m_Name: Mech
   m_TagString: Untagged
@@ -480,8 +481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
+  dashStrength: 0
+  dashLength: 0
+  context: {fileID: 0}
   active: 0
-  maxSpeed: 3
+  maxSpeedConstant: 3
 --- !u!61 &5677660185704884800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -522,6 +526,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   healthSlider: {fileID: 5690747064549996308}
+--- !u!114 &8060297928746148900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677660185704884829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cf25ec5da86a04095f42e5096562f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DegRange: 10
+  BulletPrefab: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
+    type: 3}
 --- !u!1 &6292456568073136117
 GameObject:
   m_ObjectHideFlags: 0

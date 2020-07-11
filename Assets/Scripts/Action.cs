@@ -24,8 +24,17 @@ public class DashAction : Action {
     }
 
 }
+<<<<<<< HEAD
 public class RocketFireAction : Action { 
     public override void performAction (GameObject o) {
         o.SendMessage("fireRocket", Action.getAngleToMouse(o));
     }
+=======
+
+public class LaserAction : Action {
+    public override void performAction (GameObject o) {
+        o.SendMessage("shootAt");
+    }
+
+>>>>>>> c612a253f39699b17c7b73425475785d6170b35f
 }
