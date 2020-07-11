@@ -32,7 +32,8 @@ public class Context : MonoBehaviour {
             switchMech (1);
         } else if (Input.GetKeyDown (mech3Key)) {
             switchMech (2);
-        } else if (Input.GetKeyDown(KeyCode.U)) {
+        }
+        /*else if (Input.GetKeyDown(KeyCode.U)) {
             mechList[0].SendMessage("setMechEnabledStatus", false);
             mechsEnabled[0] = false;
         } else if (Input.GetKeyDown(KeyCode.I)) {
@@ -44,7 +45,7 @@ public class Context : MonoBehaviour {
         }else if (Input.GetKeyDown(KeyCode.R)) {
             mechList[curMechIdx].SendMessage("setMechEnabledStatus", false);
             mechsEnabled[curMechIdx] = false;
-        }
+        }*/
 
     }
 
