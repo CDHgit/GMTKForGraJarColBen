@@ -159,6 +159,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: context
+      value: 
+      objectReference: {fileID: 920621891}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -363,6 +368,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: context
+      value: 
+      objectReference: {fileID: 920621891}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -537,6 +547,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: context
+      value: 
+      objectReference: {fileID: 920621891}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -652,6 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   song: {fileID: 1274300034}
   bpm: 130
+  beatsPerAction: 2
   startOffset: 0
   observers:
   - {fileID: 920621890}
@@ -797,7 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackSize: 16
   bpm: 128
-  context: {fileID: 0}
+  context: {fileID: 920621891}
 --- !u!4 &1633110696
 Transform:
   m_ObjectHideFlags: 0
