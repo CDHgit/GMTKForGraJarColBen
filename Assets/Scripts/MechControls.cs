@@ -12,7 +12,7 @@ public class MechControls : MonoBehaviour {
     private TrackController trackController;
 
     public bool active;
-    public bool mechEnabled;
+    bool mechEnabled = true;
     public float maxSpeedConstant; // max speed is used to cap the speed of the mech
     private float maxSpeed;
     bool forceApplied; // force applied is used to check if input is applied to this mech
@@ -177,6 +177,14 @@ public class MechControls : MonoBehaviour {
             target = context.mechList[(Random.Range(1,3)+mechNum)%3]; //choose a random mech that isn't this one
         }
     }
+<<<<<<< HEAD
+=======
+
+    public bool getMechEnabledStatus()
+    {
+        return this.mechEnabled;
+    }
+>>>>>>> d7f6f45e676daf9a695f7cff822024879ed864a9
 
     public void setMechEnabledStatus (bool setMechEnabled)
     {
