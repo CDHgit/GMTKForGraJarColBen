@@ -25,7 +25,7 @@ public class TrackController : MonoBehaviour {
         setTrack(context.mech3, 2);
        
     }
-    void setTrack(GameObject mech, int trackNum){
+    public void setTrack(GameObject mech, int trackNum){
         foreach (Track t in tracks){
             t.removeMech(mech);
         }

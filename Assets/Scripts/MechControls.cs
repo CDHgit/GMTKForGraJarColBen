@@ -9,6 +9,7 @@ public class MechControls : MonoBehaviour {
     public float dashStrength;
     public float dashLength;
     public Context context;
+    public TrackController trackController;
 
     public bool active;
     public float maxSpeedConstant; // max speed is used to cap the speed of the mech
@@ -85,6 +86,14 @@ public class MechControls : MonoBehaviour {
             Vector2 angleVector = new Vector2(distance.x, distance.y);
             rb.AddForce(angleVector * thrust * 0.25f);
             forceApplied = true;
+
+            //possibly change ai track
+            int randnum = Random.Range(0, 1000);
+            if (randnum <= 1) {
+                int track = Random.Range(0, 3);
+                trackController.setTrack(this.gameObject, track);
+            }
+            
 
         }
             // If none of the directions are input then set the speed to 0
