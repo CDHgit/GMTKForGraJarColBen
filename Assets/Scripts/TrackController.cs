@@ -9,7 +9,7 @@ public class TrackController : MonoBehaviour {
     public float bpm = 128f;
     KeyCode track1Key= KeyCode.U, track2Key= KeyCode.I, track3Key= KeyCode.O;
 
-    public Context context; 
+    private Context context; 
     public Image trackImageBase;
     static int trackTextureSize = 128;
     Vector3 initTrackPos;
@@ -22,14 +22,19 @@ public class TrackController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
+        context = GameObject.Find("ContextManager").GetComponent<Context>();
+
         secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
         initTrackPos = trackImageBase.GetComponent<RectTransform>().localPosition;
         tracks[0] = new Track(trackSize, new Action[]{new RocketFireAction()});
         tracks[1] = new Track(trackSize, new Action[]{new DashAction()});
         tracks[2] = new Track(trackSize, new Action[]{new LaserAction ()});
-        setTrack(context.mech1, 0);
-        setTrack(context.mech2, 1);
-        setTrack(context.mech3, 2);
+        
+        for (int i = 0; i < 3; i++) {
+            setTrack(context.mechList[i], i);
+        }
+        
+        
        
     }
     public void setTrack(GameObject mech, int trackNum){

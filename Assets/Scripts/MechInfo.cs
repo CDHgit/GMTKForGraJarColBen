@@ -8,14 +8,14 @@ public class MechInfo : MonoBehaviour
     public int health;
     public Slider healthSlider;
     public float antivirusProgress;
-    public Slider antivirusSlider;
-    public Context context;
+    //public Slider antivirusSlider;
+    private Context context;
     public float antivirusGoal;
     public int mechNumber;
     // Start is called before the first frame update
     void Start()
     {
-        
+        context = GameObject.Find("ContextManager").GetComponent<Context>();
     }
    
     // Update is called once per frame
@@ -27,9 +27,9 @@ public class MechInfo : MonoBehaviour
         {
             antivirusProgress = antivirusProgress+Time.deltaTime;
         }
-        antivirusSlider.value = antivirusProgress;
+        //antivirusSlider.value = antivirusProgress;
         //print(Time.timeSinceLevelLoad);
-        print(antivirusProgress);
+        //print(antivirusProgress);
 
     }
 
