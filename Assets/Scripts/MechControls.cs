@@ -12,6 +12,7 @@ public class MechControls : MonoBehaviour {
     public TrackController trackController;
 
     public bool active;
+    public bool mechEnabled;
     public float maxSpeedConstant; // max speed is used to cap the speed of the mech
     private float maxSpeed;
     bool forceApplied; // force applied is used to check if input is applied to this mech
@@ -28,27 +29,40 @@ public class MechControls : MonoBehaviour {
         rb = gameObject.GetComponent<Rigidbody2D> ();
     }
     public void startDash () {
-        float angle;
-        if (context.getCurMech()==this.gameObject){
-            angle = HelperFunctions.getAngleToMouse(this.gameObject);
-        } else {
-            angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+        if (this.mechEnabled)
+        {
+            float angle;
+            if (context.getCurMech() == this.gameObject)
+            {
+                angle = HelperFunctions.getAngleToMouse(this.gameObject);
+            }
+            else
+            {
+                angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+            }
+            angle = angle * Mathf.PI / 180f;
+            dashDestination = new Vector2(-Mathf.Sin(angle), Mathf.Cos(angle));
+            dashTimer = dashLength;
         }
-        angle = angle * Mathf.PI / 180f;
-        dashDestination = new Vector2 ( - Mathf.Sin (angle), Mathf.Cos (angle));
-        dashTimer=dashLength;
     }
 
     public void fireRocket() {
-        float angle;
-        if (context.getCurMech()==this.gameObject){
-            angle = HelperFunctions.getAngleToMouse(this.gameObject);
-        } else {
-            angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+        if (this.mechEnabled)
+        {
+            float angle;
+            if (context.getCurMech() == this.gameObject)
+            {
+                angle = HelperFunctions.getAngleToMouse(this.gameObject);
+            }
+            else
+            {
+                angle = HelperFunctions.getAngleBetween(this.gameObject, context.getCurMech());
+            }
+            GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle));
+            rocket.SendMessage("initBullet", angle);
+            rocket.SendMessage("setParent", this.gameObject);
         }
-        GameObject rocket = Instantiate(rocketPrefab, rb.position + .5f* new  Vector2(-Mathf.Sin(angle/180f*Mathf.PI), Mathf.Cos(angle/180f*Mathf.PI)), Quaternion.Euler(0, 0, angle));
-        rocket.SendMessage("initBullet",angle);
-        rocket.SendMessage("setParent", this.gameObject);
+
 
     }
     // Update is called once per frame
@@ -57,14 +71,14 @@ public class MechControls : MonoBehaviour {
         //Force applied is used to detect if any of the directions are input
         forceApplied = false;
         //Detect if this is the active mech to be controlled else velocity zero (for now)
-        if (active) {
+        if (active && mechEnabled) {
             maxSpeed = maxSpeedConstant;
 
             if (dashTimer > 0) { // we are dashing/ dash is on cooldown
                 rb.AddForce(dashDestination * dashStrength);
                 dashTimer -= Time.deltaTime;
 
-            } else {
+            } else if (mechEnabled){
                 //W up
                 if (Input.GetKey("w")) {
                     //transofrm.* is a RELATIVE direction AFAIK, might need to be changed to a vector later
@@ -91,7 +105,7 @@ public class MechControls : MonoBehaviour {
                     // Debug.Log("pressed a");
                 }
             }
-        } else {
+        } else if (mechEnabled) {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
@@ -144,5 +158,9 @@ public class MechControls : MonoBehaviour {
 
     public void setActive (bool active) {
         this.active = active;
+    }
+    public void setMechEnabledStatus (bool setMechEnabled)
+    {
+        this.mechEnabled = setMechEnabled;
     }
 }

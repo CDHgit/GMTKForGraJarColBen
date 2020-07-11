@@ -25,23 +25,27 @@ public class ShootAtActive : MonoBehaviour
         }
     }
     public void shootAt()
-    {   
+    {
         curMech = contextObject.getCurMech();
-        if(gameObject != curMech){
-            // Get pos of me
-            Vector3 myPos = gameObject.transform.position;
-            // Get vector from this object to the target
-            Vector3 vectorToGameObject = curMech.transform.position - myPos;
-            int DegDither = Random.Range(-(int)DegRange,(int)DegRange);
-            // Dont worry about it unless this breaks
-            // Add rand angle
-            Vector3 ditheredUnitToGameObject = Quaternion.AngleAxis(DegDither, Vec3Z) * vectorToGameObject;
-            // Make unit vector
-            ditheredUnitToGameObject = ditheredUnitToGameObject/ditheredUnitToGameObject.magnitude;
-            // Create bullet ignore collision, add force 2 shoot
-            bullet = Instantiate(BulletPrefab, myPos,  Quaternion.LookRotation(Vector3.forward, vectorToGameObject));
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            bullet.GetComponent<Rigidbody2D>().AddForce(ditheredUnitToGameObject * 1);
+        if (curMech.GetComponent<MechControls>().mechEnabled)
+        {
+            if (gameObject != curMech)
+            {
+                // Get pos of me
+                Vector3 myPos = gameObject.transform.position;
+                // Get vector from this object to the target
+                Vector3 vectorToGameObject = curMech.transform.position - myPos;
+                int DegDither = Random.Range(-(int)DegRange, (int)DegRange);
+                // Dont worry about it unless this breaks
+                // Add rand angle
+                Vector3 ditheredUnitToGameObject = Quaternion.AngleAxis(DegDither, Vec3Z) * vectorToGameObject;
+                // Make unit vector
+                ditheredUnitToGameObject = ditheredUnitToGameObject / ditheredUnitToGameObject.magnitude;
+                // Create bullet ignore collision, add force 2 shoot
+                bullet = Instantiate(BulletPrefab, myPos, Quaternion.LookRotation(Vector3.forward, vectorToGameObject));
+                Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+                bullet.GetComponent<Rigidbody2D>().AddForce(ditheredUnitToGameObject * 1);
+            }
         }
     }
 }
