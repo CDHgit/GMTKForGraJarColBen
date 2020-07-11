@@ -210,13 +210,18 @@ public class MechControls : MonoBehaviour {
             //possibly change ai track
             int randnum = Random.Range (0, 100);
             if (randnum <= 25) {
-                int track = Random.Range (0, 3);
-                trackController.setTrack (this.gameObject, track);
+                int track = Random.Range(0, 3);
+                trackController.setTrack(this.gameObject, track);
             }
         }
-        if (beatNum % 2 == 0) {
-            targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
+
+        if (beatNum % 2 == 0){
+            targetNum = (Random.Range(1,3)+mechNum) % 3; //choose a random mech that isn't this one
         }
+    }
+    public bool getMechEnabledStatus()
+    {
+        return this.mechEnabled;
     }
 
     public void setMechEnabledStatus (bool setMechEnabled) {
