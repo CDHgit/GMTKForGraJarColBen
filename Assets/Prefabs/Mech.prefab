@@ -481,9 +481,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
+  rocketPrefab: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+    type: 3}
   dashStrength: 0
   dashLength: 0
-  context: {fileID: 0}
   active: 0
   maxSpeedConstant: 3
 --- !u!61 &5677660185704884800
@@ -526,6 +527,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   healthSlider: {fileID: 5690747064549996308}
+  antivirusProgress: 0
+  antivirusSlider: {fileID: 0}
+  antivirusGoal: 0
 --- !u!114 &8060297928746148900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cf25ec5da86a04095f42e5096562f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topSprite: {fileID: 2182539972995612511}
   DegRange: 10
   BulletPrefab: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
     type: 3}
