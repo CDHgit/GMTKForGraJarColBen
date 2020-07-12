@@ -550,7 +550,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4f1831747940d42b27f01446fcd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchCooldownBeats: 4
+  timeToWin: 50
+  dead: 0
+  goal: 0
+  goalThreshold: 1
+  winSprite: {fileID: 0}
+  lossSprite: {fileID: 0}
+  deadThreshold: 1
+  switchCooldownBeats: 0
   mechList: []
   mechsEnabled: 010101
 --- !u!4 &920621892
