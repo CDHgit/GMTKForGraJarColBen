@@ -60,9 +60,9 @@ public class TrackController : MonoBehaviour {
         //Move the track image repeatedly so that it loops
         conveyorImageBase.GetComponent<RectTransform>().localPosition += new Vector3(0,(float)pixToMove,0); 
     }
-    void onBeat () {
+    void onBeat (int beatNum) {
         foreach (Track t in tracks) {
-            t.runBeat ();
+            t.runBeat (beatNum);
         }
         resetConveyorUI();
     }

@@ -14,9 +14,10 @@ public class Track {
         this.size = size;
         this.trackIdx = tIdx;
         this.possibleActions=possibleActions;
-        for (int i = 0; i < size; i++) {
-            addAction ((float)i - .5f, trackIdx);
-        }
+        // Moved to runBeat for first beat
+        // for (int i = 0; i < size; i++) {
+        //     addAction ((float)i - .5f, trackIdx);
+        // }
     }
     public void addMech(GameObject mech){
         mechs.Add(mech);
@@ -27,7 +28,14 @@ public class Track {
     /**
      * Runs the next beat
      */
-    public void runBeat () {
+    public void runBeat (int beatNum) {
+        if(beatNum == 0)
+        {
+            for (int i = 0; i < size; i++) 
+            {
+                addAction (i, trackIdx);
+            }
+        }
         consumeAction ();
         addAction(this.size, this.trackIdx);
     }
@@ -42,7 +50,7 @@ public class Track {
     /**
      * Adds a random action to the end of our loaded actions
      */
-    private void addAction (float actionIdx, int trackIdx) {
+    private void addAction (int actionIdx, int trackIdx) {
         Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
         // Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
         actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
