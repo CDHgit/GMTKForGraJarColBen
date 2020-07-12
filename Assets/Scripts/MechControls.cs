@@ -76,6 +76,8 @@ public class MechControls : MonoBehaviour {
             GameObject rocket = Instantiate (rocketPrefab, rb.position + .5f * new Vector2 (-Mathf.Sin (angle / 180f * Mathf.PI), Mathf.Cos (angle / 180f * Mathf.PI)), Quaternion.Euler (0, 0, angle));
             rocket.SendMessage ("initBullet", angle);
             rocket.SendMessage ("setParent", this.gameObject);
+
+            SoundMixer.PlaySound("MissileLaunch" + (Random.Range(1,5)));
         }
 
     }
@@ -101,6 +103,8 @@ public class MechControls : MonoBehaviour {
                 Quaternion.Euler (0, 0, angle));
             laser.SendMessage ("initBullet", angle);
             laser.SendMessage ("setParent", this.gameObject);
+
+            SoundMixer.PlaySound("Laser");
         }
     }
 
@@ -130,6 +134,8 @@ public class MechControls : MonoBehaviour {
             GameObject bullet = Instantiate(bulletPrefab, rb.position + .5f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle));
             bullet.SendMessage("initBullet", angle);
             bullet.SendMessage("setParent", this.gameObject);
+
+            SoundMixer.PlaySound("Gunshot" + Random.Range(1,3));
 
             yield return new WaitForSeconds (0.25f);
 
@@ -213,7 +219,10 @@ public class MechControls : MonoBehaviour {
         GameObject shieldObj = Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         shieldObj.transform.parent = gameObject.transform;
         invulnerable = true;
+        SoundMixer.PlaySound("Shield");
+
         yield return new WaitForSeconds(2f);
+
         invulnerable = false;
         Destroy(shieldObj);
     }
@@ -222,6 +231,7 @@ public class MechControls : MonoBehaviour {
     {
         MechInfo mInfo = this.gameObject.GetComponent<MechInfo>();
         mInfo.changeHealth(25);
+        SoundMixer.PlaySound("Heal");
     }
 
     void laserEnd () {
