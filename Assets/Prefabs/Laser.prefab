@@ -130,10 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7889094576304889902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75624e1b9b46ea469e7d09d2aae89d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 47b8c7563a755b740805ab551f6105c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
   thrust: 1
-  lifeSpanSecs: 5
+  lifeSpanSecs: 1
   maxSpeed: 20

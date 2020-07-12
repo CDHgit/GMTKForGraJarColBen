@@ -143,7 +143,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -224,7 +224,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -368,7 +368,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &3287613039247167374
 MonoBehaviour:
@@ -484,7 +484,11 @@ MonoBehaviour:
     type: 3}
   laserPrefab: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
     type: 3}
+<<<<<<< HEAD
+  bulletPrefab: {fileID: 7127825383921032041, guid: 2e6bef124f3a79a4b982481b3e8b99e7,
+=======
   bulletPrefab: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
+>>>>>>> 0b00b40aeb7fcf797950c0564cf5304498c73e08
     type: 3}
   dashStrength: 0
   dashLength: 0
@@ -531,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9883b5ca233e3334089fdb8b5d9519a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 100000
   healthSlider: {fileID: 5690747064549996308}
   antivirusProgress: 0
   antivirusGoal: 0

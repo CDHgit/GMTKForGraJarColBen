@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8887834780983318229}
   - component: {fileID: 8887834780983318228}
   m_Layer: 0
-  m_Name: WallTemplate
-  m_TagString: Untagged
+  m_Name: Lava Template
+  m_TagString: BackgroundTerrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8887834780983318227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.84, y: -0.04, z: -0.71992326}
-  m_LocalScale: {x: 18.204165, y: 4.267849, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dcc1806004d9393418519afadcd645b6, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: ad45c80c4d1050a42983d19a83580fd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,7 +114,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -128,5 +128,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
