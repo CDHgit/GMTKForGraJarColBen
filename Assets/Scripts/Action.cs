@@ -7,7 +7,7 @@ public abstract class Action : ScriptableObject {
     Vector3 startActionOrigin = new Vector3(-716, 322, -100);
     Vector3 trackIndexTransition = new Vector3(104, 0, 0);
     Vector3 actionIndexTransition = new Vector3(0, -154, 0);
-    public string spriteName; // For use of finding the ritght icon
+    public virtual string spriteName{get {return null;}}    
     public Sprite actionIcon; // For use of displaying the right icon
 
     private GameObject conveyorAction;
@@ -23,9 +23,10 @@ public abstract class Action : ScriptableObject {
     {
         // Get the action prefab from the resources folder 
         GameObject actionPrefab = Resources.Load("Prefabs/Action") as GameObject;
-        // Get the sprite from the resources folder(need to move them over for now)
-        actionIcon = Resources.Load<Sprite>("Icons/" + spriteName);
-        Debug.Log(actionIcon);
+        // Get the sprite from the resources folder using a property of the implementing actions
+        actionIcon = Resources.Load<Sprite>("Icons/" + this.spriteName);
+        // Debug.Log("ActionIcon: " + actionIcon);
+        // Debug.Log("SpriteName: " + spriteName);
         // placeholder position for start
         Vector3 actionPosition = new Vector3(-12f, -12f, -99f);
         // placeholder transform to put me in the canvas
@@ -63,7 +64,7 @@ public class TestAction : Action
 }
 public class DashAction : Action 
 {
-    new public string spriteName = "Dash Icon";
+    public override string spriteName{get {return "Dash";}}
     public DashAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
         o.SendMessage("startDash");
@@ -72,15 +73,15 @@ public class DashAction : Action
 }
 public class RocketFireAction : Action 
 { 
-    new public string spriteName = "Homing Missile";
-     public RocketFireAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public override string spriteName{get {return "Non-Homing Missile";}}
+    public RocketFireAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
         o.SendMessage("fireRocket");
     }
 }
 public class LaserAction : Action 
 {
-    new public string spriteName = "Homing Missile.png";
+    public override string spriteName{get {return "Homing Missile";}}
     public LaserAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
         o.SendMessage("shootAt");
@@ -89,7 +90,7 @@ public class LaserAction : Action
 
 public class HealAction : Action
 {
-    new public string spriteName = "Healing.png";
+    public override string spriteName{get {return "Healing";}}
     public HealAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
@@ -99,7 +100,7 @@ public class HealAction : Action
 
 public class AntivirusAction : Action
 {
-    new public string spriteName = "Antivirus Progress Icon.png";
+    public override string spriteName{get {return "Antivirus Progress Icon";}}
     public AntivirusAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
