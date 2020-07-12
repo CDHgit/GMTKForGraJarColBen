@@ -6,19 +6,27 @@ public class ExplosionHitboxControl : MonoBehaviour {
     public float lifeSpanSecs = 0.3f; 
     float startTime;
     int damage;
+    bool emp = false;
 
     // Start is called before the first frame update
     void Start () {
         
     }
 
-    void init (int DAM)
+    void init (int[] args)
     {
-        damage = DAM;
+        damage = args[0];
         this.gameObject.AddComponent<CircleCollider2D>();
         CircleCollider2D collider = this.GetComponent<CircleCollider2D>();
-        collider.radius = 0.6f;
         collider.isTrigger = true;
+        if (args[1] == 0)
+            collider.radius = 0.6f;
+        else
+        {
+            collider.radius = 1f;
+            emp = true;
+        }
+            
 
         startTime = Time.time;
         
@@ -32,9 +40,21 @@ public class ExplosionHitboxControl : MonoBehaviour {
         } 
     }
     void OnTriggerEnter2D (Collider2D collision) {
-        if (collision.gameObject.CompareTag("Destructable"))
+        GameObject collisionObj = collision.gameObject;
+
+        if (collisionObj.CompareTag("Destructable"))
         {
-            collision.gameObject.GetComponent<MechInfo>().changeHealth(-damage);
+            if (emp)
+            {
+                collisionObj.GetComponent<MechControls>().empEffect();
+            } 
+            else
+            {
+                collisionObj.GetComponent<MechInfo>().changeHealth(-damage);
+            }
+            
         }
     }
+
+
 }

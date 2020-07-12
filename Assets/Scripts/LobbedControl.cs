@@ -12,6 +12,7 @@ public class LobbedControl : MonoBehaviour {
     public float maxSize = 1.5f;
     public GameObject explosionParticles = null;
     public GameObject explosionHitbox = null;
+    public GameObject empHitbox = null;
 
     Rigidbody2D rigidBody;
     Transform mTransform;
@@ -21,6 +22,7 @@ public class LobbedControl : MonoBehaviour {
     float lobSpeed;
     Vector3 originalScale;
     bool armed = false;
+    float EMP;
     GameObject parent;
     // Start is called before the first frame update
     void Start () {
@@ -30,8 +32,9 @@ public class LobbedControl : MonoBehaviour {
         lobSpeed = Mathf.PI / Mathf.Abs(lifeSpanSecs);
         originalScale = transform.localScale;
     }
-    void initLob (float fl) {
-        travelAngle = fl;
+    void initLob (float[] args) {
+        travelAngle = args[0];
+        EMP = args[1];
         rotation = travelAngle;
         rigidBody = GetComponent<Rigidbody2D> ();
         rigidBody.velocity = initialSpeed * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f));
@@ -78,9 +81,21 @@ public class LobbedControl : MonoBehaviour {
     void explode () {
 
         //summon explosion hitbox and effect
-        GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
-        GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
-        hit.SendMessage("init", damage);
+        int[] args = new int[2];
+        args[0] = damage;
+        args[1] = 0;
+
+        if (EMP == 1)
+        {
+            GameObject hit = GameObject.Instantiate(empHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
+            args[1] = 1;
+            hit.SendMessage("init", args);
+        } else
+        {
+            GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
+            GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
+            hit.SendMessage("init", args);
+        }
         Destroy (this.gameObject);
     }
 }

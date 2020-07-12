@@ -169,7 +169,8 @@ public class MechControls : MonoBehaviour {
             GameObject EMP = Instantiate(empPrefab,
                 this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
                 Quaternion.Euler(0, 0, angle));
-            EMP.SendMessage("initLob", angle);
+            float[] args = {angle, 1};
+            EMP.SendMessage("initLob", args);
             EMP.SendMessage("setParent", this.gameObject);
         }
     }
@@ -222,6 +223,18 @@ public class MechControls : MonoBehaviour {
 
     void laserEnd () {
         laserStopped = false;
+    }
+
+    public void empEffect()
+    {
+        StartCoroutine(empEffected());
+    }
+
+    IEnumerator empEffected()
+    {
+        this.setMechEnabledStatus(false);
+        yield return new WaitForSeconds(3f);
+        this.setMechEnabledStatus(true);
     }
 
     void dead(){
