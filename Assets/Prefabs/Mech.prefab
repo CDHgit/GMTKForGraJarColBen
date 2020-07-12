@@ -487,15 +487,15 @@ MonoBehaviour:
     type: 3}
   bulletPrefab: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
     type: 3}
-  grenadePrefab: {fileID: 7127825383921032041, guid: cdf1b0373ef35f047baedc1af1225863,
+  grenadePrefab: {fileID: 7127825383921032041, guid: b71e01f9e644dcb4d9daa0cd7ae0761c,
     type: 3}
-  empPrefab: {fileID: 7127825383921032041, guid: e0e88f12fcde25c43a19cf2aef1b9a7d,
+  empPrefab: {fileID: 7127825383921032041, guid: df459e0fda78d70408a76a454235a7ed,
     type: 3}
-  minePrefab: {fileID: 7127825383921032041, guid: 37ca1d0a0bfe1e64cb825a2e01feff88,
+  minePrefab: {fileID: 7127825383921032041, guid: f4ad9c743066a7b4584f6919529110c3,
     type: 3}
   explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
     type: 3}
-  shieldPrefab: {fileID: 7127825383921032041, guid: df1c2693014ed284e9ad6bca0b0dde2f,
+  shieldPrefab: {fileID: 7127825383921032041, guid: b5b94c10aa031a34db7f16184426e053,
     type: 3}
   invulnerable: 0
   dashStrength: 0
