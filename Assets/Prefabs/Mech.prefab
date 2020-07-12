@@ -368,7 +368,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &3287613039247167374
 MonoBehaviour:
@@ -487,9 +487,21 @@ MonoBehaviour:
     type: 3}
   bulletPrefab: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
     type: 3}
+  grenadePrefab: {fileID: 7127825383921032041, guid: b71e01f9e644dcb4d9daa0cd7ae0761c,
+    type: 3}
+  empPrefab: {fileID: 7127825383921032041, guid: df459e0fda78d70408a76a454235a7ed,
+    type: 3}
+  minePrefab: {fileID: 7127825383921032041, guid: f4ad9c743066a7b4584f6919529110c3,
+    type: 3}
+  explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
+    type: 3}
+  shieldPrefab: {fileID: 7127825383921032041, guid: b5b94c10aa031a34db7f16184426e053,
+    type: 3}
+  invulnerable: 0
   dashStrength: 0
   dashLength: 0
   active: 0
+  mechEnabled: 1
   maxSpeedConstant: 3
   topSprite: {fileID: 2182539972995612511}
   offsetAmount: 0

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Context : MonoBehaviour {
-    public float timeToWin = 50; 
+    public float timeToWin = 50;
     private readonly string[] mechs = { "Mech1", "Mech2", "Mech3" };
     public int dead = 0, goal = 0;
     public int goalThreshold = 1;
@@ -20,11 +20,15 @@ public class Context : MonoBehaviour {
     void Start () {
         // Create a list of mechs to iterate through later for easier updating
         mechList = new List<GameObject> ();
+        int i = 0;
         foreach (string s in mechs) {
+
             mechList.Add (GameObject.Find (s));
+            mechList[i].GetComponent<MechInfo> ().mechNumber = i;
+            ++i;
         }
         //Initial Mech
-        switchMech(1);
+        switchMech (1);
 
         // This doesn't work right now might need to trigger it or have a 3 state maybe
         // switchMech(0);
@@ -32,64 +36,65 @@ public class Context : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        int oldBeatsToReady = beatsToReady;
-        for (int i = 0; i < 3 && !mechList[(curMechIdx) % 3].GetComponent<MechControls> ().getMechEnabledStatus (); i++) {
-            beatsToReady = 0;
-            switchMech ((curMechIdx + 1) % 3);
+        if (doneStart == -1) {
+            int oldBeatsToReady = beatsToReady;
+            for (int i = 0; i < 3 && !mechList[(curMechIdx) % 3].GetComponent<MechControls> ().getMechEnabledStatus (); i++) {
+                beatsToReady = 0;
+                switchMech ((curMechIdx + 1) % 3);
+            }
+            beatsToReady = oldBeatsToReady;
+            if (Input.GetKeyDown (mech1Key)) {
+                switchMech (0);
+            } else if (Input.GetKeyDown (mech2Key)) {
+                switchMech (1);
+            } else if (Input.GetKeyDown (mech3Key)) {
+                switchMech (2);
+            }
+            if (Time.timeSinceLevelLoad > timeToWin) {
+                win ();
+            }
+            //Debug.Log(dead + " DEAD "+ deadThreshold);
+            if (dead >= deadThreshold) {
+                lose ();
+            }
         }
-        beatsToReady = oldBeatsToReady;
-        if (Input.GetKeyDown (mech1Key)) {
-            switchMech (0);
-        } else if (Input.GetKeyDown (mech2Key)) {
-            switchMech (1);
-        } else if (Input.GetKeyDown (mech3Key)) {
-            switchMech (2);
+        else if (Time.unscaledTime - doneStart > 4) {
+            SceneManager.LoadScene("Level 2");
+            SceneManager.LoadScene ("Menu");
+            doneStart = -1;
+            Time.timeScale=1;
         }
-        if (Time.time > timeToWin) {
-           win ();
-        }
-        //Debug.Log(dead + " DEAD "+ deadThreshold);
-        if (dead >= deadThreshold) {
-           lose ();
-        }
-        // DEBUG CODE FOR MECH DISABLED
-        else if (Input.GetKeyDown(KeyCode.U)) {
-            mechList[0].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[0] = false;
-        } else if (Input.GetKeyDown(KeyCode.I)) {
-            mechList[1].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[1] = false;
-        } else if (Input.GetKeyDown(KeyCode.O)) {
-            mechList[2].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[2] = false;
-        }else if (Input.GetKeyDown(KeyCode.R)) {
-            mechList[curMechIdx].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[curMechIdx] = false;
-        }
-
+        Debug.Log("AWEFAWEFAWEFAWE AW W FEW W W EW F A "  + (Time.unscaledTime - doneStart));
     }
-    public float calculteScore(){
+    public float calculteScore () {
         float ret = 0;
-        foreach (GameObject o in mechList){
-            ret+=o.GetComponent<MechInfo>().health;
+        foreach (GameObject o in mechList) {
+            ret += o.GetComponent<MechInfo> ().health;
         }
         return ret;
     }
+    float doneStart = -1;
     public void win () {
-        float score = calculteScore();
-        try{
-        GetComponent<SpriteRenderer>().sprite=winSprite;
-        GetComponent<SpriteRenderer>().enabled = (true);
-        }catch(MissingComponentException e){Debug.LogError("Failed to win because no sprite renderer");}
-        Time.timeScale=0;
-
+        foreach (GameObject o in mechList) {
+            o.GetComponent<MechControls> ().setMechEnabledStatus (false);
+        }
+        try {
+            GetComponent<SpriteRenderer> ().sprite = winSprite;
+            GetComponent<SpriteRenderer> ().enabled = (true);
+            Time.timeScale = 0;
+        } catch (MissingComponentException e) { Debug.LogError ("Failed to lose because no sprite renderer"); }
+        doneStart = Time.unscaledTime;
     }
-    public void lose () { 
-        try{
-            GetComponent<SpriteRenderer>().sprite=lossSprite;
-            GetComponent<SpriteRenderer>(). enabled  = (true);
-            Time.timeScale=0;
-        }catch(MissingComponentException e){Debug.LogError("Failed to lose because no sprite renderer");}
+    public void lose () {
+        foreach (GameObject o in mechList) {
+            o.GetComponent<MechControls> ().setMechEnabledStatus (false);
+        }
+        try {
+            GetComponent<SpriteRenderer> ().sprite = lossSprite;
+            GetComponent<SpriteRenderer> ().enabled = (true);
+            Time.timeScale = 0;
+        } catch (MissingComponentException e) { Debug.LogError ("Failed to lose because no sprite renderer"); }
+        doneStart = Time.unscaledTime;
     }
     public GameObject getCurMech () {
         return mechList[curMechIdx];
@@ -99,7 +104,7 @@ public class Context : MonoBehaviour {
      */
     private void switchMech (int mechNum) {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        Debug.Log("Switching mech to " + mechNum);
+        Debug.Log ("Switching mech to " + mechNum);
 
         //Set the active mech to true and the others to false
         if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum]) {

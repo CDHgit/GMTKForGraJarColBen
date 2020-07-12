@@ -796,6 +796,11 @@ PrefabInstance:
       propertyPath: health
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: mechNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: topSprite
@@ -1483,6 +1488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: health
       value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: mechNumber
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}

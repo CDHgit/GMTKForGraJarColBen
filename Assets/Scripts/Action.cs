@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Action : ScriptableObject {
     
-    Vector3 startActionOrigin = new Vector3(502.5f, 308, -100);
+    Vector3 startActionOrigin = new Vector3(540f, 384f, -100);
     Vector3 trackIndexTransition = new Vector3(104, 0, 0);
     Vector3 actionIndexTransition = new Vector3(0, -154, 0);
     public virtual string spriteName{get {return null;}}    
@@ -39,7 +39,7 @@ public abstract class Action : ScriptableObject {
         // set the start position based on the action index and track index
         this.conveyorAction.GetComponent<RectTransform>().localPosition = startActionOrigin + (actionIdx * actionIndexTransition) + (trackIdx * trackIndexTransition);
         // ahaha how are you that small
-        this.conveyorAction.GetComponent<RectTransform>().localScale = new Vector3(100, 100, 1);
+        this.conveyorAction.GetComponent<RectTransform>().localScale = new Vector3(90, 90, 1);
     }
     public RectTransform getRectTrans()
     {
@@ -92,10 +92,45 @@ public class LaserAction : Action
 }
 public class BulletAction : Action
 {
+    public override string spriteName{get {return "Bullet";}}
+    public BulletAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("fireBullet");
     }
+}
+
+public class GrenadeAction : Action
+{
+    public override string spriteName{get {return "Grenade";}}
+    public GrenadeAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwGrenade");
+    }
+
+}
+
+public class EMPAction : Action
+{
+    public override string spriteName { get { return "EMP"; } }
+    public EMPAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx) { }
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwEMP");
+    }
+
+}
+
+public class MineAction : Action
+{
+    public override string spriteName{get {return "Proximity Mine";}}
+    public MineAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwMine");
+    }
+
 }
 
 public class HealAction : Action
@@ -104,7 +139,17 @@ public class HealAction : Action
     public HealAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
-        o.SendMessage("changeHealth");
+        o.SendMessage("heal");
+    }
+}
+
+public class ShieldAction : Action
+{
+    public override string spriteName { get { return "Force Field"; } }
+    public ShieldAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx) { }
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("shield");
     }
 }
 

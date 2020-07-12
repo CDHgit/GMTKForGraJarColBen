@@ -47,10 +47,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  thrust: 0.5
-  lifeSpanSecs: 5
-  initialSpeed: 1
-  maxSpeed: 3
+  thrust: 3
+  lifeSpanSecs: 10
+  initialSpeed: 0
+  maxSpeed: 7
+  armTime: 0.1
+  explosive: 1
+  explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
+    type: 3}
+  explosionHitbox: {fileID: 7127825383921032041, guid: 1bdeb870c01912d4784948ef7927253e,
+    type: 3}
 --- !u!50 &5981598900657558537
 Rigidbody2D:
   serializedVersion: 4

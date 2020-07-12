@@ -10,6 +10,8 @@ public class SongTimer : MonoBehaviour
     List<GameObject> observers = new List<GameObject>(); //list of all objects that want to be notified when the beat falls
     static string[] observedObjects = { "ContextManager", "TrackController", "Mech1", "Mech2", "Mech3" };
 
+    // TODO: prox mines glow on the beat??
+
     public float secPerBeat; //number of seconds that pass between beats
     float songPos; //number of seconds since the first beat
     float songStart; //time when the song start was recorded

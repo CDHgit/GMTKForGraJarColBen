@@ -7,8 +7,12 @@ public class BulletControl : MonoBehaviour {
     public float thrust = 1;
     public float lifeSpanSecs = 5;
     public float initialSpeed = 10;
-
     public float maxSpeed = 20;
+    public float armTime = 1;
+    public bool explosive = false;
+    public GameObject explosionParticles = null;
+    public GameObject explosionHitbox = null;
+
     Rigidbody2D rigidBody;
     Transform mTransform;
     float travelAngle;
@@ -35,19 +39,37 @@ public class BulletControl : MonoBehaviour {
         rigidBody.AddForce (thrust * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f)));
         mTransform.rotation = Quaternion.Euler (0, 0, travelAngle);
         if (Time.time - startTime > lifeSpanSecs) {
-            explode ();
+            Destroy(this.gameObject);
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
         GameObject collisionObject = collision.gameObject;
-        if (collisionObject != parent) {
-            if (collisionObject.CompareTag("Destructable")) {
-                collisionObject.GetComponent<MechInfo>().changeHealth(-damage);
-            }
-            explode ();
+        if (collision.gameObject.name.Contains("Water") || collision.gameObject.name.Contains("Lava")){
+            return;
         }
-    }
-    void explode () {
-        Destroy (this.gameObject);
+        if (Time.time - startTime > armTime || collisionObject!=parent) {
+            if (!explosive && collisionObject.CompareTag("Destructable"))
+            {
+                collisionObject.SendMessage("changeHealth", -damage);
+            }
+            else if (explosive)
+            {
+                collisionObject.SendMessage("changeHealth", -damage);
+                //summon explosion hitbox and effect
+
+                GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
+
+
+                GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
+
+                hit.SendMessage("init", new int[] {damage, 0});
+
+
+                SoundMixer.PlaySound("Explosion", 0.1f);
+
+            }
+
+            Destroy(this.gameObject);
+        }
     }
 }

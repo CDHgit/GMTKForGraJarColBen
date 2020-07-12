@@ -12,6 +12,15 @@ public class MechControls : MonoBehaviour {
 
     public GameObject laserPrefab;
     public GameObject bulletPrefab;
+    public GameObject grenadePrefab;
+    public GameObject empPrefab;
+    public GameObject minePrefab;
+    public GameObject explosionParticles;
+    public GameObject shieldPrefab;
+
+    [HideInInspector]
+    public bool invulnerable = false;
+
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
     public float dashLength;
@@ -35,7 +44,9 @@ public class MechControls : MonoBehaviour {
     float virusWalkTimer = 0;
     Vector2 force;
     private int targetNum;
+
     void Start () {
+        curMaxSpeed=maxSpeedConstant;
         rb = gameObject.GetComponent<Rigidbody2D> ();
         context = GameObject.Find ("ContextManager").GetComponent<Context> ();
         trackController = GameObject.Find ("TrackController").GetComponent<TrackController> ();
@@ -52,6 +63,7 @@ public class MechControls : MonoBehaviour {
             angle = angle * Mathf.PI / 180f;
             dashDestination = new Vector2 (-Mathf.Sin (angle), Mathf.Cos (angle));
             dashTimer = dashLength;
+
         }
     }
 
@@ -63,15 +75,19 @@ public class MechControls : MonoBehaviour {
             float angle;
 
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-15, 15);
             GameObject rocket = Instantiate (rocketPrefab, rb.position + .5f * new Vector2 (-Mathf.Sin (angle / 180f * Mathf.PI), Mathf.Cos (angle / 180f * Mathf.PI)), Quaternion.Euler (0, 0, angle));
             rocket.SendMessage ("initBullet", angle);
             rocket.SendMessage ("setParent", this.gameObject);
+
+            SoundMixer.PlaySound("MissileLaunch" + (Random.Range(1,5)));
         }
 
     }
     public void fireLaser () {
         //Debug.Log("Firin laser " + laserStopped + " " +mechNum);
-        if (laserStopped){
+        if (laserStopped) {
             return;
         }
 
@@ -82,12 +98,17 @@ public class MechControls : MonoBehaviour {
 
             GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-10, 10);
+
             float angRad = angle / 180f * Mathf.PI;
             GameObject laser = Instantiate (laserPrefab,
                 this.transform.position + offsetAmount * new Vector3 (-Mathf.Sin (angRad), Mathf.Cos (angRad), 0),
                 Quaternion.Euler (0, 0, angle));
             laser.SendMessage ("initBullet", angle);
             laser.SendMessage ("setParent", this.gameObject);
+
+            SoundMixer.PlaySound("Laser");
         }
     }
 
@@ -97,7 +118,9 @@ public class MechControls : MonoBehaviour {
             StartCoroutine (bulletCoruoutine ());
         }
     }
-
+    void destroyWall(){
+        //DO NOTHING
+    }
     IEnumerator bulletCoruoutine () {
         float angle;
         // Shoot random burst
@@ -105,42 +128,156 @@ public class MechControls : MonoBehaviour {
         for (int i = 0; i < burst; i++) {
             GameObject curMech = context.getCurMech ();
             GameObject target = context.mechList[targetNum];
-            angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+
+            // Add cone of fire
+            angle += Random.Range(-20, 20);
+
             float angRad = angle / 180f * Mathf.PI;
 
-            GameObject bullet = Instantiate (bulletPrefab,
-                this.transform.position + offsetAmount * new Vector3 (-Mathf.Sin (angRad), Mathf.Cos (angRad), 0),
-                Quaternion.Euler (0, 0, angle));
-            bullet.SendMessage ("initBullet", angle);
-            bullet.SendMessage ("setParent", this.gameObject);
+            GameObject bullet = Instantiate(bulletPrefab, rb.position + .5f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle));
+            bullet.SendMessage("initBullet", angle);
+            bullet.SendMessage("setParent", this.gameObject);
+
+            SoundMixer.PlaySound("Gunshot" + Random.Range(1,3), 0.1f);
 
             yield return new WaitForSeconds (0.25f);
 
         }
     }
+    public void throwGrenade()
+    {
+        float angle;
+        if (mechEnabled)
+        {
+            GameObject curMech = context.getCurMech();
+
+            GameObject target = context.mechList[targetNum];
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-90, 90);
+
+            float angRad = angle / 180f * Mathf.PI;
+            GameObject grenade = Instantiate(grenadePrefab,
+                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
+                Quaternion.Euler(0, 0, angle));
+            grenade.SendMessage("initLob", new float[] { angle, 0 });
+            grenade.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
+        }
+    }
+
+    public void throwEMP()
+    {
+        float angle;
+        if (mechEnabled)
+        {
+            GameObject curMech = context.getCurMech();
+
+            GameObject target = context.mechList[targetNum];
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-90, 90);
+
+            float angRad = angle / 180f * Mathf.PI;
+            GameObject EMP = Instantiate(empPrefab,
+                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
+                Quaternion.Euler(0, 0, angle));
+            float[] args = {angle, 1};
+            EMP.SendMessage("initLob", args);
+            EMP.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
+        }
+    }
+
+    public void throwMine()
+    {
+        float angle;
+        if (mechEnabled)
+        {
+            GameObject curMech = context.getCurMech();
+
+            GameObject target = context.mechList[targetNum];
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-180, 180);
+
+            float angRad = angle / 180f * Mathf.PI;
+            GameObject mine = Instantiate(minePrefab,
+                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
+                Quaternion.Euler(0, 0, angle));
+            mine.SendMessage("initLob", new float[] { angle, 0});
+            mine.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
+        }
+    }
+
+    public void shield()
+    {
+        if (mechEnabled)
+        {
+            StartCoroutine(shieldCoruoutine());
+        }
+        
+    }
+
+    IEnumerator shieldCoruoutine()
+    {
+        GameObject shieldObj = Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        shieldObj.transform.parent = gameObject.transform;
+        invulnerable = true;
+        SoundMixer.PlaySound("Shield");
+
+        yield return new WaitForSeconds(2f);
+
+        invulnerable = false;
+        Destroy(shieldObj);
+    }
+
+    void heal()
+    {
+        MechInfo mInfo = this.gameObject.GetComponent<MechInfo>();
+        mInfo.changeHealth(25);
+        SoundMixer.PlaySound("Heal");
+    }
+
     void laserEnd () {
         laserStopped = false;
     }
+
+    public void empEffect()
+    {
+        StartCoroutine(empEffected());
+    }
+
+    IEnumerator empEffected()
+    {
+        this.setMechEnabledStatus(false);
+        yield return new WaitForSeconds(3f);
+        this.setMechEnabledStatus(true);
+    }
+
     void dead(){
         context.dead++;
-        dottedLine.pointBs[mechNum]=GetComponent<Rigidbody2D>().position;
-        this.gameObject.SetActive(false);
-        setMechEnabledStatus(false);
+        dottedLine.pointBs[mechNum] = GetComponent<Rigidbody2D> ().position;
+        this.gameObject.SetActive (false);
+        setMechEnabledStatus (false);
+        GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
     }
-    
-    void goalAchieved(){
+
+    void goalAchieved () {
         context.goal++;
-        this.gameObject.SetActive(false);
-        setMechEnabledStatus(false);
+        this.gameObject.SetActive (false);
+        setMechEnabledStatus (false);
     }
     // Update is called once per frame
     void FixedUpdate () {
-        if ( this.mechEnabled && !context.mechList[targetNum].GetComponent<MechControls>().mechEnabled) {
+        if (this.mechEnabled && !context.mechList[targetNum].GetComponent<MechControls> ().mechEnabled) {
             targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
         }
         GameObject curMech = context.getCurMech ();
         GameObject target = context.mechList[targetNum];
-        
+
         if (!laserStopped)
             topSprite.transform.rotation = Quaternion.Euler (0, 0, HelperFunctions.getAngleBetween (this.gameObject, target));
         //Force applied is used to detect if any of the directions are input
@@ -151,7 +288,7 @@ public class MechControls : MonoBehaviour {
         dottedLine.pointBs[mechNum] = target.GetComponent<Transform> ().position;
         //Debug.Log ("LASER " + mechNum + " " + laserStopped);
         if (active && mechEnabled && !laserStopped) {
-            maxSpeed = maxSpeedConstant;
+            maxSpeed = curMaxSpeed;
 
             if (dashTimer > 0) { // we are dashing/ dash is on cooldown
                 rb.AddForce (dashDestination * dashStrength);
@@ -186,18 +323,17 @@ public class MechControls : MonoBehaviour {
             }
         } else if (mechEnabled && !laserStopped) {
             // mech ai when uncontrolled
-            maxSpeed = maxSpeedConstant * 0.3f;
+            maxSpeed = curMaxSpeed * 0.3f;
 
             if (virusWalkTimer > 0) {
-                // we are dashing/ dash is on cooldown
                 rb.AddForce (force);
                 virusWalkTimer -= Time.deltaTime;
                 forceApplied = true;
             } else {
                 GameObject targetMech = context.getCurMech ();
-                Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
-                Vector2 randomAngle = Random.insideUnitCircle * distance.magnitude * 1.5f;
-                force = (distance + randomAngle) * thrust;
+                //Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
+                Vector2 randomAngle = Random.insideUnitCircle * 2;
+                force = (randomAngle) * thrust;
 
                 virusWalkTimer = Random.Range (0, 3);
             }
@@ -230,6 +366,13 @@ public class MechControls : MonoBehaviour {
             this.gameObject.transform.GetChild (1).gameObject.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
         }
     }
+    float curMaxSpeed;
+    public void reduceSpeed () {
+        curMaxSpeed=maxSpeedConstant/2;
+    }
+    public void restoreSpeed() {
+        curMaxSpeed=maxSpeedConstant;
+    }
     void setMechNum1 (int mechNum) {
         this.mechNum = mechNum;
     }
@@ -246,7 +389,7 @@ public class MechControls : MonoBehaviour {
             }
         }
 
-        if ( (this.mechEnabled && beatNum % 2 == 0)) {
+        if ((this.mechEnabled && beatNum % 2 == 0)) {
             targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
         }
     }

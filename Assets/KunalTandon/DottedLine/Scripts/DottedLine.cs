@@ -85,7 +85,7 @@ namespace DottedLine
             {
                 positions.Add(position);
                 var g = GetOneDot(mechNum);
-                g.transform.position = position;
+                g.transform.position = new Vector3(position.x,position.y,-1);
                 dots.Add(g);
             }
         }
