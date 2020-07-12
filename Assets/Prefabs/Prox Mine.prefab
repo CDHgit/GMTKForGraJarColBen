@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7127825383921032041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895c8f6e0d728a44791ae8546c10d9e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 64174598b93e9a647a4c1defd0ba1a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
@@ -125,7 +125,7 @@ MonoBehaviour:
   maxSize: 2
   explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
     type: 3}
-  explosionHitbox: {fileID: 7127825383921032041, guid: 2d74ff450d331ef4da3d06ce7751e92e,
+  explosionHitbox: {fileID: 7127825383921032041, guid: 1bdeb870c01912d4784948ef7927253e,
     type: 3}
-  empHitbox: {fileID: 8990333661575899127, guid: 13bb2113ad54a5543b0bfc4a315651b9,
+  empHitbox: {fileID: 8990333661575899127, guid: 45081cf7368c50243b4b4d0fc7ed5645,
     type: 3}

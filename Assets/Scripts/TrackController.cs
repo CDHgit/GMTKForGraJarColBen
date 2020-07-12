@@ -29,7 +29,8 @@ public class TrackController : MonoBehaviour {
         secPerBeat = GameObject.Find ("Audio Source").GetComponent<SongTimer> ().secPerBeat;
         pxPerBeatIncrement = secPerBeat / heightOfBelt;
         initTrackPos = conveyorImageBase.GetComponent<RectTransform>().localPosition;
-        System.Type[] allItemsTrack = new System.Type[]{typeof(EmptyAction), typeof(DashAction), typeof(RocketFireAction), typeof(BulletAction)};
+        System.Type[] allItemsTrack = new System.Type[]{typeof(EmptyAction), typeof(DashAction), typeof(RocketFireAction), typeof(BulletAction), 
+                                                        typeof(ShieldAction), typeof(HealAction), typeof(MineAction), typeof(EMPAction), typeof(GrenadeAction)};
         tracks[0] = new Track(trackSize, 0, allItemsTrack);
         tracks[1] = new Track(trackSize, 1, allItemsTrack);
         tracks[2] = new Track(trackSize, 2, allItemsTrack);
