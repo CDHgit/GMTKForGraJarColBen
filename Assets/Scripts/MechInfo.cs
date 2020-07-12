@@ -34,6 +34,7 @@ public class MechInfo : MonoBehaviour {
 
     public void changeHealth (int deltaHealth) {
         health = health + deltaHealth;
+        //Debug.Log("healthDown "+  health);
     }
 
     void changeAntivirus (int antivirusDelta) {
