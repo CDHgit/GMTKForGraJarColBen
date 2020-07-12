@@ -11,9 +11,7 @@ public class Wall : MonoBehaviour {
     void changeHealth (int delta) {
         health += delta;
     }
-    void destroyWall(int delta){
-        health += delta;
-    }
+
     // Update is called once per frame
     void Update () {
         if (health <= 0) {
