@@ -37,12 +37,12 @@ public class MechInfo : MonoBehaviour
 
     public void changeHealth(int deltaHealth)
     {
-        health = health + deltaHealth;
+        health += deltaHealth;
     }
 
     void changeAntivirus(int antivirusDelta)
     {
-        antivirusProgress = antivirusProgress + antivirusDelta;
+        antivirusProgress += antivirusDelta;
     }
 
     void setMechNumber(int mechNumberValue)
