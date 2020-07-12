@@ -19,7 +19,7 @@ public abstract class Action : ScriptableObject {
     //Empty Constructor
     public Action(){}
     //Constructor
-    public Action(int actionIdx, int trackIdx)
+    public Action(float actionIdx, int trackIdx)
     {
         // Get the action prefab from the resources folder 
         GameObject actionPrefab = Resources.Load("Prefabs/Action") as GameObject;
@@ -49,7 +49,7 @@ public abstract class Action : ScriptableObject {
 }
 public class EmptyAction : Action
 {
-    public EmptyAction(int actionIdx, int trackIdx) : base(){}
+    public EmptyAction(float actionIdx, int trackIdx) : base(){}
     public override void performAction(GameObject o)
     {
         //Do Nothing
@@ -57,7 +57,7 @@ public class EmptyAction : Action
 }
 public class TestAction : Action 
 {
-    public TestAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public TestAction(float actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
         // //Debug.Log ("hello"); 
     }
@@ -65,7 +65,7 @@ public class TestAction : Action
 public class DashAction : Action 
 {
     public override string spriteName{get {return "Dash";}}
-    public DashAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public DashAction(float actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
         o.SendMessage("startDash");
     }
@@ -74,7 +74,7 @@ public class DashAction : Action
 public class RocketFireAction : Action 
 { 
     public override string spriteName{get {return "Non-Homing Missile";}}
-    public RocketFireAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public RocketFireAction(float actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
         o.SendMessage("fireRocket");
     }
@@ -84,7 +84,7 @@ public class RocketFireAction : Action
 public class LaserAction : Action
 {
     public override string spriteName{get {return "Yellow Laser";}}
-    public LaserAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public LaserAction(float actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("fireLaser");
@@ -101,7 +101,7 @@ public class BulletAction : Action
 public class HealAction : Action
 {
     public override string spriteName{get {return "Healing";}}
-    public HealAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public HealAction(float actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("changeHealth");
@@ -111,7 +111,7 @@ public class HealAction : Action
 public class AntivirusAction : Action
 {
     public override string spriteName{get {return "Antivirus Progress Icon";}}
-    public AntivirusAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public AntivirusAction(float actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("changeAntivirus");

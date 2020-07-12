@@ -15,7 +15,7 @@ public class Track {
         this.trackIdx = tIdx;
         this.possibleActions=possibleActions;
         for (int i = 0; i < size; i++) {
-            addAction (i, trackIdx);
+            addAction ((float)i - .5f, trackIdx);
         }
     }
     public void addMech(GameObject mech){
@@ -42,7 +42,7 @@ public class Track {
     /**
      * Adds a random action to the end of our loaded actions
      */
-    private void addAction (int actionIdx, int trackIdx) {
+    private void addAction (float actionIdx, int trackIdx) {
         Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
         // Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
         actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
