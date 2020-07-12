@@ -50,7 +50,7 @@ public class Context : MonoBehaviour {
             } else if (Input.GetKeyDown (mech3Key)) {
                 switchMech (2);
             }
-            if (Time.time > timeToWin) {
+            if (Time.timeSinceLevelLoad > timeToWin) {
                 win ();
             }
             //Debug.Log(dead + " DEAD "+ deadThreshold);
@@ -59,9 +59,9 @@ public class Context : MonoBehaviour {
             }
         }
         else if (Time.unscaledTime - doneStart > 4) {
-            Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene("Level 2");
             SceneManager.LoadScene ("Menu");
-            SceneManager.UnloadSceneAsync("Level 2");
+            doneStart = -1;
             Time.timeScale=1;
         }
         Debug.Log("AWEFAWEFAWEFAWE AW W FEW W W EW F A "  + (Time.unscaledTime - doneStart));
@@ -78,12 +78,11 @@ public class Context : MonoBehaviour {
         foreach (GameObject o in mechList) {
             o.GetComponent<MechControls> ().setMechEnabledStatus (false);
         }
-        float score = calculteScore ();
         try {
             GetComponent<SpriteRenderer> ().sprite = winSprite;
             GetComponent<SpriteRenderer> ().enabled = (true);
-        } catch (MissingComponentException e) { Debug.LogError ("Failed to win because no sprite renderer"); }
-        Time.timeScale = 0;
+            Time.timeScale = 0;
+        } catch (MissingComponentException e) { Debug.LogError ("Failed to lose because no sprite renderer"); }
         doneStart = Time.unscaledTime;
     }
     public void lose () {
