@@ -74,9 +74,10 @@ public class Context : MonoBehaviour {
     }
     public void win () {
         float score = calculteScore();
+        try{
         GetComponent<SpriteRenderer>().sprite=winSprite;
         GetComponent<SpriteRenderer>().enabled = (true);
-        
+        }catch(MissingComponentException e){Debug.LogError("Failed to win because no sprite renderer");}
         Time.timeScale=0;
 
     }
@@ -85,7 +86,7 @@ public class Context : MonoBehaviour {
             GetComponent<SpriteRenderer>().sprite=lossSprite;
             GetComponent<SpriteRenderer>(). enabled  = (true);
             Time.timeScale=0;
-        }catch(MissingComponentException e){}
+        }catch(MissingComponentException e){Debug.LogError("Failed to lose because no sprite renderer");}
     }
     public GameObject getCurMech () {
         return mechList[curMechIdx];

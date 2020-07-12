@@ -53,7 +53,6 @@ public class TrackController : MonoBehaviour {
             setTrack (context.getCurMech (), 2);
         }
         float pixToMove = Time.deltaTime / pxPerBeatIncrement;
-        conveyorImageBase.GetComponent<RectTransform> ().localPosition += new Vector3 (0, (float) pixToMove, 0);
         //Update track Actions UI
         tracks[0].UpdateActionsUI(pixToMove);
         tracks[1].UpdateActionsUI(pixToMove);

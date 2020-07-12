@@ -668,6 +668,11 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: health
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: topSprite
@@ -1151,7 +1156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bea9328db9aa8624a8feaee1ce05094c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5ecd9c0299e59742acb32aeaa84cccc, type: 3}
   m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1351,6 +1356,11 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: health
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: topSprite
@@ -1668,6 +1678,11 @@ PrefabInstance:
       propertyPath: antivirusSlider
       value: 
       objectReference: {fileID: 111008940}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: health
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: topSprite

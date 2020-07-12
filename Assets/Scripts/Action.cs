@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Action : ScriptableObject {
     
-    Vector3 startActionOrigin = new Vector3(-716, 322, -100);
+    Vector3 startActionOrigin = new Vector3(502.5f, 308, -100);
     Vector3 trackIndexTransition = new Vector3(104, 0, 0);
     Vector3 actionIndexTransition = new Vector3(0, -154, 0);
     public virtual string spriteName{get {return null;}}    
