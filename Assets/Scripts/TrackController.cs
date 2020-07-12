@@ -29,9 +29,10 @@ public class TrackController : MonoBehaviour {
         secPerBeat = GameObject.Find ("Audio Source").GetComponent<SongTimer> ().secPerBeat;
         pxPerBeatIncrement = secPerBeat / heightOfBelt;
         initTrackPos = conveyorImageBase.GetComponent<RectTransform>().localPosition;
-        tracks[0] = new Track(trackSize, 0, new System.Type[]{typeof(RocketFireAction)});
-        tracks[1] = new Track(trackSize, 1, new System.Type[]{typeof(RocketFireAction)});
-        tracks[2] = new Track(trackSize, 2, new System.Type[]{typeof(RocketFireAction)});
+        System.Type[] allItemsTrack = new System.Type[]{typeof(EmptyAction), typeof(DashAction), typeof(RocketFireAction), typeof(BulletAction)};
+        tracks[0] = new Track(trackSize, 0, allItemsTrack);
+        tracks[1] = new Track(trackSize, 1, allItemsTrack);
+        tracks[2] = new Track(trackSize, 2, allItemsTrack);
         for (int i = 0; i < 3; i++) {
             setTrack (context.mechList[i], i);
         }
@@ -53,7 +54,6 @@ public class TrackController : MonoBehaviour {
             setTrack (context.getCurMech (), 2);
         }
         float pixToMove = Time.deltaTime / pxPerBeatIncrement;
-        conveyorImageBase.GetComponent<RectTransform> ().localPosition += new Vector3 (0, (float) pixToMove, 0);
         //Update track Actions UI
         tracks[0].UpdateActionsUI(pixToMove);
         tracks[1].UpdateActionsUI(pixToMove);
@@ -61,9 +61,9 @@ public class TrackController : MonoBehaviour {
         //Move the track image repeatedly so that it loops
         conveyorImageBase.GetComponent<RectTransform>().localPosition += new Vector3(0,(float)pixToMove,0); 
     }
-    void onBeat () {
+    void onBeat (int beatNum) {
         foreach (Track t in tracks) {
-            t.runBeat ();
+            t.runBeat (beatNum);
         }
         resetConveyorUI();
     }

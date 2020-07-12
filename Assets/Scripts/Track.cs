@@ -14,9 +14,10 @@ public class Track {
         this.size = size;
         this.trackIdx = tIdx;
         this.possibleActions=possibleActions;
-        for (int i = 0; i < size; i++) {
-            addAction (i, trackIdx);
-        }
+        // Moved to runBeat for first beat
+        // for (int i = 0; i < size; i++) {
+        //     addAction ((float)i - .5f, trackIdx);
+        // }
     }
     public void addMech(GameObject mech){
         mechs.Add(mech);
@@ -27,9 +28,21 @@ public class Track {
     /**
      * Runs the next beat
      */
-    public void runBeat () {
-        consumeAction ();
-        addAction(this.size, this.trackIdx);
+    public void runBeat (int beatNum) {
+        if(beatNum == 1)
+        {
+            for (int i = 0; i < size; i++) 
+            {
+                // Adds empty actions for the first 5, random actions after that
+                addAction (i, trackIdx, i < 6);
+            }
+        }
+        if(beatNum >= 1)
+        {
+            consumeAction ();
+            addAction(this.size, this.trackIdx);
+        }
+
     }
     
     /**
@@ -42,8 +55,9 @@ public class Track {
     /**
      * Adds a random action to the end of our loaded actions
      */
-    private void addAction (int actionIdx, int trackIdx) {
-        Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
+    private void addAction (int actionIdx, int trackIdx, bool isEmptyAction = false) {
+        // Screw readability all my friends hate readability (if is empty use empty else use random possible action)
+        Type actionType = isEmptyAction ? typeof(EmptyAction) : possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
         // Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
         actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
     }

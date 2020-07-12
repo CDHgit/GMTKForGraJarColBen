@@ -20,9 +20,15 @@ public class Context : MonoBehaviour {
     void Start () {
         // Create a list of mechs to iterate through later for easier updating
         mechList = new List<GameObject> ();
+        int i = 0;
         foreach (string s in mechs) {
+             
             mechList.Add (GameObject.Find (s));
+            mechList[i].GetComponent<MechInfo>().mechNumber = i;
+            ++i;
         }
+        //Initial Mech
+        switchMech(1);
 
         // This doesn't work right now might need to trigger it or have a 3 state maybe
         // switchMech(0);
@@ -50,19 +56,6 @@ public class Context : MonoBehaviour {
         if (dead >= deadThreshold) {
            lose ();
         }
-        else if (Input.GetKeyDown(KeyCode.U)) {
-            mechList[0].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[0] = false;
-        } else if (Input.GetKeyDown(KeyCode.I)) {
-            mechList[1].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[1] = false;
-        } else if (Input.GetKeyDown(KeyCode.O)) {
-            mechList[2].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[2] = false;
-        }else if (Input.GetKeyDown(KeyCode.R)) {
-            mechList[curMechIdx].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[curMechIdx] = false;
-        }
 
     }
     public float calculteScore(){
@@ -74,9 +67,10 @@ public class Context : MonoBehaviour {
     }
     public void win () {
         float score = calculteScore();
+        try{
         GetComponent<SpriteRenderer>().sprite=winSprite;
         GetComponent<SpriteRenderer>().enabled = (true);
-        
+        }catch(MissingComponentException e){Debug.LogError("Failed to win because no sprite renderer");}
         Time.timeScale=0;
 
     }
@@ -85,7 +79,7 @@ public class Context : MonoBehaviour {
             GetComponent<SpriteRenderer>().sprite=lossSprite;
             GetComponent<SpriteRenderer>(). enabled  = (true);
             Time.timeScale=0;
-        }catch(MissingComponentException e){}
+        }catch(MissingComponentException e){Debug.LogError("Failed to lose because no sprite renderer");}
     }
     public GameObject getCurMech () {
         return mechList[curMechIdx];
@@ -95,7 +89,7 @@ public class Context : MonoBehaviour {
      */
     private void switchMech (int mechNum) {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        // //Debug.Log("Switching mech to " + mechNum);
+        Debug.Log("Switching mech to " + mechNum);
 
         //Set the active mech to true and the others to false
         if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum]) {
