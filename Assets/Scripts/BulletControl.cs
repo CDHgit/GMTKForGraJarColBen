@@ -44,7 +44,8 @@ public class BulletControl : MonoBehaviour {
     }
     void OnTriggerEnter2D (Collider2D collision) {
         GameObject collisionObject = collision.gameObject;
-        if (collision.gameObject.name.Contains("Water") || collision.gameObject.name.Contains("Lava")){
+        if (collision.gameObject.name.Contains("Water") || collision.gameObject.name.Contains("Lava"))
+        {
             return;
         }
         if (Time.time - startTime > armTime || collisionObject!=parent) {
@@ -54,6 +55,9 @@ public class BulletControl : MonoBehaviour {
             }
             else if (explosive)
             {
+                if (collision.gameObject.name.Contains("Rocket"))
+                    return;
+
                 collisionObject.SendMessage("changeHealth", -damage);
                 //summon explosion hitbox and effect
 

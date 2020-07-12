@@ -74,9 +74,17 @@ public class MechControls : MonoBehaviour {
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
             // Add cone of fire
             angle += Random.Range(-15, 15);
-            GameObject rocket = Instantiate (rocketPrefab, rb.position + .5f * new Vector2 (-Mathf.Sin (angle / 180f * Mathf.PI), Mathf.Cos (angle / 180f * Mathf.PI)), Quaternion.Euler (0, 0, angle));
-            rocket.SendMessage ("initBullet", angle);
-            rocket.SendMessage ("setParent", this.gameObject);
+            GameObject rocket1 = Instantiate (rocketPrefab, rb.position + 1f * new Vector2 (-Mathf.Sin (angle / 180f * Mathf.PI), Mathf.Cos (angle / 180f * Mathf.PI)), Quaternion.Euler (0, 0, angle));
+            rocket1.SendMessage ("initBullet", angle);
+            rocket1.SendMessage ("setParent", this.gameObject);
+
+            GameObject rocket2 = Instantiate(rocketPrefab, rb.position + 1f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle + 15));
+            rocket2.SendMessage("initBullet", angle + 15);
+            rocket2.SendMessage("setParent", this.gameObject);
+
+            GameObject rocket3 = Instantiate(rocketPrefab, rb.position + 1f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle - 15));
+            rocket3.SendMessage("initBullet", angle - 15);
+            rocket3.SendMessage("setParent", this.gameObject);
 
             SoundMixer.PlaySound("MissileLaunch" + (Random.Range(1,5)));
         }
@@ -121,7 +129,7 @@ public class MechControls : MonoBehaviour {
     IEnumerator bulletCoruoutine () {
         float angle;
         // Shoot random burst
-        int burst = Random.Range (2, 5);
+        int burst = Random.Range (3, 7);
         SoundMixer.PlaySound("Gunshot" + Random.Range(1,3), 0.1f);
 
         for (int i = 0; i < burst; i++) {
@@ -153,7 +161,7 @@ public class MechControls : MonoBehaviour {
             GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween(this.gameObject, target);
             // Add cone of fire
-            angle += Random.Range(-90, 90);
+            angle += Random.Range(-30, 30);
 
             float angRad = angle / 180f * Mathf.PI;
             GameObject grenade = Instantiate(grenadePrefab,
@@ -175,7 +183,7 @@ public class MechControls : MonoBehaviour {
             GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween(this.gameObject, target);
             // Add cone of fire
-            angle += Random.Range(-90, 90);
+            angle += Random.Range(-30, 30);
 
             float angRad = angle / 180f * Mathf.PI;
             GameObject EMP = Instantiate(empPrefab,
