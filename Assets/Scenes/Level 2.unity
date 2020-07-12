@@ -6842,7 +6842,7 @@ MonoBehaviour:
   winSprite: {fileID: 0}
   lossSprite: {fileID: 0}
   deadThreshold: 1
-  switchCooldownBeats: 4
+  switchCooldownBeats: 1
   mechList: []
   mechsEnabled: 010101
 --- !u!4 &920621892
