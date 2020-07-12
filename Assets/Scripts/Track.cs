@@ -33,7 +33,8 @@ public class Track {
         {
             for (int i = 0; i < size; i++) 
             {
-                addAction (i, trackIdx);
+                // Adds empty actions for the first 5, random actions after that
+                addAction (i, trackIdx, i < 5);
             }
         }
         if(beatNum >= 1)
@@ -54,8 +55,9 @@ public class Track {
     /**
      * Adds a random action to the end of our loaded actions
      */
-    private void addAction (int actionIdx, int trackIdx) {
-        Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
+    private void addAction (int actionIdx, int trackIdx, bool isEmptyAction = false) {
+        // Screw readability all my friends hate readability (if is empty use empty else use random possible action)
+        Type actionType = isEmptyAction ? typeof(EmptyAction) : possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
         // Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
         actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
     }
