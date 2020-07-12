@@ -100,13 +100,56 @@ public class BulletAction : Action
     }
 }
 
+public class GrenadeAction : Action
+{
+    public override string spriteName{get {return "Grenade";}}
+    public GrenadeAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwGrenade");
+    }
+
+}
+
+public class EMPAction : Action
+{
+    public override string spriteName { get { return "EMP"; } }
+    public EMPAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx) { }
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwEMP");
+    }
+
+}
+
+public class MineAction : Action
+{
+    public override string spriteName{get {return "Proximity Mine";}}
+    public MineAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwMine");
+    }
+
+}
+
 public class HealAction : Action
 {
     public override string spriteName{get {return "Healing";}}
     public HealAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
-        o.SendMessage("changeHealth");
+        o.SendMessage("heal");
+    }
+}
+
+public class ShieldAction : Action
+{
+    public override string spriteName { get { return "Force Field"; } }
+    public ShieldAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx) { }
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("shield");
     }
 }
 

@@ -9,12 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6860593722282043080}
-  - component: {fileID: 7450529722206928541}
   - component: {fileID: 5981598900657558537}
   - component: {fileID: 4341891468203355023}
-  - component: {fileID: 1920641422661983926}
+  - component: {fileID: 626905736493703276}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: EMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,35 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7127825383921032041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.138, y: -1.6893, z: -2.5887575}
-  m_LocalScale: {x: 0.47031808, y: 0.4169707, z: 5}
+  m_LocalPosition: {x: -3.88, y: -1.533, z: -2.5887575}
+  m_LocalScale: {x: 0.5941504, y: 0.5941504, z: 2.9707522}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7450529722206928541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7127825383921032041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d728ca505bdcac34da9a52fdc69dec86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  thrust: 1
-  lifeSpanSecs: 20
-  initialSpeed: 8
-  maxSpeed: 8
-  armTime: 0.1
-  explosive: 0
-  explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
-    type: 3}
-  explosionHitbox: {fileID: 7127825383921032041, guid: 2d74ff450d331ef4da3d06ce7751e92e,
-    type: 3}
 --- !u!50 &5981598900657558537
 Rigidbody2D:
   serializedVersion: 4
@@ -116,8 +92,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bba4c4b535e0fcb41b98e96ca9ebc409, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 7c91ff9e9d22bcb4e9d706a2cf4682a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,35 +104,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1920641422661983926
-PolygonCollider2D:
+--- !u!114 &626905736493703276
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7127825383921032041}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.14, y: 0.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.038037777, y: 0.31938374}
-      - {x: -0.147511, y: 0.1669563}
-      - {x: -0.1437869, y: -0.30362153}
-      - {x: 0.18044734, y: -0.3096968}
-      - {x: 0.17702365, y: 0.020395279}
-      - {x: 0.17112994, y: 0.17518115}
-      - {x: 0.05492139, y: 0.32506907}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895c8f6e0d728a44791ae8546c10d9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  thrust: 1
+  lifeSpanSecs: 1
+  initialSpeed: 3
+  maxSpeed: 3
+  rotationSpeed: 6
+  maxSize: 1.5
+  explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
+    type: 3}
+  explosionHitbox: {fileID: 7127825383921032041, guid: 2d74ff450d331ef4da3d06ce7751e92e,
+    type: 3}
+  empHitbox: {fileID: 8990333661575899127, guid: 13bb2113ad54a5543b0bfc4a315651b9,
+    type: 3}
