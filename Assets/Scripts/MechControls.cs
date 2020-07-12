@@ -57,6 +57,8 @@ public class MechControls : MonoBehaviour {
             float angle;
 
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-15, 15);
             GameObject rocket = Instantiate (rocketPrefab, rb.position + .5f * new Vector2 (-Mathf.Sin (angle / 180f * Mathf.PI), Mathf.Cos (angle / 180f * Mathf.PI)), Quaternion.Euler (0, 0, angle));
             rocket.SendMessage ("initBullet", angle);
             rocket.SendMessage ("setParent", this.gameObject);
@@ -70,6 +72,9 @@ public class MechControls : MonoBehaviour {
 
             GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween (this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-10, 10);
+
             float angRad = angle / 180f * Mathf.PI;
             GameObject laser = Instantiate (laserPrefab,
                 this.transform.position + offsetAmount * new Vector3 (-Mathf.Sin (angRad), Mathf.Cos (angRad), 0),
@@ -98,11 +103,13 @@ public class MechControls : MonoBehaviour {
             GameObject curMech = context.getCurMech();
             GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+
+            // Add cone of fire
+            angle += Random.Range(-20, 20);
+
             float angRad = angle / 180f * Mathf.PI;
 
-            GameObject bullet = Instantiate(bulletPrefab,
-                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
-                Quaternion.Euler(0, 0, angle));
+            GameObject bullet = Instantiate(bulletPrefab, rb.position + .5f * new Vector2(-Mathf.Sin(angle / 180f * Mathf.PI), Mathf.Cos(angle / 180f * Mathf.PI)), Quaternion.Euler(0, 0, angle));
             bullet.SendMessage("initBullet", angle);
             bullet.SendMessage("setParent", this.gameObject);
 
