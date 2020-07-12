@@ -20,8 +20,12 @@ public class Context : MonoBehaviour {
     void Start () {
         // Create a list of mechs to iterate through later for easier updating
         mechList = new List<GameObject> ();
+        int i = 0;
         foreach (string s in mechs) {
+             
             mechList.Add (GameObject.Find (s));
+            mechList[i].GetComponent<MechInfo>().mechNumber = i;
+            ++i;
         }
         //Initial Mech
         switchMech(1);
