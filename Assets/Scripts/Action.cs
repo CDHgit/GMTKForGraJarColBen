@@ -92,6 +92,8 @@ public class LaserAction : Action
 }
 public class BulletAction : Action
 {
+    public override string spriteName{get {return "Bullet";}}
+    public BulletAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("fireBullet");
