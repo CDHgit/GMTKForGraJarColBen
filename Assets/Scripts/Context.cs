@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class Context : MonoBehaviour {
     public float timeToWin = 50;
     private readonly string[] mechs = { "Mech1", "Mech2", "Mech3" };
     public int dead = 0, goal = 0;
     public int goalThreshold = 1;
+    public Slider slider;
     public Sprite winSprite, lossSprite;
     public int deadThreshold = 1;
     public int switchCooldownBeats = 8;
@@ -27,6 +29,7 @@ public class Context : MonoBehaviour {
             mechList[i].GetComponent<MechInfo> ().mechNumber = i;
             ++i;
         }
+        
         //Initial Mech
         switchMech (1);
 
@@ -36,7 +39,9 @@ public class Context : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+       
         if (doneStart == -1) {
+            slider.value=100f*Time.timeSinceLevelLoad/timeToWin;
             int oldBeatsToReady = beatsToReady;
             for (int i = 0; i < 3 && !mechList[(curMechIdx) % 3].GetComponent<MechControls> ().getMechEnabledStatus (); i++) {
                 beatsToReady = 0;
@@ -64,7 +69,7 @@ public class Context : MonoBehaviour {
             doneStart = -1;
             Time.timeScale=1;
         }
-        Debug.Log("AWEFAWEFAWEFAWE AW W FEW W W EW F A "  + (Time.unscaledTime - doneStart));
+        //Debug.Log("AWEFAWEFAWEFAWE AW W FEW W W EW F A "  + (Time.unscaledTime - doneStart));
     }
     public float calculteScore () {
         float ret = 0;
