@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Reflection;
 
 public class Track {
     public int size; // Beats in the queue
-    public Action[] possibleActions; //potential actions to pull from
+    public System.Type[] possibleActions; //potential actions to pull from
     private Queue actions = new Queue (); //action queue
     private List<GameObject> mechs = new List<GameObject>();
-    public Track (int size, Action[] possibleActions) {
-        this.possibleActions=possibleActions;
+    private int trackIdx;
+    public Track (int size, int tIdx, System.Type[] possibleActions) {
         this.size = size;
+        this.trackIdx = tIdx;
+        this.possibleActions=possibleActions;
         for (int i = 0; i < size; i++) {
-            addAction ();
+            addAction (i, trackIdx);
         }
     }
     public void addMech(GameObject mech){
@@ -25,21 +29,23 @@ public class Track {
      */
     public void runBeat () {
         consumeAction ();
-        addAction ();
+        addAction(this.size, this.trackIdx);
     }
     
     /**
      * Sets the possible actions this Track can pull from
      */
-    public void setPossibleActions (Action[] actions) {
+    public void setPossibleActions (System.Type[] actions) {
         this.possibleActions = actions;
     }
 
     /**
      * Adds a random action to the end of our loaded actions
      */
-    private void addAction () {
-        actions.Enqueue (possibleActions[Random.Range (0, possibleActions.Length)]);
+    private void addAction (int actionIdx, int trackIdx) {
+        Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
+        // Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
+        actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
     }
     /**
      * Runs the next action in the queue
@@ -49,6 +55,18 @@ public class Track {
         foreach (GameObject m in mechs) {
             a.performAction (m);
         }
+        a.deleteAction();
     }
-
+    public void UpdateActionsUI (float pixToMove) {
+        foreach(Action actionItem in actions){
+            try{
+                RectTransform actionRect = actionItem.getRectTrans();
+                if(actionRect != null)
+                {
+                    actionRect.localPosition += new Vector3(0,(float)pixToMove,0); 
+                }
+            }catch(NullReferenceException e){} // Deleted before update in race condition
+            
+        }
+    }
 }
