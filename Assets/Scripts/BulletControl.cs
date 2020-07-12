@@ -47,10 +47,11 @@ public class BulletControl : MonoBehaviour {
         if (Time.time - startTime > armTime || collisionObject!=parent) {
             if (!explosive && collisionObject.CompareTag("Destructable"))
             {
-                collisionObject.GetComponent<MechInfo>().changeHealth(-damage);
+                collisionObject.SendMessage("changeHealth", -damage);
             }
             else if (explosive)
             {
+                collisionObject.SendMessage("destroyWall", -damage);
                 //summon explosion hitbox and effect
                 GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
                 GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));

@@ -110,7 +110,9 @@ public class MechControls : MonoBehaviour {
             StartCoroutine (bulletCoruoutine ());
         }
     }
-
+    void destroyWall(){
+        //DO NOTHING
+    }
     IEnumerator bulletCoruoutine () {
         float angle;
         // Shoot random burst
