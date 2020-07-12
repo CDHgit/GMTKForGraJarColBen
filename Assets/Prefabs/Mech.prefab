@@ -493,6 +493,9 @@ MonoBehaviour:
     type: 3}
   explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
     type: 3}
+  shieldPrefab: {fileID: 7127825383921032041, guid: df1c2693014ed284e9ad6bca0b0dde2f,
+    type: 3}
+  invulnerable: 0
   dashStrength: 0
   dashLength: 0
   active: 0

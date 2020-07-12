@@ -33,8 +33,9 @@ public class MechInfo : MonoBehaviour {
     }
 
     public void changeHealth (int deltaHealth) {
-        health = health + deltaHealth;
-        //Debug.Log("healthDown "+  health);
+        if (!this.gameObject.GetComponent<MechControls>().invulnerable)
+            health = health + deltaHealth;
+
     }
 
     void changeAntivirus (int antivirusDelta) {

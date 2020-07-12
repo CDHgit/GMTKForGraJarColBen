@@ -132,6 +132,16 @@ public class HealAction : Action
     }
 }
 
+public class ShieldAction : Action
+{
+    public override string spriteName { get { return "Force Field"; } }
+    public ShieldAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx) { }
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("shield");
+    }
+}
+
 public class AntivirusAction : Action
 {
     public override string spriteName{get {return "Antivirus Progress Icon";}}

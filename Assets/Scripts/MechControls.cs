@@ -13,6 +13,10 @@ public class MechControls : MonoBehaviour {
     public GameObject grenadePrefab;
     public GameObject minePrefab;
     public GameObject explosionParticles;
+    public GameObject shieldPrefab;
+
+    [HideInInspector]
+    public bool invulnerable = false;
 
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
@@ -168,9 +172,30 @@ public class MechControls : MonoBehaviour {
             mine.SendMessage("setParent", this.gameObject);
         }
     }
+
+    public void shield()
+    {
+        if (mechEnabled)
+        {
+            StartCoroutine(shieldCoruoutine());
+        }
+        
+    }
+
+    IEnumerator shieldCoruoutine()
+    {
+        GameObject shieldObj = Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        shieldObj.transform.parent = gameObject.transform;
+        invulnerable = true;
+        yield return new WaitForSeconds(2f);
+        invulnerable = false;
+        Destroy(shieldObj);
+    }
+
     void laserEnd () {
         laserStopped = false;
     }
+
     void dead(){
         context.dead++;
         dottedLine.pointBs[mechNum]=GetComponent<Rigidbody2D>().position;
