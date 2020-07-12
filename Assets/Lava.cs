@@ -12,7 +12,7 @@ public class Lava : MonoBehaviour {
     float totalDamage = 0;
         void OnTriggerStay2D(Collider2D collision)
  {
-     Debug.Log("stay" + totalDamage+ " "+ Time.deltaTime);
+//     Debug.Log("stay" + totalDamage+ " "+ Time.deltaTime);
         GameObject collisionObject = collision.gameObject;
         totalDamage += Time.deltaTime * dps;
         if (collisionObject.CompareTag ("Destructable")) {

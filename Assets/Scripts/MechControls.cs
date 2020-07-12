@@ -60,6 +60,7 @@ public class MechControls : MonoBehaviour {
             angle = angle * Mathf.PI / 180f;
             dashDestination = new Vector2 (-Mathf.Sin (angle), Mathf.Cos (angle));
             dashTimer = dashLength;
+
         }
     }
 
@@ -121,6 +122,8 @@ public class MechControls : MonoBehaviour {
         float angle;
         // Shoot random burst
         int burst = Random.Range (2, 5);
+        SoundMixer.PlaySound("Gunshot" + Random.Range(1,3), 0.1f);
+
         for (int i = 0; i < burst; i++) {
             GameObject curMech = context.getCurMech ();
             GameObject target = context.mechList[targetNum];
@@ -135,7 +138,6 @@ public class MechControls : MonoBehaviour {
             bullet.SendMessage("initBullet", angle);
             bullet.SendMessage("setParent", this.gameObject);
 
-            SoundMixer.PlaySound("Gunshot" + Random.Range(1,3), 0.1f);
 
             yield return new WaitForSeconds (0.25f);
 
@@ -159,6 +161,7 @@ public class MechControls : MonoBehaviour {
                 Quaternion.Euler(0, 0, angle));
             grenade.SendMessage("initLob", new float[] { angle, 0 });
             grenade.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
         }
     }
 
@@ -181,6 +184,7 @@ public class MechControls : MonoBehaviour {
             float[] args = {angle, 1};
             EMP.SendMessage("initLob", args);
             EMP.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
         }
     }
 
@@ -202,6 +206,7 @@ public class MechControls : MonoBehaviour {
                 Quaternion.Euler(0, 0, angle));
             mine.SendMessage("initLob", new float[] { angle, 0});
             mine.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
         }
     }
 
@@ -219,7 +224,7 @@ public class MechControls : MonoBehaviour {
         GameObject shieldObj = Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         shieldObj.transform.parent = gameObject.transform;
         invulnerable = true;
-        SoundMixer.PlaySound("Shield");
+        SoundMixer.PlaySound("Shield", .1f);
 
         yield return new WaitForSeconds(2f);
 
@@ -319,15 +324,14 @@ public class MechControls : MonoBehaviour {
             maxSpeed = curMaxSpeed * 0.3f;
 
             if (virusWalkTimer > 0) {
-                // we are dashing/ dash is on cooldown
                 rb.AddForce (force);
                 virusWalkTimer -= Time.deltaTime;
                 forceApplied = true;
             } else {
                 GameObject targetMech = context.getCurMech ();
-                Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
-                Vector2 randomAngle = Random.insideUnitCircle * distance.magnitude * 1.5f;
-                force = (distance + randomAngle) * thrust;
+                //Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
+                Vector2 randomAngle = Random.insideUnitCircle * 2;
+                force = (randomAngle) * thrust;
 
                 virusWalkTimer = Random.Range (0, 3);
             }

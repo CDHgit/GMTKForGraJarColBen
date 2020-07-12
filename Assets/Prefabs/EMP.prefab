@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   thrust: 1
-  lifeSpanSecs: 1
+  lifeSpanSecs: 0.93
   initialSpeed: 3
   maxSpeed: 3
   rotationSpeed: 6

@@ -46,7 +46,6 @@ public class LobbedControl : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-
         if (Time.time - startTime > Mathf.Abs(lifeSpanSecs)) {
             if (lifeSpanSecs > 0)
                 explode ();
@@ -67,12 +66,14 @@ public class LobbedControl : MonoBehaviour {
             rigidBody.AddForce(thrust * new Vector2(-Mathf.Sin(travelAngle * Mathf.PI / 180f), Mathf.Cos(travelAngle * Mathf.PI / 180f)));
             rotation += rotationSpeed;
             mTransform.rotation = Quaternion.Euler(0, 0, rotation);
-
             float lobScale = (Mathf.Sin((Time.time - startTime) * lobSpeed)) * (maxSize - 1) + 1;
             transform.localScale = new Vector3(lobScale * originalScale.x, lobScale * originalScale.y, originalScale.z);
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
+        if (collision.gameObject.name.Contains("Water") || collision.gameObject.name.Contains("Lava")){
+            return;
+        }
         if (armed)
         {
             explode();
@@ -90,6 +91,8 @@ public class LobbedControl : MonoBehaviour {
             GameObject hit = GameObject.Instantiate(empHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
             args[1] = 1;
             hit.SendMessage("init", args);
+            SoundMixer.PlaySound("EMP");
+
         } else
         {
             GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
