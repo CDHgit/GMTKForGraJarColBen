@@ -55,6 +55,7 @@ public class Track {
         foreach (GameObject m in mechs) {
             a.performAction (m);
         }
+        a.deleteAction();
     }
     public void UpdateActionsUI (float pixToMove) {
         foreach(Action actionItem in actions){
