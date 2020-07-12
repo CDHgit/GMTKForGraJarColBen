@@ -44,6 +44,7 @@ public class BulletControl : MonoBehaviour {
     }
     void OnTriggerEnter2D (Collider2D collision) {
         GameObject collisionObject = collision.gameObject;
+        
         if (Time.time - startTime > armTime || collisionObject!=parent) {
             if (!explosive && collisionObject.CompareTag("Destructable"))
             {
@@ -53,12 +54,19 @@ public class BulletControl : MonoBehaviour {
             {
                 collisionObject.SendMessage("changeHealth", -damage);
                 //summon explosion hitbox and effect
+
                 GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
+
+
                 GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
+
                 hit.SendMessage("init", new int[] {damage, 0});
 
-                SoundMixer.PlaySound("Explosion");
+
+                SoundMixer.PlaySound("Explosion", 0.1f);
+
             }
+
             Destroy(this.gameObject);
         }
     }

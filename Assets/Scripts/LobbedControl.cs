@@ -96,7 +96,7 @@ public class LobbedControl : MonoBehaviour {
             GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
             hit.SendMessage("init", args);
 
-            SoundMixer.PlaySound("Explosion");
+            SoundMixer.PlaySound("Explosion", 0.1f);
         }
         Destroy (this.gameObject);
     }

@@ -10,7 +10,7 @@ public class SoundMixer : MonoBehaviour
     
     public static readonly Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
     private static string prefix = "Audio/";
-    private static string[] sfxStrings = { "Explosion", "Gunshot", "Gunshot2", "Heal", "Laser", "MissileLaunch1", "MissileLaunch2", 
+    private static string[] sfxStrings = { "Explosion", "Gunshot1", "Gunshot2", "Heal", "Laser", "MissileLaunch1", "MissileLaunch2", 
         "MissileLaunch3", "MissileLaunch4", "Shield"};
 
     // Start is called before the first frame update

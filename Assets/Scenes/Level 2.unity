@@ -9274,6 +9274,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8887834780983318228, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
+    - {fileID: 8887834780983318229, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
+    - {fileID: 3232033223261892681, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
 --- !u!4 &1182228668 stripped
 Transform:
@@ -9746,6 +9748,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8887834780983318228, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
+    - {fileID: 8887834780983318229, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
+    - {fileID: 3232033223261892681, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70deb209b242dbb4ca6d6c93fe18330d, type: 3}
 --- !u!1001 &1209595940
 PrefabInstance:
@@ -10582,7 +10586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4c23e56a2b9fa48a98f81b5636388f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 130
+  bpm: 128
   beatsPerAction: 2
   startOffset: 0
   secPerBeat: 0
@@ -10596,7 +10600,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: edc977fca3cadf247bd2140b8dfede47, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f529df8a72ba65744b7010b970f44202, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10705,7 +10709,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1274300032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27d63f5dac4870a4d9350c0fd8ee800d, type: 3}
+  m_Script: {fileID: 11500000, guid: fd2a215bb3e058e45bae7116a299aa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1275535437 stripped
