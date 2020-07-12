@@ -8,6 +8,8 @@ public class MechControls : MonoBehaviour {
 
     public bool laserStopped = false;
 
+    private Animator anim;
+
     public GameObject laserPrefab;
     public GameObject bulletPrefab;
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
@@ -38,6 +40,7 @@ public class MechControls : MonoBehaviour {
         context = GameObject.Find ("ContextManager").GetComponent<Context> ();
         trackController = GameObject.Find ("TrackController").GetComponent<TrackController> ();
         targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
+        anim = GetComponentInChildren<Animator>();
     }
     public void startDash () {
         if (this.mechEnabled) {
@@ -214,6 +217,11 @@ public class MechControls : MonoBehaviour {
             // //Debug.Log("maxed speed on mech");
             scaleFactor = maxSpeed / rb.velocity.magnitude;
             rb.velocity *= new Vector2 (scaleFactor, scaleFactor);
+            anim.SetBool("Moving", true);
+        }
+        else
+        {
+            anim.SetBool("Moving", false);
         }
 
         // Set bottom to direction of velocity
