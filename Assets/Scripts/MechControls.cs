@@ -160,6 +160,7 @@ public class MechControls : MonoBehaviour {
                 Quaternion.Euler(0, 0, angle));
             grenade.SendMessage("initLob", new float[] { angle, 0 });
             grenade.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
         }
     }
 
@@ -182,6 +183,7 @@ public class MechControls : MonoBehaviour {
             float[] args = {angle, 1};
             EMP.SendMessage("initLob", args);
             EMP.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
         }
     }
 
@@ -203,6 +205,7 @@ public class MechControls : MonoBehaviour {
                 Quaternion.Euler(0, 0, angle));
             mine.SendMessage("initLob", new float[] { angle, 0});
             mine.SendMessage("setParent", this.gameObject);
+            SoundMixer.PlaySound("Throw");
         }
     }
 
