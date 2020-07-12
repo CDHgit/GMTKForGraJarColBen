@@ -135,7 +135,7 @@ public class MechControls : MonoBehaviour {
             bullet.SendMessage("initBullet", angle);
             bullet.SendMessage("setParent", this.gameObject);
 
-            SoundMixer.PlaySound("Gunshot" + Random.Range(1,3));
+            SoundMixer.PlaySound("Gunshot" + Random.Range(1,3), 0.1f);
 
             yield return new WaitForSeconds (0.25f);
 
