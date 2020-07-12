@@ -489,6 +489,8 @@ MonoBehaviour:
     type: 3}
   grenadePrefab: {fileID: 7127825383921032041, guid: cdf1b0373ef35f047baedc1af1225863,
     type: 3}
+  empPrefab: {fileID: 7127825383921032041, guid: e0e88f12fcde25c43a19cf2aef1b9a7d,
+    type: 3}
   minePrefab: {fileID: 7127825383921032041, guid: 37ca1d0a0bfe1e64cb825a2e01feff88,
     type: 3}
   explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,

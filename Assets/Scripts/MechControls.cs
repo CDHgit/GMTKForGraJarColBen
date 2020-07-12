@@ -11,6 +11,7 @@ public class MechControls : MonoBehaviour {
     public GameObject laserPrefab;
     public GameObject bulletPrefab;
     public GameObject grenadePrefab;
+    public GameObject empPrefab;
     public GameObject minePrefab;
     public GameObject explosionParticles;
     public GameObject shieldPrefab;
@@ -149,6 +150,27 @@ public class MechControls : MonoBehaviour {
                 Quaternion.Euler(0, 0, angle));
             grenade.SendMessage("initLob", angle);
             grenade.SendMessage("setParent", this.gameObject);
+        }
+    }
+
+    public void throwEMP()
+    {
+        float angle;
+        if (mechEnabled)
+        {
+            GameObject curMech = context.getCurMech();
+
+            GameObject target = context.mechList[targetNum];
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-90, 90);
+
+            float angRad = angle / 180f * Mathf.PI;
+            GameObject EMP = Instantiate(empPrefab,
+                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
+                Quaternion.Euler(0, 0, angle));
+            EMP.SendMessage("initLob", angle);
+            EMP.SendMessage("setParent", this.gameObject);
         }
     }
 

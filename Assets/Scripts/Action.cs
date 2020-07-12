@@ -111,6 +111,17 @@ public class GrenadeAction : Action
 
 }
 
+public class EMPAction : Action
+{
+    public override string spriteName { get { return "EMP"; } }
+    public EMPAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx) { }
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwEMP");
+    }
+
+}
+
 public class MineAction : Action
 {
     public override string spriteName{get {return "Proximity Mine";}}
