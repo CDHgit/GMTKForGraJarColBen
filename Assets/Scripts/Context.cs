@@ -80,12 +80,12 @@ public class Context : MonoBehaviour {
         Time.timeScale=0;
 
     }
-    public void lose () {
-        
-        GetComponent<SpriteRenderer>().sprite=lossSprite;
-        GetComponent<SpriteRenderer>(). enabled  = (true);
-        Time.timeScale=0;
-
+    public void lose () { 
+        try{
+            GetComponent<SpriteRenderer>().sprite=lossSprite;
+            GetComponent<SpriteRenderer>(). enabled  = (true);
+            Time.timeScale=0;
+        }catch(MissingComponentException e){}
     }
     public GameObject getCurMech () {
         return mechList[curMechIdx];
