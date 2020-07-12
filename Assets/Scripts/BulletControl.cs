@@ -52,7 +52,7 @@ public class BulletControl : MonoBehaviour {
             }
             else if (explosive)
             {
-                collisionObject.SendMessage("destroyWall", -damage);
+                collisionObject.SendMessage("changeHealth", -damage);
                 //summon explosion hitbox and effect
 
                 GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
