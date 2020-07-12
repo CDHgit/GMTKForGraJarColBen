@@ -20,7 +20,7 @@ public class LaserControl : MonoBehaviour {
     }
     void initBullet (float fl) {
         travelAngle = fl;
-        Debug.Log("The laser be existin tho");
+        //Debug.Log("The laser be existin tho");
         rigidBody = GetComponent<Rigidbody2D> ();
     }
 
@@ -34,9 +34,12 @@ public class LaserControl : MonoBehaviour {
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
+        //Debug.Log("las hit");
         GameObject collisionObject = collision.gameObject;
         if (collision.gameObject != parent) {
             if (collisionObject.CompareTag ("Destructable")) {
+                
+                //Debug.Log("las damage");
                 collisionObject.GetComponent<MechInfo> ().changeHealth (-damage);
             }
         }

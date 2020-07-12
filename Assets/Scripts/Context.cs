@@ -46,7 +46,7 @@ public class Context : MonoBehaviour {
         if (Time.time > timeToWin) {
            win ();
         }
-        Debug.Log(dead + " DEAD "+ deadThreshold);
+        //Debug.Log(dead + " DEAD "+ deadThreshold);
         if (dead >= deadThreshold) {
            lose ();
         }
@@ -65,10 +65,18 @@ public class Context : MonoBehaviour {
         }
 
     }
+    public float calculteScore(){
+        float ret = 0;
+        foreach (GameObject o in mechList){
+            ret+=o.GetComponent<MechInfo>().health;
+        }
+        return ret;
+    }
     public void win () {
+        float score = calculteScore();
         GetComponent<SpriteRenderer>().sprite=winSprite;
-
         GetComponent<SpriteRenderer>().enabled = (true);
+        
         Time.timeScale=0;
 
     }
@@ -87,7 +95,7 @@ public class Context : MonoBehaviour {
      */
     private void switchMech (int mechNum) {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        // Debug.Log("Switching mech to " + mechNum);
+        // //Debug.Log("Switching mech to " + mechNum);
 
         //Set the active mech to true and the others to false
         if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum]) {

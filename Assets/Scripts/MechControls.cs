@@ -67,7 +67,7 @@ public class MechControls : MonoBehaviour {
 
     }
     public void fireLaser () {
-        Debug.Log("Firin laser " + laserStopped + " " +mechNum);
+        //Debug.Log("Firin laser " + laserStopped + " " +mechNum);
         if (laserStopped){
             return;
         }
@@ -146,7 +146,7 @@ public class MechControls : MonoBehaviour {
 
         dottedLine.pointAs[mechNum] = GetComponent<Transform> ().position;
         dottedLine.pointBs[mechNum] = target.GetComponent<Transform> ().position;
-        Debug.Log ("LASER " + mechNum + " " + laserStopped);
+        //Debug.Log ("LASER " + mechNum + " " + laserStopped);
         if (active && mechEnabled && !laserStopped) {
             maxSpeed = maxSpeedConstant;
 
@@ -160,25 +160,25 @@ public class MechControls : MonoBehaviour {
                     //transofrm.* is a RELATIVE direction AFAIK, might need to be changed to a vector later
                     rb.AddForce (transform.up * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed w");
+                    // //Debug.Log("pressed w");
                 }
                 //S down
                 if (Input.GetKey ("s")) {
                     rb.AddForce (-transform.up * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed s");
+                    // //Debug.Log("pressed s");
                 }
                 //D right
                 if (Input.GetKey ("d")) {
                     rb.AddForce (transform.right * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed d");
+                    // //Debug.Log("pressed d");
                 }
                 //A left
                 if (Input.GetKey ("a")) {
                     rb.AddForce (-transform.right * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed a");
+                    // //Debug.Log("pressed a");
                 }
             }
         } else if (mechEnabled && !laserStopped) {
@@ -205,13 +205,13 @@ public class MechControls : MonoBehaviour {
             // set to zero
             rb.velocity = Vector2.zero;
         }
-        // Debug.Log(rb.velocity.magnitude);
+        // //Debug.Log(rb.velocity.magnitude);
         // Speed capping code
         // TODO: This actually caps speed at pre force (I think), meaning the actual speed is higher
         // we could do some math to ensure that this speed is capped taking the force into account in order
         // to match the top speed and stop diagonals from being sqrt 2 faster.
         if (rb.velocity.magnitude > maxSpeed) {
-            // Debug.Log("maxed speed on mech");
+            // //Debug.Log("maxed speed on mech");
             scaleFactor = maxSpeed / rb.velocity.magnitude;
             rb.velocity *= new Vector2 (scaleFactor, scaleFactor);
         }
