@@ -38,6 +38,7 @@ public class MechInfo : MonoBehaviour {
 
     void changeAntivirus (int antivirusDelta) {
         antivirusProgress = antivirusProgress + antivirusDelta;
+
     }
 
     void setMechNumber (int mechNumberValue) {

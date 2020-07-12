@@ -29,7 +29,6 @@ public class TrackController : MonoBehaviour {
         tracks[0] = new Track (trackSize, new Action[] { new BulletAction () });
         tracks[1] = new Track (trackSize, new Action[] { new DashAction () });
         tracks[2] = new Track (trackSize, new Action[] { new LaserAction () });
-
         for (int i = 0; i < 3; i++) {
             setTrack (context.mechList[i], i);
         }

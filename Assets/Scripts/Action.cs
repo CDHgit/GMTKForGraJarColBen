@@ -23,6 +23,7 @@ public class RocketFireAction : Action {
         o.SendMessage("fireRocket");
     }
 }
+
 public class LaserAction : Action
 {
     public override void performAction(GameObject o)
@@ -36,6 +37,7 @@ public class BulletAction : Action
     {
         o.SendMessage("fireBullet");
     }
+
 }
 
 public class HealAction : Action
