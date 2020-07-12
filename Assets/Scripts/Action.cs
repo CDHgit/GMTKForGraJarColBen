@@ -29,8 +29,9 @@ public abstract class Action : ScriptableObject {
         Transform canvasTransform = GameObject.FindGameObjectWithTag("ActionTrackCanvas").transform;
         // add the new action to game
         this.conveyorAction = Instantiate(actionPrefab, actionPosition, Quaternion.identity, canvasTransform);
-        // set the sprite for the icon
-        this.conveyorAction.GetComponent<SpriteRenderer>().sprite = actionIcon;
+        // set the sprite for the icon child
+        GameObject iconChild = this.conveyorAction.transform.Find("ActionIcon").gameObject;
+        iconChild.GetComponent<SpriteRenderer>().sprite = actionIcon;
         // set the start position based on the action index and track index
         this.conveyorAction.GetComponent<RectTransform>().localPosition = startActionOrigin + (actionIdx * actionIndexTransition) + (trackIdx * trackIndexTransition);
         // ahaha how are you that small

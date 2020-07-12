@@ -11,9 +11,9 @@ public class Track {
     private List<GameObject> mechs = new List<GameObject>();
     private int trackIdx;
     public Track (int size, int tIdx, System.Type[] possibleActions) {
+        this.size = size;
         this.trackIdx = tIdx;
         this.possibleActions=possibleActions;
-        this.size = size;
         for (int i = 0; i < size; i++) {
             addAction (i, trackIdx);
         }
