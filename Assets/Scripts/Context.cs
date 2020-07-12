@@ -52,20 +52,6 @@ public class Context : MonoBehaviour {
         if (dead >= deadThreshold) {
            lose ();
         }
-        // DEBUG CODE FOR MECH DISABLED
-        else if (Input.GetKeyDown(KeyCode.U)) {
-            mechList[0].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[0] = false;
-        } else if (Input.GetKeyDown(KeyCode.I)) {
-            mechList[1].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[1] = false;
-        } else if (Input.GetKeyDown(KeyCode.O)) {
-            mechList[2].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[2] = false;
-        }else if (Input.GetKeyDown(KeyCode.R)) {
-            mechList[curMechIdx].SendMessage("setMechEnabledStatus", false);
-            mechsEnabled[curMechIdx] = false;
-        }
 
     }
     public float calculteScore(){
