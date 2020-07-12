@@ -46,7 +46,6 @@ public class LobbedControl : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-
         if (Time.time - startTime > Mathf.Abs(lifeSpanSecs)) {
             if (lifeSpanSecs > 0)
                 explode ();
@@ -73,6 +72,9 @@ public class LobbedControl : MonoBehaviour {
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
+        if (collision.gameObject.name.Contains("Water") || collision.gameObject.name.Contains("Lava")){
+            return;
+        }
         if (armed)
         {
             explode();
