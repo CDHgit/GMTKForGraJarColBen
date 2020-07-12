@@ -7,8 +7,11 @@ public class BulletControl : MonoBehaviour {
     public float thrust = 1;
     public float lifeSpanSecs = 5;
     public float initialSpeed = 10;
-
     public float maxSpeed = 20;
+    public bool explosive = false;
+    public GameObject explosionParticles = null;
+    public GameObject explosionHitbox = null;
+    
     Rigidbody2D rigidBody;
     Transform mTransform;
     float travelAngle;
@@ -35,19 +38,25 @@ public class BulletControl : MonoBehaviour {
         rigidBody.AddForce (thrust * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f)));
         mTransform.rotation = Quaternion.Euler (0, 0, travelAngle);
         if (Time.time - startTime > lifeSpanSecs) {
-            explode ();
+            Destroy(this.gameObject);
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
         GameObject collisionObject = collision.gameObject;
         if (collisionObject != parent) {
-            if (collisionObject.CompareTag("Destructable")) {
+            if (!explosive && collisionObject.CompareTag("Destructable"))
+            {
                 collisionObject.GetComponent<MechInfo>().changeHealth(-damage);
             }
-            explode ();
+            else
+            {
+                //summon explosion hitbox and effect
+                GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
+                GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
+                hit.SendMessage("init", damage);
+
+            }
+            Destroy(this.gameObject);
         }
-    }
-    void explode () {
-        Destroy (this.gameObject);
     }
 }

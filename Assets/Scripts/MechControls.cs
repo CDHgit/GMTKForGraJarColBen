@@ -12,6 +12,7 @@ public class MechControls : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject grenadePrefab;
     public GameObject minePrefab;
+    public GameObject explosionParticles;
 
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
@@ -36,6 +37,7 @@ public class MechControls : MonoBehaviour {
     float virusWalkTimer = 0;
     Vector2 force;
     private int targetNum;
+
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
         context = GameObject.Find ("ContextManager").GetComponent<Context> ();
@@ -174,6 +176,7 @@ public class MechControls : MonoBehaviour {
         dottedLine.pointBs[mechNum]=GetComponent<Rigidbody2D>().position;
         this.gameObject.SetActive(false);
         setMechEnabledStatus(false);
+        GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
     }
     
     void goalAchieved(){

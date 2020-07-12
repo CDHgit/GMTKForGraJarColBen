@@ -10,6 +10,8 @@ public class LobbedControl : MonoBehaviour {
     public float maxSpeed = 5;
     public float rotationSpeed = 1;
     public float maxSize = 1.5f;
+    public GameObject explosionParticles = null;
+    public GameObject explosionHitbox = null;
 
     Rigidbody2D rigidBody;
     Transform mTransform;
@@ -75,8 +77,10 @@ public class LobbedControl : MonoBehaviour {
     }
     void explode () {
 
-        // TODO: spawn explosion hitbox that deals damage
-
+        //summon explosion hitbox and effect
+        GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
+        GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
+        hit.SendMessage("init", damage);
         Destroy (this.gameObject);
     }
 }

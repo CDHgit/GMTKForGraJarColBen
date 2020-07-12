@@ -51,6 +51,11 @@ MonoBehaviour:
   lifeSpanSecs: 5
   initialSpeed: 1
   maxSpeed: 3
+  explosive: 1
+  explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
+    type: 3}
+  explosionHitbox: {fileID: 7127825383921032041, guid: 2d74ff450d331ef4da3d06ce7751e92e,
+    type: 3}
 --- !u!50 &5981598900657558537
 Rigidbody2D:
   serializedVersion: 4
