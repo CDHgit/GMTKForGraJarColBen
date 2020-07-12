@@ -17,6 +17,8 @@ public class MechInfo : MonoBehaviour
     {
         this.gameObject.SendMessage("setMechNum1", mechNumber);
         context = GameObject.Find("ContextManager").GetComponent<Context>();
+        this.gameObject.tag = "Destructable";
+
     }
     // Update is called once per frame
     void Update()
@@ -33,7 +35,7 @@ public class MechInfo : MonoBehaviour
 
     }
 
-    void changeHealth(int deltaHealth)
+    public void changeHealth(int deltaHealth)
     {
         health = health + deltaHealth;
     }

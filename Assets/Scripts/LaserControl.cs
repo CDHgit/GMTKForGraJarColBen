@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserControl : MonoBehaviour
 {
-
+    public int damage = 2;
     public float thrust = 1;
     public float lifeSpanSecs = 5;
 
@@ -36,8 +36,13 @@ public class LaserControl : MonoBehaviour
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
+        GameObject collisionObject = collision.gameObject;
+
         if (collision.gameObject != parent) {
-            // explode ();
+            if (collisionObject.CompareTag("Destructable"))
+            {
+                collisionObject.GetComponent<MechInfo>().changeHealth(-damage);
+            }
         }
     }
     void explode () {
