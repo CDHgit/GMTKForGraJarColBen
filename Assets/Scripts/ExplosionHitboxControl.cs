@@ -27,7 +27,7 @@ public class ExplosionHitboxControl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (Time.time - startTime > Mathf.Abs(lifeSpanSecs)) {
+        if (Time.time - startTime > lifeSpanSecs) {
             Destroy(this.gameObject);
         } 
     }
@@ -35,7 +35,6 @@ public class ExplosionHitboxControl : MonoBehaviour {
         if (collision.gameObject.CompareTag("Destructable"))
         {
             collision.gameObject.GetComponent<MechInfo>().changeHealth(-damage);
-            Destroy(this.gameObject);
         }
     }
 }
