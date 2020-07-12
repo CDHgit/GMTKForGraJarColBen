@@ -559,13 +559,24 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: trackController
       value: 
       objectReference: {fileID: 1633110695}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dottedLine
+      value: 
+      objectReference: {fileID: 467246136}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -837,6 +848,70 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &467246135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467246138}
+  - component: {fileID: 467246137}
+  - component: {fileID: 467246136}
+  m_Layer: 0
+  m_Name: DottedLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &467246136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467246135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af88a2b17f064244a82ec32c26f67d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointAs: []
+  pointBs: []
+--- !u!114 &467246137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467246135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e40b5d054b0674a844bd74524096ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 1078172259129580987, guid: a1594d0d8d2f2c648871ecf45a996c92, type: 3}
+  - {fileID: -2450961127937487370, guid: a1594d0d8d2f2c648871ecf45a996c92, type: 3}
+  - {fileID: -4216548018826495889, guid: a1594d0d8d2f2c648871ecf45a996c92, type: 3}
+  Size: 0.911
+  Delta: 0.348
+--- !u!4 &467246138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467246135}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,13 +1242,24 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: trackController
       value: 
       objectReference: {fileID: 1633110695}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dottedLine
+      value: 
+      objectReference: {fileID: 467246136}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -1272,12 +1358,6 @@ PrefabInstance:
       objectReference: {fileID: 1430728604}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
---- !u!1 &836757754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1017067923}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &836757760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
@@ -1402,10 +1482,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4f1831747940d42b27f01446fcd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mech1: {fileID: 836757754}
-  mech2: {fileID: 1855088137}
-  mech3: {fileID: 2033980904}
+  timeToWin: 50
+  dead: 0
+  goal: 0
+  goalThreshold: 1
+  winSprite: {fileID: 0}
+  lossSprite: {fileID: 0}
+  deadThreshold: 1
   switchCooldownBeats: 4
+  mechList: []
+  mechsEnabled: 010101
 --- !u!4 &920621892
 Transform:
   m_ObjectHideFlags: 0
@@ -1473,13 +1559,24 @@ PrefabInstance:
         type: 3}
       propertyPath: rocketPrefab
       value: 
-      objectReference: {fileID: 3326525086901716146, guid: 4455e8e1577a136498e9d95795f0789c,
+      objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
     - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: trackController
       value: 
       objectReference: {fileID: 1633110695}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dottedLine
+      value: 
+      objectReference: {fileID: 467246136}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -1830,13 +1927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4c23e56a2b9fa48a98f81b5636388f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  song: {fileID: 1274300034}
   bpm: 130
   beatsPerAction: 2
   startOffset: 0
-  observers:
-  - {fileID: 920621890}
-  - {fileID: 1633110694}
   secPerBeat: 0
 --- !u!82 &1274300034
 AudioSource:
@@ -2247,7 +2340,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackSize: 16
   bpm: 128
-  context: {fileID: 920621891}
   conveyorImageBase: {fileID: 601060186}
 --- !u!4 &1633110696
 Transform:
@@ -2362,23 +2454,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1855088137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
-    type: 3}
-  m_PrefabInstance: {fileID: 352913523}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1855088143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5677660185704884830, guid: 8415bcb4c0e90e444b77f9c892815da7,
     type: 3}
   m_PrefabInstance: {fileID: 352913523}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2033980904 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
-    type: 3}
-  m_PrefabInstance: {fileID: 831372856}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2033980910 stripped
 Transform:

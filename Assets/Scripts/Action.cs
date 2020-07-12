@@ -79,11 +79,12 @@ public class RocketFireAction : Action
         o.SendMessage("fireRocket");
     }
 }
-{
-    public override string spriteName{get {return "Homing Missile";}}
-    public LaserAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
+
+
 public class LaserAction : Action
 {
+    public override string spriteName{get {return "Yellow Laser";}}
+    public LaserAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("fireLaser");
