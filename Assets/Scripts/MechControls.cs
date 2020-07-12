@@ -122,6 +122,8 @@ public class MechControls : MonoBehaviour {
         float angle;
         // Shoot random burst
         int burst = Random.Range (2, 5);
+        SoundMixer.PlaySound("Gunshot" + Random.Range(1,3), 0.1f);
+
         for (int i = 0; i < burst; i++) {
             GameObject curMech = context.getCurMech ();
             GameObject target = context.mechList[targetNum];
@@ -136,7 +138,6 @@ public class MechControls : MonoBehaviour {
             bullet.SendMessage("initBullet", angle);
             bullet.SendMessage("setParent", this.gameObject);
 
-            SoundMixer.PlaySound("Gunshot" + Random.Range(1,3), 0.1f);
 
             yield return new WaitForSeconds (0.25f);
 
@@ -220,7 +221,7 @@ public class MechControls : MonoBehaviour {
         GameObject shieldObj = Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         shieldObj.transform.parent = gameObject.transform;
         invulnerable = true;
-        SoundMixer.PlaySound("Shield");
+        SoundMixer.PlaySound("Shield", .1f);
 
         yield return new WaitForSeconds(2f);
 
