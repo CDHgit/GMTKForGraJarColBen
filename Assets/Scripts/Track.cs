@@ -34,7 +34,7 @@ public class Track {
             for (int i = 0; i < size; i++) 
             {
                 // Adds empty actions for the first 5, random actions after that
-                addAction (i, trackIdx, i < 5);
+                addAction (i, trackIdx, i < 6);
             }
         }
         if(beatNum >= 1)
