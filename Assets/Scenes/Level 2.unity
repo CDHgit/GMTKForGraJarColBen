@@ -10587,7 +10587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bpm: 128
-  beatsPerAction: 2
+  beatsPerAction: 4
   startOffset: 0
   secPerBeat: 0
 --- !u!82 &1274300034
