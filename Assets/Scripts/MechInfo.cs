@@ -33,7 +33,7 @@ public class MechInfo : MonoBehaviour {
     }
 
     public void changeHealth (int deltaHealth) {
-        if (!this.gameObject.GetComponent<MechControls>().invulnerable)
+        if (!this.gameObject.GetComponent<MechControls>().invulnerable || deltaHealth > 0)
             health = health + deltaHealth;
 
     }

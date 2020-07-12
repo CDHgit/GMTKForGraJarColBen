@@ -139,7 +139,7 @@ public class HealAction : Action
     public HealAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
-        o.SendMessage("changeHealth");
+        o.SendMessage("heal");
     }
 }
 

@@ -214,6 +214,12 @@ public class MechControls : MonoBehaviour {
         Destroy(shieldObj);
     }
 
+    void heal()
+    {
+        MechInfo mInfo = this.gameObject.GetComponent<MechInfo>();
+        mInfo.changeHealth(25);
+    }
+
     void laserEnd () {
         laserStopped = false;
     }
