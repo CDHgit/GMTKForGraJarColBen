@@ -154,10 +154,6 @@ public class MechControls : MonoBehaviour {
                     forceApplied = true;
                     // Debug.Log("pressed a");
                 }
-                if (Input.GetKey("r"))
-                {
-                    this.SendMessage("fireLaser");
-                }
             }
         } else if (mechEnabled) {
             // mech ai when uncontrolled

@@ -28,8 +28,8 @@ public class TrackController : MonoBehaviour {
         secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
         initTrackPos = trackImageBase.GetComponent<RectTransform>().localPosition;
         tracks[0] = new Track(trackSize, new Action[]{new LaserAction()});
-        tracks[1] = new Track(trackSize, new Action[]{new LaserAction()});
-        tracks[2] = new Track(trackSize, new Action[]{new LaserAction()});
+        tracks[1] = new Track(trackSize, new Action[]{new RocketFireAction()});
+        tracks[2] = new Track(trackSize, new Action[]{new DashAction()});
         
         for (int i = 0; i < 3; i++) {
             setTrack(context.mechList[i], i);
