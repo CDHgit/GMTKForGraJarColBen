@@ -29,15 +29,19 @@ public class Track {
      * Runs the next beat
      */
     public void runBeat (int beatNum) {
-        if(beatNum == 0)
+        if(beatNum == 1)
         {
             for (int i = 0; i < size; i++) 
             {
                 addAction (i, trackIdx);
             }
         }
-        consumeAction ();
-        addAction(this.size, this.trackIdx);
+        if(beatNum >= 1)
+        {
+            consumeAction ();
+            addAction(this.size, this.trackIdx);
+        }
+
     }
     
     /**
