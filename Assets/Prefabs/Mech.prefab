@@ -422,7 +422,6 @@ GameObject:
   - component: {fileID: 5677660185704884828}
   - component: {fileID: 5677660185704884800}
   - component: {fileID: 7260344078895797111}
-  - component: {fileID: 1802327564275983765}
   m_Layer: 0
   m_Name: Mech
   m_TagString: Destructable
@@ -485,7 +484,7 @@ MonoBehaviour:
     type: 3}
   laserPrefab: {fileID: 7889094576304889902, guid: f97417642cc050e43bdf60730943e770,
     type: 3}
-  bulletPrefab: {fileID: 7127825383921032041, guid: 0f214b564c837da48bb763c3c971cd67,
+  bulletPrefab: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
     type: 3}
   dashStrength: 0
   dashLength: 0
@@ -493,6 +492,7 @@ MonoBehaviour:
   maxSpeedConstant: 3
   topSprite: {fileID: 2182539972995612511}
   offsetAmount: 0
+  dottedLine: {fileID: 0}
 --- !u!61 &5677660185704884800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -531,27 +531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9883b5ca233e3334089fdb8b5d9519a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 100000
   healthSlider: {fileID: 5690747064549996308}
   antivirusProgress: 0
   antivirusGoal: 0
   mechNumber: 0
---- !u!114 &1802327564275983765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5677660185704884829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75624e1b9b46ea469e7d09d2aae89d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 2
-  thrust: 1
-  lifeSpanSecs: 5
-  maxSpeed: 20
 --- !u!1 &6292456568073136117
 GameObject:
   m_ObjectHideFlags: 0
