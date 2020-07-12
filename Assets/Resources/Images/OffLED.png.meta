@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a324651eb2cbcbd4a971761bf8f9b662
+guid: 62b2c8b4c34ab304194a039080532085
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3527910292075941318
-    second: GreenLED_0
+      213: -6356514949392958510
+    second: OffLED_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,11 +114,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreenLED_0
+      name: OffLED_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 11
+        x: 45
+        y: 36
         width: 19
         height: 12
       alignment: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a327e51f7485a0fc0800000000000000
-      internalID: -3527910292075941318
+      spriteID: 2dbf8ffe45f19c7a0800000000000000
+      internalID: -6356514949392958510
       vertices: []
       indices: 
       edges: []
