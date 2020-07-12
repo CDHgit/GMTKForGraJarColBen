@@ -5,6 +5,9 @@ using UnityEngine;
 public class MechControls : MonoBehaviour {
     public float thrust; // the thrust value associated with movement keys = acceleration (mass eq)
     public GameObject rocketPrefab;
+
+    public bool laserStopped = false;
+
     public GameObject laserPrefab;
     public GameObject bulletPrefab;
     public GameObject grenadePrefab;
@@ -17,7 +20,7 @@ public class MechControls : MonoBehaviour {
     private TrackController trackController;
 
     public bool active;
-    bool mechEnabled = true;
+    public bool mechEnabled = true;
     public float maxSpeedConstant; // max speed is used to cap the speed of the mech
     private float maxSpeed;
     bool forceApplied; // force applied is used to check if input is applied to this mech
@@ -69,6 +72,12 @@ public class MechControls : MonoBehaviour {
 
     }
     public void fireLaser () {
+        //Debug.Log("Firin laser " + laserStopped + " " +mechNum);
+        if (laserStopped){
+            return;
+        }
+
+        laserStopped = true;
         float angle;
         if (mechEnabled) {
             GameObject curMech = context.getCurMech ();
@@ -87,23 +96,19 @@ public class MechControls : MonoBehaviour {
         }
     }
 
-    public void fireBullet()
-    {
-        
-        if (mechEnabled)
-        {
-            StartCoroutine(bulletCoruoutine());   
+    public void fireBullet () {
+
+        if (mechEnabled) {
+            StartCoroutine (bulletCoruoutine ());
         }
     }
 
-    IEnumerator bulletCoruoutine()
-    {
+    IEnumerator bulletCoruoutine () {
         float angle;
         // Shoot random burst
-        int burst = Random.Range(2, 5);
-        for (int i = 0; i < burst; i++)
-        {
-            GameObject curMech = context.getCurMech();
+        int burst = Random.Range (2, 5);
+        for (int i = 0; i < burst; i++) {
+            GameObject curMech = context.getCurMech ();
             GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween(this.gameObject, target);
 
@@ -116,7 +121,7 @@ public class MechControls : MonoBehaviour {
             bullet.SendMessage("initBullet", angle);
             bullet.SendMessage("setParent", this.gameObject);
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds (0.25f);
 
         }
     }
@@ -161,21 +166,39 @@ public class MechControls : MonoBehaviour {
             mine.SendMessage("setParent", this.gameObject);
         }
     }
-
+    void laserEnd () {
+        laserStopped = false;
+    }
+    void dead(){
+        context.dead++;
+        dottedLine.pointBs[mechNum]=GetComponent<Rigidbody2D>().position;
+        this.gameObject.SetActive(false);
+        setMechEnabledStatus(false);
+    }
+    
+    void goalAchieved(){
+        context.goal++;
+        this.gameObject.SetActive(false);
+        setMechEnabledStatus(false);
+    }
     // Update is called once per frame
     void FixedUpdate () {
-        
+        if ( this.mechEnabled && !context.mechList[targetNum].GetComponent<MechControls>().mechEnabled) {
+            targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
+        }
         GameObject curMech = context.getCurMech ();
         GameObject target = context.mechList[targetNum];
-        topSprite.transform.rotation = Quaternion.Euler (0, 0, HelperFunctions.getAngleBetween (this.gameObject, target));
+        
+        if (!laserStopped)
+            topSprite.transform.rotation = Quaternion.Euler (0, 0, HelperFunctions.getAngleBetween (this.gameObject, target));
         //Force applied is used to detect if any of the directions are input
         forceApplied = false;
         //Detect if this is the active mech to be controlled else velocity zero (for now)
 
-        dottedLine.pointAs[mechNum]= GetComponent<Transform> ().position;
-        dottedLine.pointBs[mechNum]= target.GetComponent<Transform> ().position;
-
-        if (active && mechEnabled) {
+        dottedLine.pointAs[mechNum] = GetComponent<Transform> ().position;
+        dottedLine.pointBs[mechNum] = target.GetComponent<Transform> ().position;
+        //Debug.Log ("LASER " + mechNum + " " + laserStopped);
+        if (active && mechEnabled && !laserStopped) {
             maxSpeed = maxSpeedConstant;
 
             if (dashTimer > 0) { // we are dashing/ dash is on cooldown
@@ -188,28 +211,28 @@ public class MechControls : MonoBehaviour {
                     //transofrm.* is a RELATIVE direction AFAIK, might need to be changed to a vector later
                     rb.AddForce (transform.up * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed w");
+                    // //Debug.Log("pressed w");
                 }
                 //S down
                 if (Input.GetKey ("s")) {
                     rb.AddForce (-transform.up * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed s");
+                    // //Debug.Log("pressed s");
                 }
                 //D right
                 if (Input.GetKey ("d")) {
                     rb.AddForce (transform.right * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed d");
+                    // //Debug.Log("pressed d");
                 }
                 //A left
                 if (Input.GetKey ("a")) {
                     rb.AddForce (-transform.right * thrust);
                     forceApplied = true;
-                    // Debug.Log("pressed a");
+                    // //Debug.Log("pressed a");
                 }
             }
-        } else if (mechEnabled) {
+        } else if (mechEnabled && !laserStopped) {
             // mech ai when uncontrolled
             maxSpeed = maxSpeedConstant * 0.3f;
 
@@ -229,17 +252,17 @@ public class MechControls : MonoBehaviour {
 
         }
         // If none of the directions are input then set the speed to 0
-        if (!forceApplied) {
+        if (!forceApplied || laserStopped) {
             // set to zero
             rb.velocity = Vector2.zero;
         }
-        // Debug.Log(rb.velocity.magnitude);
+        // //Debug.Log(rb.velocity.magnitude);
         // Speed capping code
         // TODO: This actually caps speed at pre force (I think), meaning the actual speed is higher
         // we could do some math to ensure that this speed is capped taking the force into account in order
         // to match the top speed and stop diagonals from being sqrt 2 faster.
         if (rb.velocity.magnitude > maxSpeed) {
-            // Debug.Log("maxed speed on mech");
+            // //Debug.Log("maxed speed on mech");
             scaleFactor = maxSpeed / rb.velocity.magnitude;
             rb.velocity *= new Vector2 (scaleFactor, scaleFactor);
         }
@@ -261,17 +284,16 @@ public class MechControls : MonoBehaviour {
             //possibly change ai track
             int randnum = Random.Range (0, 100);
             if (randnum <= 25) {
-                int track = Random.Range(0, 3);
-                trackController.setTrack(this.gameObject, track);
+                int track = Random.Range (0, 3);
+                trackController.setTrack (this.gameObject, track);
             }
         }
 
-        if (beatNum % 2 == 0){
-            targetNum = (Random.Range(1,3)+mechNum) % 3; //choose a random mech that isn't this one
+        if ( (this.mechEnabled && beatNum % 2 == 0)) {
+            targetNum = (Random.Range (1, 3) + mechNum) % 3; //choose a random mech that isn't this one
         }
     }
-    public bool getMechEnabledStatus()
-    {
+    public bool getMechEnabledStatus () {
         return this.mechEnabled;
     }
 

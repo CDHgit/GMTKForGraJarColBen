@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserControl : MonoBehaviour
-{
+public class LaserControl : MonoBehaviour {
     public int damage = 2;
     public float thrust = 1;
     public float lifeSpanSecs = 5;
@@ -21,8 +20,8 @@ public class LaserControl : MonoBehaviour
     }
     void initBullet (float fl) {
         travelAngle = fl;
+        //Debug.Log("The laser be existin tho");
         rigidBody = GetComponent<Rigidbody2D> ();
-
     }
 
     void setParent (GameObject o) {
@@ -30,23 +29,23 @@ public class LaserControl : MonoBehaviour
     }
     // Update is called once per frame
     void Update () {
-        mTransform.rotation = Quaternion.Euler (0, 0, travelAngle);
         if (Time.time - startTime > lifeSpanSecs) {
             explode ();
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
+        //Debug.Log("las hit");
         GameObject collisionObject = collision.gameObject;
-
         if (collision.gameObject != parent) {
-            if (collisionObject.CompareTag("Destructable"))
-            {
-                collisionObject.GetComponent<MechInfo>().changeHealth(-damage);
+            if (collisionObject.CompareTag ("Destructable")) {
+                
+                //Debug.Log("las damage");
+                collisionObject.GetComponent<MechInfo> ().changeHealth (-damage);
             }
         }
     }
     void explode () {
+        parent.SendMessage ("laserEnd");
         Destroy (this.gameObject);
     }
 }
-
