@@ -23,6 +23,8 @@ public class Context : MonoBehaviour {
         foreach (string s in mechs) {
             mechList.Add (GameObject.Find (s));
         }
+        //Initial Mech
+        switchMech(1);
 
         // This doesn't work right now might need to trigger it or have a 3 state maybe
         // switchMech(0);
@@ -50,6 +52,7 @@ public class Context : MonoBehaviour {
         if (dead >= deadThreshold) {
            lose ();
         }
+        // DEBUG CODE FOR MECH DISABLED
         else if (Input.GetKeyDown(KeyCode.U)) {
             mechList[0].SendMessage("setMechEnabledStatus", false);
             mechsEnabled[0] = false;
@@ -96,7 +99,7 @@ public class Context : MonoBehaviour {
      */
     private void switchMech (int mechNum) {
         Debug.Assert (mechNum >= 0 && mechNum < 3, "Mechnum should be in the range [1,3] but was: " + mechNum);
-        // //Debug.Log("Switching mech to " + mechNum);
+        Debug.Log("Switching mech to " + mechNum);
 
         //Set the active mech to true and the others to false
         if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum]) {
