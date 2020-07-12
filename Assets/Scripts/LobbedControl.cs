@@ -54,7 +54,7 @@ public class LobbedControl : MonoBehaviour {
                     this.gameObject.AddComponent<CircleCollider2D>();
                     CircleCollider2D collider = GetComponent<CircleCollider2D>();
                     collider.isTrigger = true;
-                    rigidBody.bodyType = RigidbodyType2D.Static;
+                    rigidBody.mass = 100000;
                 }
             }
         } else

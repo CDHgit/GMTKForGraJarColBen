@@ -151,7 +151,7 @@ public class MechControls : MonoBehaviour {
             GameObject target = context.mechList[targetNum];
             angle = HelperFunctions.getAngleBetween(this.gameObject, target);
             // Add cone of fire
-            angle += Random.Range(-90, 90);
+            angle += Random.Range(-180, 180);
 
             float angRad = angle / 180f * Mathf.PI;
             GameObject mine = Instantiate(minePrefab,
