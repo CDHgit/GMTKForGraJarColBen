@@ -49,6 +49,15 @@ public class GrenadeAction : Action
 
 }
 
+public class MineAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwMine");
+    }
+
+}
+
 public class HealAction : Action
 {
     public override void performAction(GameObject o)

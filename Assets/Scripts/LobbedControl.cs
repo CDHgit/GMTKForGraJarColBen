@@ -18,6 +18,7 @@ public class LobbedControl : MonoBehaviour {
     float startTime;
     float lobSpeed;
     Vector3 originalScale;
+    bool armed = false;
     GameObject parent;
     // Start is called before the first frame update
     void Start () {
@@ -40,24 +41,37 @@ public class LobbedControl : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        rigidBody.AddForce (thrust * new Vector2 (-Mathf.Sin (travelAngle * Mathf.PI / 180f), Mathf.Cos (travelAngle * Mathf.PI / 180f)));
-        rotation += rotationSpeed;
-        mTransform.rotation = Quaternion.Euler (0, 0, rotation);
 
-        
-        float lobScale = (Mathf.Sin((Time.time - startTime) * lobSpeed)) * (maxSize - 1) + 1;
-        print(lobScale);
-        transform.localScale = new Vector3(lobScale * originalScale.x, lobScale * originalScale.y, originalScale.z);
+        if (Time.time - startTime > Mathf.Abs(lifeSpanSecs)) {
+            if (lifeSpanSecs > 0)
+                explode ();
+            else
+            {
+                if (!armed)
+                {
+                    armed = true;
+                    rigidBody.velocity = Vector2.zero;
+                    this.gameObject.AddComponent<CircleCollider2D>();
+                    CircleCollider2D collider = GetComponent<CircleCollider2D>();
+                    collider.isTrigger = true;
+                    rigidBody.bodyType = RigidbodyType2D.Static;
+                }
+            }
+        } else
+        {
+            rigidBody.AddForce(thrust * new Vector2(-Mathf.Sin(travelAngle * Mathf.PI / 180f), Mathf.Cos(travelAngle * Mathf.PI / 180f)));
+            rotation += rotationSpeed;
+            mTransform.rotation = Quaternion.Euler(0, 0, rotation);
 
-        if (lifeSpanSecs > 0 && Time.time - startTime > lifeSpanSecs) {
-            explode ();
+            float lobScale = (Mathf.Sin((Time.time - startTime) * lobSpeed)) * (maxSize - 1) + 1;
+            transform.localScale = new Vector3(lobScale * originalScale.x, lobScale * originalScale.y, originalScale.z);
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
-        //GameObject collisionObject = collision.gameObject;
-        //if (collisionObject != parent) {
-        //    explode ();
-        //}
+        if (armed)
+        {
+            explode();
+        }
     }
     void explode () {
 

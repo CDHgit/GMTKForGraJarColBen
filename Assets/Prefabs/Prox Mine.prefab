@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4341891468203355023}
   - component: {fileID: 626905736493703276}
   m_Layer: 0
-  m_Name: Grenade
+  m_Name: Prox Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: cbcc0e1768ecc9043a136fd7f4a4faa0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e09e6abb9c8ebf4b843ec6509f584a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,10 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895c8f6e0d728a44791ae8546c10d9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 20
   thrust: 1
-  lifeSpanSecs: 1.5
-  initialSpeed: 2
-  maxSpeed: 2
-  rotationSpeed: 6
-  maxSize: 1.5
+  lifeSpanSecs: -0.3
+  initialSpeed: 3
+  maxSpeed: 3
+  rotationSpeed: 3
+  maxSize: 2
