@@ -149,7 +149,7 @@ public class MechControls : MonoBehaviour {
             GameObject grenade = Instantiate(grenadePrefab,
                 this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
                 Quaternion.Euler(0, 0, angle));
-            grenade.SendMessage("initLob", angle);
+            grenade.SendMessage("initLob", new float[] { angle, 0 });
             grenade.SendMessage("setParent", this.gameObject);
         }
     }
@@ -192,7 +192,7 @@ public class MechControls : MonoBehaviour {
             GameObject mine = Instantiate(minePrefab,
                 this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
                 Quaternion.Euler(0, 0, angle));
-            mine.SendMessage("initLob", angle);
+            mine.SendMessage("initLob", new float[] { angle, 0});
             mine.SendMessage("setParent", this.gameObject);
         }
     }
