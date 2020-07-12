@@ -48,9 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   thrust: 1
-  lifeSpanSecs: 10
-  initialSpeed: 10
-  maxSpeed: 10
+  lifeSpanSecs: 20
+  initialSpeed: 8
+  maxSpeed: 8
+  armTime: 0.1
   explosive: 0
   explosionParticles: {fileID: 6236875676679265418, guid: b87a58b4b6333be428f21fc02397c13d,
     type: 3}
