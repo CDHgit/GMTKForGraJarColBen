@@ -3,43 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MechInfo : MonoBehaviour
-{
+public class MechInfo : MonoBehaviour {
     public int health;
     public Slider healthSlider;
     public float antivirusProgress;
-    public Slider antivirusSlider;
-    public Context context;
+    //public Slider antivirusSlider;
+    private Context context;
     public float antivirusGoal;
+    public int mechNumber;
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start () {
+        this.gameObject.SendMessage ("setMechNum1", mechNumber);
+        context = GameObject.Find ("ContextManager").GetComponent<Context> ();
+        this.gameObject.tag = "Destructable";
+
     }
-   
     // Update is called once per frame
-    void Update()
-    {
+    void Update () {
         healthSlider.value = health;
-        GameObject curMech = context.getCurMech();
-        if (curMech == this.gameObject)
-        {
-            antivirusProgress = antivirusProgress+Time.deltaTime;
+        GameObject curMech = context.getCurMech ();
+        if (curMech == this.gameObject) {
+            antivirusProgress = antivirusProgress + Time.deltaTime;
         }
-        antivirusSlider.value = antivirusProgress;
-        // Debug.Log(Time.timeSinceLevelLoad);
-        // Debug.Log(antivirusProgress);
 
+        
+        if (this.health <=0){
+            this.gameObject.SendMessage("dead");
+        }
     }
 
-    void changeHealth(int deltaHealth)
-    {
+    public void changeHealth (int deltaHealth) {
         health = health + deltaHealth;
+        //Debug.Log("healthDown "+  health);
     }
 
-    void changeAntivirus(int antivirusDelta)
-    {
+    void changeAntivirus (int antivirusDelta) {
         antivirusProgress = antivirusProgress + antivirusDelta;
+
     }
 
+    void setMechNumber (int mechNumberValue) {
+        mechNumber = mechNumberValue;
+    }
 }

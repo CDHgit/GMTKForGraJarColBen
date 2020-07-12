@@ -59,7 +59,7 @@ public class TestAction : Action
 {
     public TestAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction (GameObject o) {
-        // Debug.Log ("hello"); 
+        // //Debug.Log ("hello"); 
     }
 }
 public class DashAction : Action 
@@ -79,12 +79,21 @@ public class RocketFireAction : Action
         o.SendMessage("fireRocket");
     }
 }
-public class LaserAction : Action 
 {
     public override string spriteName{get {return "Homing Missile";}}
     public LaserAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
-    public override void performAction (GameObject o) {
-        o.SendMessage("shootAt");
+public class LaserAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("fireLaser");
+    }
+}
+public class BulletAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("fireBullet");
     }
 }
 

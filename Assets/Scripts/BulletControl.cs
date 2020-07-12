@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletControl : MonoBehaviour {
+    public int damage = 5;
     public float thrust = 1;
     public float lifeSpanSecs = 5;
     public float initialSpeed = 10;
@@ -16,6 +17,7 @@ public class BulletControl : MonoBehaviour {
     // Start is called before the first frame update
     void Start () {
         mTransform = GetComponent<Transform> ();
+        
         startTime = Time.time;
     }
     void initBullet (float fl) {
@@ -37,7 +39,11 @@ public class BulletControl : MonoBehaviour {
         }
     }
     void OnTriggerEnter2D (Collider2D collision) {
-        if (collision.gameObject != parent) {
+        GameObject collisionObject = collision.gameObject;
+        if (collisionObject != parent) {
+            if (collisionObject.CompareTag("Destructable")) {
+                collisionObject.GetComponent<MechInfo>().changeHealth(-damage);
+            }
             explode ();
         }
     }
