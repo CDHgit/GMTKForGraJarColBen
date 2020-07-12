@@ -175,6 +175,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dottedLine
+      value: 
+      objectReference: {fileID: 1382315826}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
+        type: 3}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -256,12 +267,18 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: mechNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: topSprite
       value: 
       objectReference: {fileID: 1057408987}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1802327564275983765, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &376000016 stripped
 GameObject:
@@ -406,6 +423,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dottedLine
+      value: 
+      objectReference: {fileID: 1382315826}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
+        type: 3}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -492,12 +520,18 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 920621891}
+    - target: {fileID: 7260344078895797111, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: mechNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8060297928746148900, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: topSprite
       value: 
       objectReference: {fileID: 376000016}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1802327564275983765, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &920621890
 GameObject:
@@ -599,6 +633,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7127825383921032041, guid: 4b99fa47234e1a8488b669e68f8a12e7,
         type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: dottedLine
+      value: 
+      objectReference: {fileID: 1382315826}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
+        type: 3}
+    - target: {fileID: 5677660185704884828, guid: 8415bcb4c0e90e444b77f9c892815da7,
+        type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5677660185704884829, guid: 8415bcb4c0e90e444b77f9c892815da7,
         type: 3}
       propertyPath: m_Name
@@ -685,7 +735,8 @@ PrefabInstance:
       propertyPath: topSprite
       value: 
       objectReference: {fileID: 1949174295}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1802327564275983765, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8415bcb4c0e90e444b77f9c892815da7, type: 3}
 --- !u!1 &1057408987 stripped
 GameObject:
@@ -937,6 +988,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1382315825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382315828}
+  - component: {fileID: 1382315827}
+  - component: {fileID: 1382315826}
+  m_Layer: 0
+  m_Name: DottedLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1382315826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382315825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af88a2b17f064244a82ec32c26f67d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointAs: []
+  pointBs: []
+--- !u!114 &1382315827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382315825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e40b5d054b0674a844bd74524096ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 1078172259129580987, guid: a1594d0d8d2f2c648871ecf45a996c92, type: 3}
+  - {fileID: -2450961127937487370, guid: a1594d0d8d2f2c648871ecf45a996c92, type: 3}
+  - {fileID: -4216548018826495889, guid: a1594d0d8d2f2c648871ecf45a996c92, type: 3}
+  Size: 0.911
+  Delta: 0.348
+--- !u!4 &1382315828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382315825}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633110694
 GameObject:
