@@ -7,6 +7,8 @@ public class MechControls : MonoBehaviour {
     public GameObject rocketPrefab;
     public GameObject laserPrefab;
     public GameObject bulletPrefab;
+    public GameObject grenadePrefab;
+
     internal Rigidbody2D rb; // the rigidbody coomponent on this mech 
     public float dashStrength;
     public float dashLength;
@@ -115,6 +117,26 @@ public class MechControls : MonoBehaviour {
 
             yield return new WaitForSeconds(0.25f);
 
+        }
+    }
+    public void throwGrenade()
+    {
+        float angle;
+        if (mechEnabled)
+        {
+            GameObject curMech = context.getCurMech();
+
+            GameObject target = context.mechList[targetNum];
+            angle = HelperFunctions.getAngleBetween(this.gameObject, target);
+            // Add cone of fire
+            angle += Random.Range(-90, 90);
+
+            float angRad = angle / 180f * Mathf.PI;
+            GameObject grenade = Instantiate(grenadePrefab,
+                this.transform.position + offsetAmount * new Vector3(-Mathf.Sin(angRad), Mathf.Cos(angRad), 0),
+                Quaternion.Euler(0, 0, angle));
+            grenade.SendMessage("initLob", angle);
+            grenade.SendMessage("setParent", this.gameObject);
         }
     }
 

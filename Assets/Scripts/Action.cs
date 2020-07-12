@@ -40,6 +40,15 @@ public class BulletAction : Action
 
 }
 
+public class GrenadeAction : Action
+{
+    public override void performAction(GameObject o)
+    {
+        o.SendMessage("throwGrenade");
+    }
+
+}
+
 public class HealAction : Action
 {
     public override void performAction(GameObject o)

@@ -486,6 +486,8 @@ MonoBehaviour:
     type: 3}
   bulletPrefab: {fileID: 7127825383921032041, guid: 84cd7da1c28429040a20a94dc0e19849,
     type: 3}
+  grenadePrefab: {fileID: 7127825383921032041, guid: cdf1b0373ef35f047baedc1af1225863,
+    type: 3}
   dashStrength: 0
   dashLength: 0
   active: 0
