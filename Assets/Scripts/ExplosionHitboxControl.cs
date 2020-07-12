@@ -18,6 +18,7 @@ public class ExplosionHitboxControl : MonoBehaviour {
         this.gameObject.AddComponent<CircleCollider2D>();
         CircleCollider2D collider = this.GetComponent<CircleCollider2D>();
         collider.radius = 0.6f;
+        collider.isTrigger = true;
 
         startTime = Time.time;
         
