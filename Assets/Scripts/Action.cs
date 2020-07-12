@@ -92,6 +92,8 @@ public class LaserAction : Action
 }
 public class BulletAction : Action
 {
+    public override string spriteName{get {return "Bullet";}}
+    public BulletAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("fireBullet");
@@ -100,6 +102,8 @@ public class BulletAction : Action
 
 public class GrenadeAction : Action
 {
+    public override string spriteName{get {return "Grenade";}}
+    public GrenadeAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("throwGrenade");
@@ -109,6 +113,8 @@ public class GrenadeAction : Action
 
 public class MineAction : Action
 {
+    public override string spriteName{get {return "Proximity Mine";}}
+    public MineAction(int actionIdx, int trackIdx) : base(actionIdx, trackIdx){}
     public override void performAction(GameObject o)
     {
         o.SendMessage("throwMine");
