@@ -44,7 +44,7 @@ public class BulletControl : MonoBehaviour {
     }
     void OnTriggerEnter2D (Collider2D collision) {
         GameObject collisionObject = collision.gameObject;
-        if (Time.time - startTime > armTime) {
+        if (Time.time - startTime > armTime || collisionObject!=parent) {
             if (!explosive && collisionObject.CompareTag("Destructable"))
             {
                 collisionObject.GetComponent<MechInfo>().changeHealth(-damage);
