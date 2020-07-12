@@ -66,7 +66,6 @@ public class LobbedControl : MonoBehaviour {
             rigidBody.AddForce(thrust * new Vector2(-Mathf.Sin(travelAngle * Mathf.PI / 180f), Mathf.Cos(travelAngle * Mathf.PI / 180f)));
             rotation += rotationSpeed;
             mTransform.rotation = Quaternion.Euler(0, 0, rotation);
-
             float lobScale = (Mathf.Sin((Time.time - startTime) * lobSpeed)) * (maxSize - 1) + 1;
             transform.localScale = new Vector3(lobScale * originalScale.x, lobScale * originalScale.y, originalScale.z);
         }
@@ -92,6 +91,8 @@ public class LobbedControl : MonoBehaviour {
             GameObject hit = GameObject.Instantiate(empHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
             args[1] = 1;
             hit.SendMessage("init", args);
+            SoundMixer.PlaySound("EMP");
+
         } else
         {
             GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
