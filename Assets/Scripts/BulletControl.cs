@@ -44,7 +44,9 @@ public class BulletControl : MonoBehaviour {
     }
     void OnTriggerEnter2D (Collider2D collision) {
         GameObject collisionObject = collision.gameObject;
-        
+        if (collision.gameObject.name.Contains("Water") || collision.gameObject.name.Contains("Lava")){
+            return;
+        }
         if (Time.time - startTime > armTime || collisionObject!=parent) {
             if (!explosive && collisionObject.CompareTag("Destructable"))
             {
