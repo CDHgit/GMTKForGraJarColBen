@@ -60,6 +60,7 @@ public class MechControls : MonoBehaviour {
             angle = angle * Mathf.PI / 180f;
             dashDestination = new Vector2 (-Mathf.Sin (angle), Mathf.Cos (angle));
             dashTimer = dashLength;
+
         }
     }
 
@@ -319,15 +320,14 @@ public class MechControls : MonoBehaviour {
             maxSpeed = curMaxSpeed * 0.3f;
 
             if (virusWalkTimer > 0) {
-                // we are dashing/ dash is on cooldown
                 rb.AddForce (force);
                 virusWalkTimer -= Time.deltaTime;
                 forceApplied = true;
             } else {
                 GameObject targetMech = context.getCurMech ();
-                Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
-                Vector2 randomAngle = Random.insideUnitCircle * distance.magnitude * 1.5f;
-                force = (distance + randomAngle) * thrust;
+                //Vector2 distance = targetMech.transform.position - this.gameObject.transform.position;
+                Vector2 randomAngle = Random.insideUnitCircle * 2;
+                force = (randomAngle) * thrust;
 
                 virusWalkTimer = Random.Range (0, 3);
             }
