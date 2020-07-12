@@ -53,7 +53,7 @@ public class Context : MonoBehaviour {
        
         if (doneStart == -1) {
             Debug.Log("In donestart");
-            // slider.value=100f*Time.timeSinceLevelLoad/timeToWin;
+            slider.value=100f*Time.timeSinceLevelLoad/timeToWin;
             int oldBeatsToReady = beatsToReady;
             // for (int i = 0; i < 3 && !mechList[(curMechIdx) % 3].GetComponent<MechControls> ().getMechEnabledStatus (); i++) {
             //     beatsToReady = 0;
