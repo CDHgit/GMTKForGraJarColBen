@@ -16,10 +16,21 @@ public class Context : MonoBehaviour {
     int curMechIdx = 0;
     KeyCode mech1Key = KeyCode.J, mech2Key = KeyCode.K, mech3Key = KeyCode.L; //Private key codes JKL
     public List<GameObject> mechList; // Mech list used to update the active
+    private Sprite[] mechSwitchUISpriteOnList = new Sprite[3];
+    private Sprite mechSwitchUISpriteOff;
+    private GameObject[] mechSwitchUIGOs = new GameObject[3];
     MechControls mechKeyControlsScript;
     public bool[] mechsEnabled = new bool[3] { true, true, true };
     // Start is called before the first frame update
     void Start () {
+        //Create mech arrow array for each mech in order Blue, Yellow, Green
+        mechSwitchUISpriteOnList[0] = Resources.Load<Sprite>("Images/BlueLED");
+        mechSwitchUISpriteOnList[1] = Resources.Load<Sprite>("Images/YellowLED");
+        mechSwitchUISpriteOnList[2] = Resources.Load<Sprite>("Images/GreenLED");
+        mechSwitchUISpriteOff = Resources.Load<Sprite>("Images/OffLED");
+        mechSwitchUIGOs[0] = Resources.Load<GameObject>("BlueLED");
+        mechSwitchUIGOs[1] = Resources.Load<GameObject>("YellowLED");
+        mechSwitchUIGOs[2] = Resources.Load<GameObject>("GreenLED");
         // Create a list of mechs to iterate through later for easier updating
         mechList = new List<GameObject> ();
         int i = 0;
@@ -41,19 +52,24 @@ public class Context : MonoBehaviour {
     void Update () {
        
         if (doneStart == -1) {
-            slider.value=100f*Time.timeSinceLevelLoad/timeToWin;
+            Debug.Log("In donestart");
+            // slider.value=100f*Time.timeSinceLevelLoad/timeToWin;
             int oldBeatsToReady = beatsToReady;
-            for (int i = 0; i < 3 && !mechList[(curMechIdx) % 3].GetComponent<MechControls> ().getMechEnabledStatus (); i++) {
-                beatsToReady = 0;
-                switchMech ((curMechIdx + 1) % 3);
-            }
+            // for (int i = 0; i < 3 && !mechList[(curMechIdx) % 3].GetComponent<MechControls> ().getMechEnabledStatus (); i++) {
+            //     beatsToReady = 0;
+            //     switchMech ((curMechIdx + 1) % 3);
+            // }
             beatsToReady = oldBeatsToReady;
+            Debug.Log("In about to if");
             if (Input.GetKeyDown (mech1Key)) {
                 switchMech (0);
+                Debug.Log("In switchKey" + mech1Key);
             } else if (Input.GetKeyDown (mech2Key)) {
                 switchMech (1);
             } else if (Input.GetKeyDown (mech3Key)) {
+                Debug.Log("In switchKey" + mech3Key);
                 switchMech (2);
+
             }
             if (Time.timeSinceLevelLoad > timeToWin) {
                 win ();
@@ -115,8 +131,10 @@ public class Context : MonoBehaviour {
         if (beatsToReady <= 0 && curMechIdx != mechNum && mechsEnabled[mechNum]) {
             beatsToReady = switchCooldownBeats;
             mechList[curMechIdx].SendMessage ("setActive", false);
+            // mechSwitchUIGOs[curMechIdx].GetComponent<SpriteRenderer>().sprite = mechSwitchUISpriteOff;
             curMechIdx = mechNum;
             mechList[curMechIdx].SendMessage ("setActive", true);
+            // mechSwitchUIGOs[curMechIdx].GetComponent<SpriteRenderer>().sprite = mechSwitchUISpriteOnList[curMechIdx];
         } else {
             print ("Mech Switch Failed");
         }

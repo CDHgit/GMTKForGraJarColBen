@@ -9,13 +9,8 @@ public class TrackController : MonoBehaviour {
     public float bpm = 128f;
     KeyCode track1Key = KeyCode.U, track2Key = KeyCode.I, track3Key = KeyCode.O;
 
-<<<<<<< HEAD
-    public Context context; 
-    public Image conveyorImageBase;
-=======
     private Context context;
-    public Image trackImageBase;
->>>>>>> origin/master
+    public Image conveyorImageBase;
     static int trackTextureSize = 128;
     Vector3 initTrackPos;
     private float pixelsPerFrame;
@@ -23,58 +18,67 @@ public class TrackController : MonoBehaviour {
     static float heightOfBelt = 154f;
     static float secPerBeat;
     static int size = 3;
+    static float[] trackArrowPos = new float[size];
     public static float pxPerBeatIncrement;
     private Track[] tracks = new Track[size];
-
-    // Start is called before the first frame update
-    void Start () {
 <<<<<<< HEAD
-        secPerBeat = GameObject.Find("Audio Source").GetComponent<SongTimer>().secPerBeat;
-        pxPerBeatIncrement = secPerBeat / heightOfBelt;
-        initTrackPos = conveyorImageBase.GetComponent<RectTransform>().localPosition;
-        tracks[0] = new Track(trackSize, 0, new System.Type[]{typeof(RocketFireAction)});
-        tracks[1] = new Track(trackSize, 1, new System.Type[]{typeof(RocketFireAction)});
-        tracks[2] = new Track(trackSize, 2, new System.Type[]{typeof(RocketFireAction)});
-        setTrack(context.mech1, 0);
-        setTrack(context.mech2, 1);
-        setTrack(context.mech3, 2);
-    }
-    public void setTrack(GameObject mech, int trackNum) {
-        foreach (Track t in tracks){
-            t.removeMech(mech);
+    private GameObject[] arrowTracks = new GameObject[3];
 =======
+
+    public static float[] probs = {0, 20, 20, 20, 5, 5, 10, 10};
+
+>>>>>>> origin/master
+    // Start is called before the first frame update
+    void Start () 
+    {
+        //Create mech arrow array for each mech in order Blue, Yellow, Green
+        arrowTracks[0] = GameObject.Find("TrackArrowBlue");
+        arrowTracks[1] = GameObject.Find("TrackArrowYellow");
+        arrowTracks[2] = GameObject.Find("TrackArrowGreen");
+        //Create track pos array
+        trackArrowPos[0] = -60.6f;
+        trackArrowPos[1] = 43.8f;
+        trackArrowPos[2] = 146.4f;
+
         context = GameObject.Find ("ContextManager").GetComponent<Context> ();
 
         secPerBeat = GameObject.Find ("Audio Source").GetComponent<SongTimer> ().secPerBeat;
-        initTrackPos = trackImageBase.GetComponent<RectTransform> ().localPosition;
-        tracks[0] = new Track (trackSize, new Action[] { new BulletAction () });
-        tracks[1] = new Track (trackSize, new Action[] { new DashAction () });
-        tracks[2] = new Track (trackSize, new Action[] { new LaserAction () });
+        pxPerBeatIncrement = secPerBeat / heightOfBelt;
+        initTrackPos = conveyorImageBase.GetComponent<RectTransform>().localPosition;
+        System.Type[] allItemsTrack = new System.Type[]{typeof(EmptyAction), typeof(RocketFireAction), typeof(BulletAction), 
+                                                        typeof(ShieldAction), typeof(HealAction), typeof(MineAction), typeof(EMPAction), typeof(GrenadeAction)};
+        tracks[0] = new Track(trackSize, 0, allItemsTrack);
+        tracks[1] = new Track(trackSize, 1, allItemsTrack);
+        tracks[2] = new Track(trackSize, 2, allItemsTrack);
         for (int i = 0; i < 3; i++) {
             setTrack (context.mechList[i], i);
         }
 
     }
-    public void setTrack (GameObject mech, int trackNum) {
+    public void setTrack(GameObject mech, int trackNum) {
         foreach (Track t in tracks) {
             t.removeMech (mech);
->>>>>>> origin/master
         }
         tracks[trackNum].addMech (mech);
+        //set mechnumber arrow in order Blue, Yellow, Green to track num 
+
+        int mechNumber = mech.GetComponent<MechInfo>().mechNumber;
+        Vector3 arrowPos = arrowTracks[mechNumber].GetComponent<RectTransform>().localPosition;
+        Vector3 newArrowPos = new Vector3(trackArrowPos[trackNum], arrowPos.y, arrowPos.z);
+        // Debug.Log("Track vec3 new arrow pos: " + newArrowPos);
+        arrowTracks[mech.GetComponent<MechInfo>().mechNumber].GetComponent<Transform>().localPosition = newArrowPos;
     }
     // Update is called once per physics tick
     void FixedUpdate () {
-<<<<<<< HEAD
         // Switch track based on key input
         if (Input.GetKey(track1Key)) {
-            setTrack(context.getCurMech(), 0);
-        } else if (Input.GetKey(track2Key)){
-            setTrack(context.getCurMech(), 1);
-        } else if (Input.GetKey(track3Key)){
-            setTrack(context.getCurMech(), 2);
+            setTrack (context.getCurMech (), 0);
+        } else if (Input.GetKey (track2Key)) {
+            setTrack (context.getCurMech (), 1);
+        } else if (Input.GetKey (track3Key)) {
+            setTrack (context.getCurMech (), 2);
         }
         float pixToMove = Time.deltaTime / pxPerBeatIncrement;
-        // Debug.Log("pixToMove" + pixToMove);
         //Update track Actions UI
         tracks[0].UpdateActionsUI(pixToMove);
         tracks[1].UpdateActionsUI(pixToMove);
@@ -82,34 +86,13 @@ public class TrackController : MonoBehaviour {
         //Move the track image repeatedly so that it loops
         conveyorImageBase.GetComponent<RectTransform>().localPosition += new Vector3(0,(float)pixToMove,0); 
     }
-    void onBeat() {
+    void onBeat (int beatNum) {
         foreach (Track t in tracks) {
-            t.runBeat();
+            t.runBeat (beatNum);
         }
         resetConveyorUI();
     }
     void resetConveyorUI() {
         conveyorImageBase.GetComponent<RectTransform>().localPosition = initTrackPos;
-=======
-        if (Input.GetKey (track1Key)) {
-            setTrack (context.getCurMech (), 0);
-        } else if (Input.GetKey (track2Key)) {
-            setTrack (context.getCurMech (), 1);
-        } else if (Input.GetKey (track3Key)) {
-            setTrack (context.getCurMech (), 2);
-        }
-        float pixToMove = Time.deltaTime / secPerBeat * heightOfBelt;
-        trackImageBase.GetComponent<RectTransform> ().localPosition += new Vector3 (0, (float) pixToMove, 0);
-    }
-    void onBeat () {
-        foreach (Track t in tracks) {
-            t.runBeat ();
-        }
-        updateTrackUI ();
-
-    }
-    void updateTrackUI () {
-        trackImageBase.GetComponent<RectTransform> ().localPosition = initTrackPos;
->>>>>>> origin/master
     }
 }

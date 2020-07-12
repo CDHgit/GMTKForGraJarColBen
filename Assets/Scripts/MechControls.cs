@@ -358,6 +358,10 @@ public class MechControls : MonoBehaviour {
             float angle = Mathf.Atan2 (rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg - 90;
             this.gameObject.transform.GetChild (1).gameObject.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
         }
+
+        if (active){
+
+        }
     }
     float curMaxSpeed;
     public void reduceSpeed () {
@@ -371,6 +375,9 @@ public class MechControls : MonoBehaviour {
     }
     public void setActive (bool active) {
         this.active = active;
+        Sprite activeSprite = active ? Resources.Load<Sprite>("Images/MechHighlight") : null;
+        GameObject hilightSpriteChild = gameObject.transform.Find("ActiveGlowSprite").gameObject;
+        hilightSpriteChild.GetComponent<SpriteRenderer>().sprite = activeSprite;
     }
     void onBeat (int beatNum) {
         if (!this.active) {
