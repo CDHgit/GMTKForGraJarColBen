@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Action : MonoBehaviour {
+public abstract class Action : ScriptableObject {
     
     Vector3 startActionOrigin = new Vector3(-716, 322, -100);
     Vector3 trackIndexTransition = new Vector3(104, 0, 0);
@@ -35,6 +35,10 @@ public abstract class Action : MonoBehaviour {
         this.conveyorAction.GetComponent<RectTransform>().localPosition = startActionOrigin + (actionIdx * actionIndexTransition) + (trackIdx * trackIndexTransition);
         // ahaha how are you that small
         this.conveyorAction.GetComponent<RectTransform>().localScale = new Vector3(100, 100, 1);
+    }
+    public RectTransform getRectTrans()
+    {
+        return this.conveyorAction.GetComponent<RectTransform>();
     }
     
 }

@@ -29,7 +29,7 @@ public class Track {
      */
     public void runBeat () {
         consumeAction ();
-        addAction(this.size-1, this.trackIdx);
+        addAction(this.size, this.trackIdx);
     }
     
     /**
@@ -44,8 +44,8 @@ public class Track {
      */
     private void addAction (int actionIdx, int trackIdx) {
         Type actionType = possibleActions[UnityEngine.Random.Range (0, possibleActions.Length)];
-        Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
-        actions.Enqueue(toEnqueue);
+        // Action toEnqueue = Activator.CreateInstance(actionType, actionIdx, trackIdx) as Action;
+        actions.Enqueue(Activator.CreateInstance(actionType, actionIdx, trackIdx));
     }
     /**
      * Runs the next action in the queue
@@ -59,7 +59,14 @@ public class Track {
     }
     public void UpdateActionsUI (float pixToMove) {
         foreach(Action actionItem in actions){
-            //Move the actions down on each fixedUpdate
+            try{
+                RectTransform actionRect = actionItem.getRectTrans();
+                if(actionRect != null)
+                {
+                    actionRect.localPosition += new Vector3(0,(float)pixToMove,0); 
+                }
+            }catch(NullReferenceException e){} // Deleted before update in race condition
+            
         }
     }
 }
