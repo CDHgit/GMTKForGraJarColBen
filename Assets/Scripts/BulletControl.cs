@@ -54,7 +54,7 @@ public class BulletControl : MonoBehaviour {
                 //summon explosion hitbox and effect
                 GameObject.Instantiate(explosionParticles, this.transform.position, Quaternion.Euler(0, 0, 0));
                 GameObject hit = GameObject.Instantiate(explosionHitbox, this.transform.position, Quaternion.Euler(0, 0, 0));
-                hit.SendMessage("init", new int[] {damage});
+                hit.SendMessage("init", new int[] {damage, 0});
 
             }
             Destroy(this.gameObject);
