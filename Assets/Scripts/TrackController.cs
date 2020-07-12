@@ -18,12 +18,22 @@ public class TrackController : MonoBehaviour {
     static float heightOfBelt = 154f;
     static float secPerBeat;
     static int size = 3;
+    static float[] trackArrowPos = new float[size];
     public static float pxPerBeatIncrement;
     private Track[] tracks = new Track[size];
-
+    private GameObject[] arrowTracks = new GameObject[3];
     // Start is called before the first frame update
     void Start () 
     {
+        //Create mech arrow array for each mech in order Blue, Yellow, Green
+        arrowTracks[0] = GameObject.Find("TrackArrowBlue");
+        arrowTracks[1] = GameObject.Find("TrackArrowYellow");
+        arrowTracks[2] = GameObject.Find("TrackArrowGreen");
+        //Create track pos array
+        trackArrowPos[0] = -60.6f;
+        trackArrowPos[1] = 43.8f;
+        trackArrowPos[2] = 146.4f;
+
         context = GameObject.Find ("ContextManager").GetComponent<Context> ();
 
         secPerBeat = GameObject.Find ("Audio Source").GetComponent<SongTimer> ().secPerBeat;
@@ -37,12 +47,20 @@ public class TrackController : MonoBehaviour {
         for (int i = 0; i < 3; i++) {
             setTrack (context.mechList[i], i);
         }
+
     }
     public void setTrack(GameObject mech, int trackNum) {
         foreach (Track t in tracks) {
             t.removeMech (mech);
         }
         tracks[trackNum].addMech (mech);
+        //set mechnumber arrow in order Blue, Yellow, Green to track num 
+
+        int mechNumber = mech.GetComponent<MechInfo>().mechNumber;
+        Vector3 arrowPos = arrowTracks[mechNumber].GetComponent<RectTransform>().localPosition;
+        Vector3 newArrowPos = new Vector3(trackArrowPos[trackNum], arrowPos.y, arrowPos.z);
+        // Debug.Log("Track vec3 new arrow pos: " + newArrowPos);
+        arrowTracks[mech.GetComponent<MechInfo>().mechNumber].GetComponent<Transform>().localPosition = newArrowPos;
     }
     // Update is called once per physics tick
     void FixedUpdate () {

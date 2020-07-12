@@ -3711,6 +3711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517913174}
   - component: {fileID: 517913175}
+  - component: {fileID: 517913176}
   m_Layer: 0
   m_Name: TrackArrowGreen
   m_TagString: Untagged
@@ -3718,20 +3719,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &517913174
-Transform:
+--- !u!224 &517913174
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517913173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.799988, y: -31.8, z: -5062.5}
+  m_LocalPosition: {x: 0, y: 0, z: -5062.5}
   m_LocalScale: {x: 112.5, y: 61.875, z: 56.25}
   m_Children: []
   m_Father: {fileID: 979488913}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -38.600006, y: -71.8}
+  m_SizeDelta: {x: 3.119995, y: 0.79999924}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &517913175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3782,6 +3788,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!223 &517913176
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517913173}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,6 +4138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531468638}
   - component: {fileID: 531468639}
+  - component: {fileID: 531468640}
   m_Layer: 0
   m_Name: TrackArrowBlue
   m_TagString: Untagged
@@ -4118,20 +4146,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &531468638
-Transform:
+--- !u!224 &531468638
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531468637}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.799988, y: -8.7, z: -5062.5}
+  m_LocalPosition: {x: 0, y: 0, z: -5062.5}
   m_LocalScale: {x: 112.5, y: 61.875, z: 56.25}
   m_Children: []
   m_Father: {fileID: 979488913}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -141.20001, y: -48.7}
+  m_SizeDelta: {x: 3.119995, y: 0.79999924}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &531468639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4182,6 +4215,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!223 &531468640
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531468637}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1001 &539766398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7646,7 +7700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9630,6 +9684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154214452}
   - component: {fileID: 1154214451}
+  - component: {fileID: 1154214453}
   m_Layer: 0
   m_Name: TrackArrowYellow
   m_TagString: Untagged
@@ -9687,20 +9742,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1154214452
-Transform:
+--- !u!224 &1154214452
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154214450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.799988, y: 14.462494, z: -5062.5}
+  m_LocalPosition: {x: 0, y: 0, z: -5062.5}
   m_LocalScale: {x: 112.5, y: 61.875, z: 56.25}
   m_Children: []
   m_Father: {fileID: 979488913}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -245.6, y: -25.537506}
+  m_SizeDelta: {x: 3.119995, y: 0.79999924}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &1154214453
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154214450}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1001 &1158055654
 PrefabInstance:
   m_ObjectHideFlags: 0
