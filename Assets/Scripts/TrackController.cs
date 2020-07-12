@@ -21,6 +21,8 @@ public class TrackController : MonoBehaviour {
     public static float pxPerBeatIncrement;
     private Track[] tracks = new Track[size];
 
+    public static float[] probs = {0, 20, 20, 20, 5, 5, 10, 10};
+
     // Start is called before the first frame update
     void Start () 
     {
@@ -29,7 +31,7 @@ public class TrackController : MonoBehaviour {
         secPerBeat = GameObject.Find ("Audio Source").GetComponent<SongTimer> ().secPerBeat;
         pxPerBeatIncrement = secPerBeat / heightOfBelt;
         initTrackPos = conveyorImageBase.GetComponent<RectTransform>().localPosition;
-        System.Type[] allItemsTrack = new System.Type[]{typeof(EmptyAction), typeof(DashAction), typeof(RocketFireAction), typeof(BulletAction), 
+        System.Type[] allItemsTrack = new System.Type[]{typeof(EmptyAction), typeof(RocketFireAction), typeof(BulletAction), 
                                                         typeof(ShieldAction), typeof(HealAction), typeof(MineAction), typeof(EMPAction), typeof(GrenadeAction)};
         tracks[0] = new Track(trackSize, 0, allItemsTrack);
         tracks[1] = new Track(trackSize, 1, allItemsTrack);
